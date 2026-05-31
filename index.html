@@ -19,9 +19,9 @@
           colors: {
             brand: {
               red:   '#dc2626',
-              dark:  '#0a0a0a',
-              card:  '#111111',
-              border:'#1f1f1f',
+              dark:  '#06080f',
+              card:  '#0c0f1a',
+              border:'#1a1f35',
               muted: '#6b7280',
             }
           },
@@ -50,11 +50,11 @@
 
   <style>
     /* ─── Base ─── */
-    body { background-color: #0a0a0a; color: #e5e7eb; }
+    body { background-color: #06080f; color: #e5e7eb; }
 
     /* ─── Scrollbar ─── */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-track { background: #06080f; }
     ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 2px; }
 
     /* ─── Reveal on scroll ─── */
@@ -68,7 +68,7 @@
         rgba(10,10,10,0.55) 0%,
         rgba(10,10,10,0.35) 40%,
         rgba(10,10,10,0.85) 85%,
-        #0a0a0a 100%
+        #06080f 100%
       );
     }
 
@@ -139,12 +139,15 @@
     <div class="flex items-center justify-between h-16 lg:h-20">
 
       <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-2 group">
-        <img
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Flogo.webp&w=384&q=75"
-          alt="ES Autopflege Logo"
-          class="h-10 w-auto object-contain"
-        />
+      <a href="index.html" class="flex items-center gap-3 group">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ES Autopflege">
+          <rect width="36" height="36" rx="4" fill="#dc2626"/>
+          <text x="18" y="24" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="17" font-weight="600" letter-spacing="1" fill="white">ES</text>
+        </svg>
+        <div class="leading-tight">
+          <span class="block text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span>
+          <span class="block text-xs tracking-[0.2em] uppercase hidden sm:block" style="color:#dc2626; font-size:9px;">Pfalzgrafenweiler</span>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
@@ -216,8 +219,8 @@
   <!-- Background image – Porsche 911 -->
   <div class="absolute inset-0">
     <img
-      src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-718-spyder-studio.webp&w=3840&q=75"
-      alt="Porsche 718 Spyder in der LED-Inspektionswand – ES Autopflege"
+      src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=2400&q=85"
+      alt="Porsche 911 – ES Autopflege Pfalzgrafenweiler"
       class="w-full h-full object-cover object-center"
     />
     <div class="hero-overlay absolute inset-0"></div>
@@ -293,8 +296,8 @@
       <!-- Image -->
       <div class="reveal relative">
         <img
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-911-gts-shop-front.webp&w=1200&q=75"
-          alt="Porsche 911 GTS vor ES Autopflege Werkstatt Pfalzgrafenweiler"
+          src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=80"
+          alt="Audi R8 vor ES Autopflege Werkstatt"
           class="w-full aspect-[4/3] object-cover rounded-lg"
         />
         <!-- Floating badge -->
@@ -360,8 +363,8 @@
       <!-- Card 1 — tall, col-span on lg -->
       <div class="reveal relative overflow-hidden rounded-lg aspect-[3/4] row-span-2 hidden lg:block">
         <img
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-718-spyder-studio.webp&w=1200&q=75"
-          alt="Porsche 718 Spyder in der LED-Inspektionswand"
+          src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80"
+          alt="Sportwagen in der LED-Inspektionswand"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -376,8 +379,8 @@
       <!-- Card 2 -->
       <div class="reveal relative overflow-hidden rounded-lg aspect-video col-span-2 lg:col-span-2">
         <img
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fteam-at-work-jaguar.webp&w=1200&q=75"
-          alt="ES Autopflege Team bei der PPF-Arbeit am Jaguar F-Type"
+          src="https://images.unsplash.com/photo-1615906656989-d143c5e5dec1?auto=format&fit=crop&w=1200&q=80"
+          alt="Team bei der PPF-Arbeit in der Werkstatt"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -392,8 +395,8 @@
       <!-- Card 3 -->
       <div class="reveal relative overflow-hidden rounded-lg aspect-square">
         <img
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fmercedes-g63-amg.webp&w=800&q=75"
-          alt="Mercedes-AMG G63 in der Werkstatt"
+          src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80"
+          alt="Mercedes-AMG in der Werkstatt"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -407,8 +410,8 @@
       <!-- Card 4 -->
       <div class="reveal relative overflow-hidden rounded-lg aspect-square">
         <img
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-911-carbon-hood.webp&w=800&q=75"
-          alt="Porsche 911 mit Carbon-Motorhaube"
+          src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=800&q=80"
+          alt="Porsche 911 nach der Aufbereitung"
           class="w-full h-full object-cover"
           loading="lazy"
         />
@@ -1120,12 +1123,15 @@
 
       <!-- Brand -->
       <div class="lg:col-span-1">
-        <div class="mb-5">
-          <img
-            src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Flogo-white.webp&w=384&q=75"
-            alt="ES Autopflege Logo"
-            class="h-10 w-auto object-contain"
-          />
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="4" fill="#dc2626"/>
+            <text x="18" y="24" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="17" font-weight="600" letter-spacing="1" fill="white">ES</text>
+          </svg>
+          <div class="leading-tight">
+            <span class="block text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span>
+            <span class="block text-xs tracking-[0.2em] uppercase" style="color:#dc2626; font-size:9px;">Pfalzgrafenweiler</span>
+          </div>
         </div>
         <p class="text-gray-400 text-sm leading-relaxed mb-6">
           Professionelle Fahrzeugpflege und Aufbereitung in Pfalzgrafenweiler. Ihr Partner für glänzende Ergebnisse.
