@@ -71,8 +71,21 @@
 <header class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <a href="index.html" class="flex items-center gap-2">
-        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Flogo.webp&w=384&q=75" alt="ES Autopflege Logo" class="h-10 w-auto object-contain" />
+      <a href="index.html" class="flex items-center gap-3">
+        <img
+          id="g-logo"
+          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Flogo.webp&w=384&q=75"
+          alt="ES Autopflege Logo"
+          class="h-10 w-auto object-contain"
+          onerror="this.style.display='none'; document.getElementById('g-logo-fb').style.display='flex';"
+        />
+        <div id="g-logo-fb" style="display:none;" class="items-center gap-2">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="4" fill="#dc2626"/><text x="17" y="23" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="white">ES</text></svg>
+          <div class="leading-tight">
+            <span class="block text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span>
+            <span class="block text-gray-400 tracking-widest uppercase" style="font-size:10px;">Pfalzgrafenweiler</span>
+          </div>
+        </div>
       </a>
       <nav class="hidden lg:flex items-center gap-8">
         <a href="index.html#leistungen" class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Leistungen</a>
@@ -125,9 +138,9 @@
     <div class="grid md:grid-cols-2 gap-6">
       <!-- Slider 1 -->
       <div class="ba-container aspect-[4/3] reveal" id="ba1">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=900&q=80" alt="Vorher" class="w-full h-full object-cover" draggable="false"/>
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-macan-alcantara-before.webp&w=900&q=75" alt="Vorher" class="w-full h-full object-cover" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=900&q=80'"/>
         <div class="ba-after" id="ba1-after">
-          <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=900&q=80" alt="Nachher" class="w-full h-full object-cover" draggable="false"/>
+          <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-911-gts-shop-front.webp&w=900&q=75" alt="Nachher" class="w-full h-full object-cover" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=900&q=80'"/>
         </div>
         <div class="ba-divider" data-slider="ba1"><div class="ba-handle"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/></svg></div></div>
         <div class="absolute top-3 left-3 bg-black/60 text-white text-xs tracking-widest uppercase px-2.5 py-1 rounded backdrop-blur-sm pointer-events-none">Vorher</div>
@@ -136,9 +149,9 @@
 
       <!-- Slider 2 -->
       <div class="ba-container aspect-[4/3] reveal" id="ba2">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80" alt="Vorher Innenraum" class="w-full h-full object-cover" draggable="false"/>
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fleather-seat-damage-before.webp&w=900&q=75" alt="Vorher Innenraum" class="w-full h-full object-cover" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80'"/>
         <div class="ba-after" id="ba2-after">
-          <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80" alt="Nachher Innenraum" class="w-full h-full object-cover" draggable="false"/>
+          <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fmercedes-g63-amg.webp&w=900&q=75" alt="Nachher Innenraum" class="w-full h-full object-cover" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80'"/>
         </div>
         <div class="ba-divider" data-slider="ba2"><div class="ba-handle"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/></svg></div></div>
         <div class="absolute top-3 left-3 bg-black/60 text-white text-xs tracking-widest uppercase px-2.5 py-1 rounded backdrop-blur-sm pointer-events-none">Vorher</div>
@@ -164,64 +177,84 @@
     <!-- Masonry-style grid -->
     <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
 
-      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Porsche 911 — Außenpflege">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80" alt="Porsche 911 Aufbereitung" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche 911 — Außenpflege</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Porsche 718 Spyder — LED-Inspektionsstudio">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-718-spyder-studio.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80'" alt="Porsche 718 Spyder LED-Studio"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche 718 Spyder — LED-Studio</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="keramik" data-title="Ferrari — Keramikversiegelung">
-        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="Ferrari Keramikversiegelung" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Ferrari — Keramikversiegelung</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Porsche 911 GTS — vor unserer Werkstatt">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-911-gts-shop-front.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=600&q=80'" alt="Porsche 911 GTS"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche 911 GTS</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="Audi R8 — PPF-Schutzfolie">
-        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=600&q=80" alt="Audi R8 PPF" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Audi R8 — PPF-Schutzfolie</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="Jaguar F-Type — PPF-Applikation">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fteam-at-work-jaguar.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1615906656989-d143c5e5dec1?auto=format&fit=crop&w=600&q=80'" alt="Jaguar F-Type PPF"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Jaguar F-Type — PPF</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="BMW M — Lackpolitur">
-        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=600&q=80" alt="BMW M Lackpolitur" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">BMW M — Lackpolitur</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Mercedes-AMG G63 — Komplettpflege">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fmercedes-g63-amg.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=600&q=80'" alt="Mercedes-AMG G63"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Mercedes-AMG G63</p></div>
       </div>
 
-      <div class="gallery-item reveal col-span-2 aspect-video" data-category="aussen" data-title="Lamborghini — Komplettpflege">
-        <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=900&q=80" alt="Lamborghini Komplettpflege" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Lamborghini — Komplettpflege</p></div>
+      <div class="gallery-item reveal col-span-2 aspect-video" data-category="aussen" data-title="Porsche Taycan — Außenaufbereitung">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-taycan.webp&w=900&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=900&q=80'" alt="Porsche Taycan"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche Taycan — Außenaufbereitung</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="innen" data-title="Porsche — Innenraumreinigung">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="Porsche Innenraum" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche — Innenraumreinigung</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Porsche 911 — Carbon-Motorhaube">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-911-carbon-hood.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80'" alt="Porsche 911 Carbon-Haube"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche 911 — Carbon-Haube</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Mercedes-AMG — Detailing">
-        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=600&q=80" alt="Mercedes-AMG Detailing" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Mercedes-AMG — Detailing</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="Jaguar F-Type — PPF-Finish">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fjaguar-ftype-workshop.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80'" alt="Jaguar F-Type PPF-Finish"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Jaguar F-Type — PPF-Finish</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="keramik" data-title="Porsche — Nassglanz Keramik">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=600&q=80" alt="Porsche Keramik Glanz" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche — Nassglanz Keramik</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Mercedes-AMG — Werkstatt-Hebebühne">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fmercedes-amg-workshop-lift.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=600&q=80'" alt="Mercedes-AMG Hebebühne"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Mercedes-AMG — Hebebühne</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="Ferrari — PPF Sportfahrzeug">
-        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80" alt="Ferrari PPF" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Ferrari — PPF Sportfahrzeug</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="innen" data-title="Porsche Macan GTS — Alcantara vor der Aufbereitung">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-macan-alcantara-before.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80'" alt="Porsche Macan Alcantara"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche Macan — Alcantara</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="innen" data-title="BMW M — Lederpflege">
-        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=600&q=80" alt="BMW M Innenraum" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">BMW M — Lederpflege</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Carbon-Spiegelkappe — Detail">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fporsche-carbon-mirror-detail.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=600&q=80'" alt="Carbon-Spiegelkappe"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Carbon-Spiegelkappe — Detail</p></div>
       </div>
 
-      <div class="gallery-item reveal col-span-2 aspect-video" data-category="aussen" data-title="Audi R8 — Außenaufbereitung komplett">
-        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80" alt="Audi R8 Aufbereitung" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Audi R8 — Außenaufbereitung</p></div>
+      <div class="gallery-item reveal col-span-2 aspect-video" data-category="aussen" data-title="Mercedes V-Klasse in der Werkstatt">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fmercedes-vclass-green.webp&w=900&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=900&q=80'" alt="Mercedes V-Klasse"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Mercedes V-Klasse — Werkstatt</p></div>
       </div>
 
-      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Lamborghini — Nassglanz">
-        <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=600&q=80" alt="Lamborghini Glanz" loading="lazy"/>
-        <div class="overlay"><p class="text-white text-xs tracking-wide">Lamborghini — Nassglanz</p></div>
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="ES Autopflege — Firmenfahrzeug V-Klasse">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fes-autopflege-vclass.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1580274455191-1c62238fa333?auto=format&fit=crop&w=600&q=80'" alt="ES Autopflege Firmenfahrzeug"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">ES Autopflege — Firmenfahrzeug</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Fahrzeugbeschriftung Elektro Schmiede">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fvehicle-wrap-elektro-schmiede.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=600&q=80'" alt="Fahrzeugbeschriftung"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Fahrzeugbeschriftung</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Suzuki Sportmotorrad — Aufbereitung">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fsuzuki-motorcycle.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&q=80'" alt="Suzuki Motorrad"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Suzuki Sportmotorrad</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="PPF-Applikation — Supersportler">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fppf-application-windshield.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=600&q=80'" alt="PPF Supersportler"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">PPF — Supersportler</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="innen" data-title="Lederschaden vor der Smart-Repair">
+        <img src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Fgallery%2Fleather-seat-damage-before.webp&w=600&q=75" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80'" alt="Leder Smart Repair"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Leder — Smart Repair</p></div>
       </div>
 
     </div>
