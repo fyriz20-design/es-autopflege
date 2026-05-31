@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <meta name="description" content="Professionelle Fahrzeugaufbereitung in Pfalzgrafenweiler. Außenpflege, Innenraumaufbereitung und Spezialleistungen mit über 10 Jahren Erfahrung. ✓ Handwäsche ✓ Lackaufbereitung ✓ Keramikversiegelung" />
+  <meta name="keywords" content="Autopflege, Fahrzeugpflege, Fahrzeugaufbereitung, Pfalzgrafenweiler, Handwäsche, Lackaufbereitung, Keramikversiegelung" />
+  <meta property="og:title" content="ES Autopflege Pfalzgrafenweiler | Professionelle Fahrzeugpflege" />
+  <meta property="og:description" content="Ihr Experte für professionelle Fahrzeugaufbereitung in Pfalzgrafenweiler." />
+  <meta property="og:type" content="website" />
+  <title>ES Autopflege Pfalzgrafenweiler | Professionelle Fahrzeugpflege</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red:   '#dc2626',
+              dark:  '#0a0a0a',
+              card:  '#111111',
+              border:'#1f1f1f',
+              muted: '#6b7280',
+            }
+          },
+          fontFamily: {
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.7s ease forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%':   { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Base ─── */
+    body { background-color: #0a0a0a; color: #e5e7eb; }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 2px; }
+
+    /* ─── Reveal on scroll ─── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── Hero gradient overlay ─── */
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.55) 0%,
+        rgba(10,10,10,0.35) 40%,
+        rgba(10,10,10,0.85) 85%,
+        #0a0a0a 100%
+      );
+    }
+
+    /* ─── Glowing red line ─── */
+    .red-line { height: 1px; background: linear-gradient(to right, transparent, #dc2626, transparent); }
+
+    /* ─── Price card hover ─── */
+    .price-card { transition: transform .3s ease, box-shadow .3s ease; }
+    .price-card:hover { transform: translateY(-6px); box-shadow: 0 0 40px rgba(220,38,38,.18); }
+    .price-card.featured { box-shadow: 0 0 40px rgba(220,38,38,.25); }
+
+    /* ─── Nav link underline ─── */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: #dc2626;
+      transition: width .3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ─── Mobile menu ─── */
+    #mobile-menu { transition: max-height .4s ease, opacity .4s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 500px; opacity: 1; }
+
+    /* ─── Service card ─── */
+    .service-card { transition: background .3s ease, border-color .3s ease; }
+    .service-card:hover { background: #1a1a1a; border-color: #dc2626; }
+
+    /* ─── Before/After slider ─── */
+    .ba-container { position: relative; overflow: hidden; cursor: ew-resize; border-radius: .5rem; }
+    .ba-after { position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip-path: inset(0 50% 0 0); transition: none; }
+    .ba-divider {
+      position: absolute; top: 0; left: 50%; width: 2px; height: 100%;
+      background: #dc2626; cursor: ew-resize; z-index: 10;
+    }
+    .ba-handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #dc2626; border: 2px solid white;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 11; cursor: ew-resize;
+    }
+
+    /* ─── Stat counter ─── */
+    .stat-value { font-variant-numeric: tabular-nums; }
+
+    /* ─── WhatsApp float ─── */
+    .wa-float {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+      background: #25d366; color: white;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      transition: transform .3s ease;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER / NAVIGATION
+════════════════════════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 bg-brand-red rounded flex items-center justify-center flex-shrink-0">
+          <span class="text-white font-bold text-sm tracking-widest">ES</span>
+        </div>
+        <div>
+          <span class="text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span>
+          <p class="text-brand-muted text-xs tracking-widest uppercase hidden sm:block">Pfalzgrafenweiler</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#leistungen" class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Leistungen</a>
+        <a href="#preise"     class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Preise</a>
+        <a href="#galerie"    class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Galerie</a>
+        <a href="#kontakt"    class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Kontakt</a>
+        <a href="b2b.html"    class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Autohäuser</a>
+      </nav>
+
+      <!-- Social + CTA -->
+      <div class="hidden lg:flex items-center gap-4">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/es_autopflege/" target="_blank" rel="noopener"
+           class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/es.autopflege.erdem.sarioglu" target="_blank" rel="noopener"
+           class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </a>
+        <a href="#kontakt"
+           class="bg-brand-red hover:bg-red-700 text-white text-sm font-medium px-5 py-2.5 rounded transition-colors tracking-wide">
+          Termin buchen
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-toggle" class="lg:hidden text-gray-300 hover:text-white p-2" aria-label="Menü öffnen">
+        <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden bg-brand-card border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
+      <a href="#leistungen" class="text-gray-300 hover:text-white py-2 text-sm tracking-wide transition-colors mobile-link">Leistungen</a>
+      <a href="#preise"     class="text-gray-300 hover:text-white py-2 text-sm tracking-wide transition-colors mobile-link">Preise</a>
+      <a href="#galerie"    class="text-gray-300 hover:text-white py-2 text-sm tracking-wide transition-colors mobile-link">Galerie</a>
+      <a href="#kontakt"    class="text-gray-300 hover:text-white py-2 text-sm tracking-wide transition-colors mobile-link">Kontakt</a>
+      <a href="b2b.html"    class="text-gray-300 hover:text-white py-2 text-sm tracking-wide transition-colors mobile-link">Autohäuser</a>
+      <div class="flex items-center gap-4 pt-2 border-t border-brand-border">
+        <a href="https://www.instagram.com/es_autopflege/" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/es.autopflege.erdem.sarioglu" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#kontakt" class="ml-auto bg-brand-red hover:bg-red-700 text-white text-sm font-medium px-5 py-2.5 rounded transition-colors">
+          Termin buchen
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section id="hero" class="relative h-screen min-h-[600px] flex items-end pb-20 overflow-hidden">
+  <!-- Background image (Unsplash – car detailing) -->
+  <div class="absolute inset-0">
+    <img
+      src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=2070&q=80"
+      alt="Professionelle Fahrzeugaufbereitung"
+      class="w-full h-full object-cover object-center"
+    />
+    <div class="hero-overlay absolute inset-0"></div>
+  </div>
+
+  <!-- Badge top-right -->
+  <div class="absolute top-24 right-6 lg:right-12 text-right hidden sm:block">
+    <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Seit</p>
+    <p class="text-white font-serif text-5xl font-semibold leading-none">2014</p>
+    <p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Pfalzgrafenweiler</p>
+  </div>
+
+  <!-- Hero text -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Seit 2014 · Pfalzgrafenweiler</p>
+    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-none mb-6">
+      Das Auto<br /><em class="text-brand-red font-normal">in Bestform.</em>
+    </h1>
+    <p class="text-gray-300 text-base sm:text-lg max-w-xl mb-10 leading-relaxed">
+      Keramikversiegelung, PPF und Komplettaufbereitung — durchgeführt in unserer Werkstatt an der Spielberger Straße 9.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#kontakt"
+         class="bg-brand-red hover:bg-red-700 text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">
+        Termin vereinbaren
+      </a>
+      <a href="#leistungen"
+         class="border border-white/30 hover:border-white text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">
+        Unsere Leistungen
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+    <p class="text-gray-400 text-xs tracking-widest uppercase">Scrollen</p>
+    <div class="w-px h-8 bg-gradient-to-b from-gray-400 to-transparent"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════════ -->
+<div class="bg-brand-card border-y border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center">
+        <p class="stat-value text-3xl sm:text-4xl font-serif text-white">10+</p>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Jahre Erfahrung</p>
+      </div>
+      <div class="text-center">
+        <p class="stat-value text-3xl sm:text-4xl font-serif text-white">14+</p>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Leistungsarten</p>
+      </div>
+      <div class="text-center">
+        <p class="stat-value text-3xl sm:text-4xl font-serif text-white">4,9</p>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Google Bewertung</p>
+      </div>
+      <div class="text-center">
+        <p class="stat-value text-3xl sm:text-4xl font-serif text-white">50+</p>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Rezensionen</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ÜBER UNS
+════════════════════════════════════════════════════════════ -->
+<section class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Image -->
+      <div class="reveal relative">
+        <img
+          src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1000&q=80"
+          alt="ES Autopflege Team bei der Arbeit"
+          class="w-full aspect-[4/3] object-cover rounded-lg"
+        />
+        <!-- Floating badge -->
+        <div class="absolute -bottom-6 -right-6 bg-brand-red text-white p-6 rounded hidden sm:block">
+          <p class="text-4xl font-serif font-semibold leading-none">03</p>
+          <p class="text-xs tracking-widest uppercase mt-1 opacity-80">Spezialisten</p>
+        </div>
+      </div>
+      <!-- Text -->
+      <div class="reveal">
+        <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Über ES Autopflege</p>
+        <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight mb-6">
+          Kleine Werkstatt,<br /><em class="text-brand-red font-normal">große Sorgfalt.</em>
+        </h2>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          Seit 2014 betreuen wir Fahrzeuge aus der Region rund um Pfalzgrafenweiler — vom Alltagswagen bis zum seltenen Sammlerstück. Gearbeitet wird in Handarbeit, mit der Zeit, die ein Ergebnis braucht.
+        </p>
+        <p class="text-gray-400 leading-relaxed mb-8">
+          Wir nehmen bewusst nicht jeden Auftrag gleichzeitig an. Das heißt: Ihr Auto steht nicht in der Schlange — es bekommt seinen Platz, seine Zeit und unsere volle Aufmerksamkeit.
+        </p>
+        <div class="grid grid-cols-2 gap-6 mb-8">
+          <div class="border-l-2 border-brand-red pl-4">
+            <p class="text-white font-semibold">Standort</p>
+            <p class="text-brand-muted text-sm">72285 Pfalzgrafenweiler</p>
+          </div>
+          <div class="border-l-2 border-brand-red pl-4">
+            <p class="text-white font-semibold">Seit</p>
+            <p class="text-brand-muted text-sm">2014 · über 10 Jahre</p>
+          </div>
+        </div>
+        <a href="#kontakt" class="inline-flex items-center gap-2 text-brand-red hover:text-red-400 text-sm font-medium tracking-wide transition-colors">
+          Jetzt Termin buchen
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-line max-w-7xl mx-auto"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LEISTUNGEN
+════════════════════════════════════════════════════════════ -->
+<section id="leistungen" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Heading -->
+    <div class="reveal mb-16 lg:mb-20">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Leistungen</p>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight">
+          Was wir tun,<br /><em class="text-brand-red font-normal">und wie.</em>
+        </h2>
+        <p class="text-gray-400 max-w-xs text-sm leading-relaxed">
+          Sieben Kernleistungen — einzeln buchbar oder kombiniert. Für alles andere einfach anrufen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Services grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+
+      <!-- Card: Keramikversiegelung -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card col-span-1 lg:col-span-2">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">01 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Keramikversiegelung</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Hochwertige Beschichtung auf Lack, Glas und Felgen. Mehrere Jahre Standzeit, tiefer Glanz, leichte Pflege.</p>
+      </div>
+
+      <!-- Card: PPF -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">02 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">PPF — Lackschutzfolie</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Schutz vor Steinschlag, Kratzern und Insekten für besonders beanspruchte Flächen.</p>
+      </div>
+
+      <!-- Card: Komplettaufbereitung -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">03 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Komplettaufbereitung</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Handwäsche, mehrstufige Lackaufbereitung, Innenraum. Ein bis zwei Tage, ein neues Gefühl.</p>
+      </div>
+
+      <!-- Card: Leder & Alcantara -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">04 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Leder & Alcantara</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Reinigung, Farbauffrischung und Reparatur — auch bei aufgerauter Alcantara oder gerissenem Leder.</p>
+      </div>
+
+      <!-- Card: Innenraum -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">05 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Innenraumreinigung</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Tiefenreinigung von Sitzen, Teppich, Himmel und Lüftungskanälen. Geruchsbehandlung auf Wunsch.</p>
+      </div>
+
+      <!-- Card: Smart Repair -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">06 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Smart Repair</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Kleine Lack-, Leder- und Kunststoffschäden gezielt ausbessern — ohne Lackieren des ganzen Teils.</p>
+      </div>
+
+      <!-- Card: Motorraum -->
+      <div class="service-card reveal border border-brand-border rounded-lg p-6 bg-brand-card">
+        <div class="flex items-start justify-between mb-4">
+          <span class="text-brand-muted text-xs tracking-widest">07 / 07</span>
+          <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center">
+            <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+        </div>
+        <h3 class="text-white font-semibold text-lg mb-2">Motorraumreinigung</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Schonende Reinigung und Konservierung des Motorraums — für saubere Wartung und Werterhalt.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="red-line max-w-7xl mx-auto"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PREISLISTE
+════════════════════════════════════════════════════════════ -->
+<section id="preise" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-16 text-center">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Transparent & fair</p>
+      <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight mb-4">
+        Unsere <em class="text-brand-red font-normal">Preispakete.</em>
+      </h2>
+      <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">
+        Alle Preise sind Richtwerte und abhängig von Fahrzeuggröße und Verschmutzungsgrad. Genaues Angebot nach kurzer Besichtigung oder Anfrage.
+      </p>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+      <!-- Basic -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-8 bg-brand-card">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Basis</p>
+        <h3 class="text-white text-2xl font-semibold mb-1">Außenpflege</h3>
+        <p class="text-gray-500 text-sm mb-6">Außenreinigung & Pflege</p>
+        <div class="mb-8">
+          <span class="text-brand-red text-4xl font-serif font-semibold">ab 89 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Handwäsche Außen
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Felgenreinigung
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Reifenpflege
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Scheiben innen & außen
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Türkanten & Gummipflege
+          </li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors">
+          Anfragen
+        </a>
+      </div>
+
+      <!-- Standard — FEATURED -->
+      <div class="price-card featured reveal border border-brand-red rounded-xl p-8 bg-brand-card relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-xs tracking-widest uppercase px-4 py-1 rounded-full">
+          Beliebt
+        </div>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Standard</p>
+        <h3 class="text-white text-2xl font-semibold mb-1">Innen + Außen</h3>
+        <p class="text-gray-500 text-sm mb-6">Komplettaufbereitung</p>
+        <div class="mb-8">
+          <span class="text-brand-red text-4xl font-serif font-semibold">ab 249 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Alles aus Basis-Paket
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Innenraumreinigung komplett
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Saugen & Ausdampfen
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Kunststoffpflege Innen
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Lackversiegelung
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Geruchsneutralisierung
+          </li>
+        </ul>
+        <a href="#kontakt" class="block text-center bg-brand-red hover:bg-red-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors">
+          Anfragen
+        </a>
+      </div>
+
+      <!-- Premium -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-8 bg-brand-card">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Premium</p>
+        <h3 class="text-white text-2xl font-semibold mb-1">Keramik-Paket</h3>
+        <p class="text-gray-500 text-sm mb-6">Langzeitschutz & Versiegelung</p>
+        <div class="mb-8">
+          <span class="text-brand-red text-4xl font-serif font-semibold">ab 599 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Alles aus Standard-Paket
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Lackpolitur einstufig
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Keramikversiegelung Lack
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Keramik auf Glas & Felgen
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            2–5 Jahre Schutz
+          </li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Zertifikat & Pflegeanleitung
+          </li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors">
+          Anfragen
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Additional services table -->
+    <div class="reveal mt-16 border border-brand-border rounded-xl overflow-hidden">
+      <div class="bg-brand-card px-6 py-4 border-b border-brand-border">
+        <h3 class="text-white font-semibold">Einzelleistungen (Auszug)</h3>
+      </div>
+      <div class="divide-y divide-brand-border">
+        <div class="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors">
+          <span class="text-gray-300 text-sm">PPF Teilfolie (Stoßfänger / Motorhaube)</span>
+          <span class="text-brand-red text-sm font-medium">ab 299 €</span>
+        </div>
+        <div class="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors">
+          <span class="text-gray-300 text-sm">PPF Vollverklebung</span>
+          <span class="text-brand-red text-sm font-medium">auf Anfrage</span>
+        </div>
+        <div class="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors">
+          <span class="text-gray-300 text-sm">Lederpflege & Farbauffrischung</span>
+          <span class="text-brand-red text-sm font-medium">ab 129 €</span>
+        </div>
+        <div class="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors">
+          <span class="text-gray-300 text-sm">Smart Repair (Lackschaden)</span>
+          <span class="text-brand-red text-sm font-medium">ab 79 €</span>
+        </div>
+        <div class="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors">
+          <span class="text-gray-300 text-sm">Motorraumreinigung</span>
+          <span class="text-brand-red text-sm font-medium">ab 59 €</span>
+        </div>
+        <div class="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors">
+          <span class="text-gray-300 text-sm">Scheinwerferaufbereitung</span>
+          <span class="text-brand-red text-sm font-medium">ab 49 €</span>
+        </div>
+      </div>
+      <div class="bg-brand-card px-6 py-4 border-t border-brand-border">
+        <p class="text-brand-muted text-xs">* Alle Preise zzgl. MwSt. Endpreise abhängig von Fahrzeuggröße und Zustand. Verbindliches Angebot nach Besichtigung.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="red-line max-w-7xl mx-auto"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GALERIE / VORHER-NACHHER
+════════════════════════════════════════════════════════════ -->
+<section id="galerie" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-16">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Aus dem Alltag</p>
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight">
+          Fahrzeuge,<br /><em class="text-brand-red font-normal">die bei uns waren.</em>
+        </h2>
+        <a href="galerie.html" class="inline-flex items-center gap-2 text-brand-red hover:text-red-400 text-sm font-medium tracking-wide transition-colors">
+          Alle Bilder ansehen
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Vorher/Nachher Slider -->
+    <div class="reveal mb-12">
+      <p class="text-brand-muted text-xs tracking-widest uppercase mb-6">Vorher / Nachher — Ziehen zum Vergleichen</p>
+      <div class="ba-container aspect-[16/7] select-none" id="ba-slider">
+        <!-- Vorher (before) image -->
+        <img
+          src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=1400&q=80"
+          alt="Vorher – Fahrzeug vor der Aufbereitung"
+          class="w-full h-full object-cover"
+          draggable="false"
+        />
+        <!-- Nachher (after) image -->
+        <div class="ba-after" id="ba-after">
+          <img
+            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1400&q=80"
+            alt="Nachher – Fahrzeug nach der Aufbereitung"
+            class="w-full h-full object-cover"
+            draggable="false"
+          />
+        </div>
+        <!-- Divider -->
+        <div class="ba-divider" id="ba-divider">
+          <div class="ba-handle" id="ba-handle">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Labels -->
+        <div class="absolute top-4 left-4 bg-black/60 text-white text-xs tracking-widest uppercase px-3 py-1.5 rounded backdrop-blur-sm pointer-events-none">Vorher</div>
+        <div class="absolute top-4 right-4 bg-brand-red text-white text-xs tracking-widest uppercase px-3 py-1.5 rounded pointer-events-none">Nachher</div>
+      </div>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
+      <div class="reveal aspect-square overflow-hidden rounded-lg group">
+        <img src="https://images.unsplash.com/photo-1600705722908-bfdce32b4d7e?auto=format&fit=crop&w=600&q=80" alt="Porsche Aufbereitung" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="reveal aspect-square overflow-hidden rounded-lg group">
+        <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=600&q=80" alt="Keramikversiegelung" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="reveal aspect-square overflow-hidden rounded-lg group">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="PPF Folie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="reveal aspect-square overflow-hidden rounded-lg group">
+        <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80" alt="Lackpolitur" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="reveal aspect-square overflow-hidden rounded-lg group md:col-span-2">
+        <img src="https://images.unsplash.com/photo-1619767886558-efdc259b6e09?auto=format&fit=crop&w=800&q=80" alt="Fahrzeugaufbereitung" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="reveal aspect-square overflow-hidden rounded-lg group">
+        <img src="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80" alt="Innenreinigung" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+      <div class="reveal aspect-square overflow-hidden rounded-lg group">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=600&q=80" alt="Autodetailing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="red-line max-w-7xl mx-auto"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHY US
+════════════════════════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-brand-card">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-16 text-center">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Warum wir</p>
+      <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight">
+        Sechs Gründe,<br /><em class="text-brand-red font-normal">nüchtern formuliert.</em>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="reveal">
+        <p class="text-brand-red font-serif text-4xl mb-4">01</p>
+        <h3 class="text-white font-semibold mb-2">Keine Warteschlange</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Wir nehmen bewusst wenig Aufträge gleichzeitig an. Ihr Auto bekommt seinen Platz und die Zeit, die es braucht — nicht den nächsten freien Steckplatz.</p>
+      </div>
+      <div class="reveal">
+        <p class="text-brand-red font-serif text-4xl mb-4">02</p>
+        <h3 class="text-white font-semibold mb-2">Nur Handarbeit</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Kein Rundum-Schnelldurchlauf. Waschen, polieren, versiegeln, folieren — alles von Hand, in ruhiger Reihenfolge, in sauberer Umgebung.</p>
+      </div>
+      <div class="reveal">
+        <p class="text-brand-red font-serif text-4xl mb-4">03</p>
+        <h3 class="text-white font-semibold mb-2">Transparente Preise</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Sie bekommen ein Angebot mit Umfang, Produkten und Aufwand — keine Überraschungen bei der Abholung. Nachkalkulation auf Wunsch.</p>
+      </div>
+      <div class="reveal">
+        <p class="text-brand-red font-serif text-4xl mb-4">04</p>
+        <h3 class="text-white font-semibold mb-2">Werterhalt im Fokus</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Ob 10 Jahre alt oder brandneu: Ein gut gepflegtes Auto hält länger, sieht länger gut aus und bringt beim Wiederverkauf mehr — das rechnet sich.</p>
+      </div>
+      <div class="reveal">
+        <p class="text-brand-red font-serif text-4xl mb-4">05</p>
+        <h3 class="text-white font-semibold mb-2">Erfahrung seit 2014</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Über ein Jahrzehnt an Fahrzeugen durch unsere Hände — vom Alltagswagen über Youngtimer bis zum Supersportler. Wir kennen den Unterschied.</p>
+      </div>
+      <div class="reveal">
+        <p class="text-brand-red font-serif text-4xl mb-4">06</p>
+        <h3 class="text-white font-semibold mb-2">Schonende Produkte</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Saure, aggressive Chemie ist bei uns die Ausnahme. Wir arbeiten bevorzugt mit pH-neutralen Systemen — besser für den Lack, besser für die Umwelt.</p>
+      </div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="reveal mt-20 border border-brand-border rounded-xl p-8 lg:p-12 flex flex-col lg:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-2">Interesse?</p>
+        <h3 class="font-serif text-3xl text-white">Rufen Sie kurz an.</h3>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <a href="#kontakt" class="bg-brand-red hover:bg-red-700 text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">
+          Termin vereinbaren
+        </a>
+        <a href="tel:+4915779711281" class="border border-white/30 hover:border-white text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">
+          +49 1577 9711281
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     KONTAKT / BUCHUNGSFORMULAR
+════════════════════════════════════════════════════════════ -->
+<section id="kontakt" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-16">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Kontakt</p>
+      <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight">
+        Schreiben Sie<br /><em class="text-brand-red font-normal">oder rufen Sie an.</em>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16">
+
+      <!-- Contact info -->
+      <div class="reveal">
+        <div class="space-y-8 mb-12">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold mb-1">Adresse</p>
+              <p class="text-gray-400 text-sm leading-relaxed">ES Autopflege e.K.<br />Spielberger Str. 9<br />72285 Pfalzgrafenweiler</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold mb-1">Telefon</p>
+              <a href="tel:+4915779711281" class="text-brand-red hover:text-red-400 text-sm transition-colors">+49 1577 9711281</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-brand-red/10 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-semibold mb-1">E-Mail</p>
+              <a href="mailto:info@es-autopflege.de" class="text-brand-red hover:text-red-400 text-sm transition-colors">info@es-autopflege.de</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opening hours -->
+        <div class="border border-brand-border rounded-xl p-6">
+          <h3 class="text-white font-semibold mb-4">Öffnungszeiten</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400 text-sm">Montag — Freitag</span>
+              <span class="text-white text-sm">08:30 — 17:30</span>
+            </div>
+            <div class="border-t border-brand-border"></div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400 text-sm">Samstag</span>
+              <span class="text-white text-sm">08:30 — 14:30</span>
+            </div>
+            <div class="border-t border-brand-border"></div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400 text-sm">Sonntag</span>
+              <span class="text-brand-muted text-sm">Geschlossen</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal">
+        <!-- SUCCESS MESSAGE (hidden by default) -->
+        <div id="form-success" class="hidden border border-green-500/30 bg-green-500/10 rounded-xl p-8 text-center">
+          <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-white text-xl font-semibold mb-2">Anfrage erhalten!</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Vielen Dank für Ihre Nachricht. Wir melden uns schnellstmöglich, spätestens am nächsten Werktag.</p>
+          <p class="text-brand-muted text-xs">ES Autopflege · Spielberger Str. 9 · 72285 Pfalzgrafenweiler</p>
+        </div>
+
+        <!-- FORM -->
+        <!--
+          HINWEIS FÜR DICH:
+          Ersetze "YOUR_FORM_ID" mit deiner echten Formspree-ID.
+          1. Gehe zu https://formspree.io
+          2. Registriere dich kostenlos
+          3. Erstelle ein neues Formular
+          4. Kopiere die ID (z.B. "xpzgkwqr")
+          5. Ersetze YOUR_FORM_ID unten
+        -->
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          class="space-y-5"
+        >
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="name">Name *</label>
+              <input
+                type="text" id="name" name="name" required
+                class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+                placeholder="Max Mustermann"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="email">E-Mail *</label>
+              <input
+                type="email" id="email" name="email" required
+                class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+                placeholder="max@example.de"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="phone">Telefon</label>
+            <input
+              type="tel" id="phone" name="phone"
+              class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="+49 151 ..."
+            />
+          </div>
+          <div>
+            <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="service">Gewünschte Leistung</label>
+            <select
+              id="service" name="service"
+              class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors appearance-none"
+            >
+              <option value="" class="bg-brand-card">Bitte wählen …</option>
+              <option value="Außenreinigung & Politur" class="bg-brand-card">Außenreinigung & Politur</option>
+              <option value="Innenraumaufbereitung" class="bg-brand-card">Innenraumaufbereitung</option>
+              <option value="Keramikversiegelung" class="bg-brand-card">Keramikversiegelung</option>
+              <option value="PPF — Lackschutzfolie" class="bg-brand-card">PPF — Lackschutzfolie</option>
+              <option value="Lederpflege" class="bg-brand-card">Lederpflege</option>
+              <option value="Motorwäsche" class="bg-brand-card">Motorwäsche</option>
+              <option value="Smart Repair" class="bg-brand-card">Smart Repair</option>
+              <option value="Komplettaufbereitung" class="bg-brand-card">Komplettaufbereitung</option>
+              <option value="Sonstiges" class="bg-brand-card">Sonstiges</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="message">Nachricht *</label>
+            <textarea
+              id="message" name="message" required rows="4"
+              class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors resize-none"
+              placeholder="Beschreiben Sie kurz Ihr Fahrzeug und den gewünschten Service …"
+            ></textarea>
+          </div>
+          <!-- Honeypot spam protection -->
+          <input type="text" name="_gotcha" class="hidden" />
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-brand-red hover:bg-red-700 disabled:opacity-60 text-white py-4 rounded-lg text-sm font-medium tracking-wide transition-colors flex items-center justify-center gap-2"
+          >
+            <span id="btn-text">Nachricht senden</span>
+            <svg id="btn-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer class="bg-brand-card border-t border-brand-border">
+  <!-- Top footer -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-9 h-9 bg-brand-red rounded flex items-center justify-center flex-shrink-0">
+            <span class="text-white font-bold text-sm tracking-widest">ES</span>
+          </div>
+          <div>
+            <span class="text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span>
+            <p class="text-brand-muted text-xs tracking-widest uppercase">Pfalzgrafenweiler</p>
+          </div>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+          Professionelle Fahrzeugpflege und Aufbereitung in Pfalzgrafenweiler. Ihr Partner für glänzende Ergebnisse.
+        </p>
+        <!-- Social -->
+        <div class="flex items-center gap-4">
+          <a href="https://www.instagram.com/es_autopflege/" target="_blank" rel="noopener"
+             class="w-9 h-9 border border-brand-border rounded flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-colors" aria-label="Instagram">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/es.autopflege.erdem.sarioglu" target="_blank" rel="noopener"
+             class="w-9 h-9 border border-brand-border rounded flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-colors" aria-label="Facebook">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://wa.me/4915779711281" target="_blank" rel="noopener"
+             class="w-9 h-9 border border-brand-border rounded flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-colors" aria-label="WhatsApp">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h4 class="text-white font-semibold text-sm tracking-wider uppercase mb-4">Schnelllinks</h4>
+        <ul class="space-y-2.5">
+          <li><a href="index.html"    class="text-gray-400 hover:text-white text-sm transition-colors">Start</a></li>
+          <li><a href="#leistungen"   class="text-gray-400 hover:text-white text-sm transition-colors">Leistungen</a></li>
+          <li><a href="#preise"       class="text-gray-400 hover:text-white text-sm transition-colors">Preise</a></li>
+          <li><a href="#galerie"      class="text-gray-400 hover:text-white text-sm transition-colors">Galerie</a></li>
+          <li><a href="#kontakt"      class="text-gray-400 hover:text-white text-sm transition-colors">Kontakt</a></li>
+          <li><a href="b2b.html"      class="text-gray-400 hover:text-white text-sm transition-colors">Autohaus-Anfragen</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-white font-semibold text-sm tracking-wider uppercase mb-4">Kontakt</h4>
+        <ul class="space-y-2.5">
+          <li class="text-gray-400 text-sm">Spielberger Str. 9<br />72285 Pfalzgrafenweiler</li>
+          <li><a href="tel:+4915779711281" class="text-gray-400 hover:text-white text-sm transition-colors">+49 1577 9711281</a></li>
+          <li><a href="mailto:info@es-autopflege.de" class="text-gray-400 hover:text-white text-sm transition-colors">info@es-autopflege.de</a></li>
+        </ul>
+      </div>
+
+      <!-- Hours -->
+      <div>
+        <h4 class="text-white font-semibold text-sm tracking-wider uppercase mb-4">Öffnungszeiten</h4>
+        <ul class="space-y-2.5">
+          <li class="flex justify-between gap-4">
+            <span class="text-gray-400 text-sm">Mo — Fr</span>
+            <span class="text-gray-300 text-sm">08:30–17:30</span>
+          </li>
+          <li class="flex justify-between gap-4">
+            <span class="text-gray-400 text-sm">Samstag</span>
+            <span class="text-gray-300 text-sm">08:30–14:30</span>
+          </li>
+          <li class="flex justify-between gap-4">
+            <span class="text-gray-400 text-sm">Sonntag</span>
+            <span class="text-brand-muted text-sm">Geschlossen</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom footer -->
+  <div class="border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-brand-muted text-xs">© 2026 ES Autopflege. Alle Rechte vorbehalten.</p>
+      <div class="flex items-center gap-6">
+        <a href="impressum.html"   class="text-brand-muted hover:text-white text-xs transition-colors">Impressum</a>
+        <a href="datenschutz.html" class="text-brand-muted hover:text-white text-xs transition-colors">Datenschutz</a>
+        <a href="agb.html"         class="text-brand-muted hover:text-white text-xs transition-colors">AGB</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHATSAPP FLOAT BUTTON
+════════════════════════════════════════════════════════════ -->
+<a href="https://wa.me/4915779711281?text=Hallo!%20Ich%20interessiere%20mich%20f%C3%BCr%20Ihre%20Autopflege-Dienstleistungen."
+   class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp Kontakt">
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════ -->
+<script>
+  // ── Navbar scroll effect ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'border-b', 'border-brand-border');
+    } else {
+      navbar.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'border-b', 'border-brand-border');
+    }
+  });
+
+  // ── Mobile menu toggle ──
+  const toggle = document.getElementById('menu-toggle');
+  const menu   = document.getElementById('mobile-menu');
+  const iconO  = document.getElementById('icon-open');
+  const iconC  = document.getElementById('icon-close');
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    iconO.classList.toggle('hidden');
+    iconC.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      iconO.classList.remove('hidden');
+      iconC.classList.add('hidden');
+    });
+  });
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Before/After slider ──
+  const slider    = document.getElementById('ba-slider');
+  const afterEl   = document.getElementById('ba-after');
+  const divider   = document.getElementById('ba-divider');
+  let   isDragging = false;
+
+  function setPosition(pct) {
+    pct = Math.max(5, Math.min(95, pct));
+    afterEl.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    divider.style.left = `${pct}%`;
+  }
+
+  function getPercent(e) {
+    const rect = slider.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+
+  divider.addEventListener('mousedown',  () => isDragging = true);
+  divider.addEventListener('touchstart', () => isDragging = true, { passive: true });
+  window.addEventListener('mouseup',   () => isDragging = false);
+  window.addEventListener('touchend',  () => isDragging = false);
+  window.addEventListener('mousemove', e => { if (isDragging) setPosition(getPercent(e)); });
+  window.addEventListener('touchmove', e => { if (isDragging) setPosition(getPercent(e)); }, { passive: true });
+
+  // ── Contact form handling ──
+  const form       = document.getElementById('contact-form');
+  const success    = document.getElementById('form-success');
+  const submitBtn  = document.getElementById('submit-btn');
+  const btnText    = document.getElementById('btn-text');
+  const btnSpinner = document.getElementById('btn-spinner');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Show spinner
+    submitBtn.disabled = true;
+    btnText.textContent = 'Wird gesendet …';
+    btnSpinner.classList.remove('hidden');
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+      } else {
+        throw new Error('Fehler');
+      }
+    } catch {
+      btnText.textContent = 'Fehler – bitte erneut versuchen';
+      btnSpinner.classList.add('hidden');
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>

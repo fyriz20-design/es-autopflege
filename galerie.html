@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galerie | ES Autopflege Pfalzgrafenweiler</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red:'#dc2626', dark:'#0a0a0a', card:'#111111', border:'#1f1f1f', muted:'#6b7280' } },
+          fontFamily: { sans:['Inter','system-ui','sans-serif'], serif:['"Cormorant Garamond"','Georgia','serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body{background:#0a0a0a;color:#e5e7eb}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#0a0a0a} ::-webkit-scrollbar-thumb{background:#dc2626;border-radius:2px}
+    .nav-link{position:relative} .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#dc2626;transition:width .3s ease} .nav-link:hover::after{width:100%}
+    #mobile-menu{transition:max-height .4s ease,opacity .4s ease;max-height:0;opacity:0;overflow:hidden} #mobile-menu.open{max-height:500px;opacity:1}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* Filter buttons */
+    .filter-btn{transition:all .2s ease}
+    .filter-btn.active{background:#dc2626;color:#fff;border-color:#dc2626}
+
+    /* Gallery item */
+    .gallery-item{cursor:pointer;overflow:hidden;border-radius:.5rem;position:relative;}
+    .gallery-item img{transition:transform .5s ease;width:100%;height:100%;object-fit:cover}
+    .gallery-item:hover img{transform:scale(1.07)}
+    .gallery-item .overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 50%);
+      opacity:0;transition:opacity .3s ease;
+      display:flex;align-items:flex-end;padding:1.25rem
+    }
+    .gallery-item:hover .overlay{opacity:1}
+
+    /* Lightbox */
+    #lightbox{
+      position:fixed;inset:0;z-index:100;
+      background:rgba(0,0,0,.95);backdrop-filter:blur(8px);
+      display:none;align-items:center;justify-content:center;
+    }
+    #lightbox.active{display:flex}
+    #lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:.5rem}
+    .lb-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:48px;height:48px;background:rgba(255,255,255,.1);border-radius:50%;
+      border:1px solid rgba(255,255,255,.2);color:white;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;
+      transition:background .2s ease;
+    }
+    .lb-btn:hover{background:rgba(220,38,38,.6)}
+
+    /* BA slider */
+    .ba-container{position:relative;overflow:hidden;cursor:ew-resize;border-radius:.5rem;user-select:none}
+    .ba-after{position:absolute;top:0;left:0;width:100%;height:100%;clip-path:inset(0 50% 0 0)}
+    .ba-divider{position:absolute;top:0;left:50%;width:2px;height:100%;background:#dc2626;cursor:ew-resize;z-index:10}
+    .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:#dc2626;border:2px solid white;display:flex;align-items:center;justify-content:center;z-index:11;cursor:ew-resize}
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-sm tracking-widest">ES</span></div>
+        <div><span class="text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span><p class="text-brand-muted text-xs tracking-widest uppercase hidden sm:block">Pfalzgrafenweiler</p></div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="index.html#leistungen" class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Leistungen</a>
+        <a href="index.html#preise"     class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Preise</a>
+        <a href="galerie.html"          class="nav-link text-white text-sm tracking-wide">Galerie</a>
+        <a href="index.html#kontakt"    class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Kontakt</a>
+      </nav>
+      <a href="index.html#kontakt" class="hidden lg:block bg-brand-red hover:bg-red-700 text-white text-sm font-medium px-5 py-2.5 rounded transition-colors">Termin buchen</a>
+      <button id="menu-toggle" class="lg:hidden text-gray-300 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden bg-brand-card border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
+      <a href="index.html#leistungen" class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Leistungen</a>
+      <a href="index.html#preise"     class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Preise</a>
+      <a href="index.html#kontakt"    class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Kontakt</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO MINI -->
+<section class="pt-32 pb-16 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover opacity-20" />
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/70 to-brand-dark"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-2 text-brand-muted text-xs tracking-widest uppercase mb-6">
+      <a href="index.html" class="hover:text-white transition-colors">Start</a>
+      <span>/</span>
+      <span class="text-white">Galerie</span>
+    </div>
+    <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-3">Aus dem Atelier</p>
+    <h1 class="font-serif text-5xl lg:text-6xl text-white mb-4">Fahrzeuge, <em class="text-brand-red font-normal">die bei uns waren.</em></h1>
+    <p class="text-gray-400 max-w-lg text-sm leading-relaxed">Supersportler, SUVs, Oldtimer, Firmenfahrzeuge — die Bandbreite sagt mehr als Worte.</p>
+  </div>
+</section>
+
+<!-- VORHER/NACHHER -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal mb-8">
+      <p class="text-brand-muted text-xs tracking-widest uppercase mb-2">Interaktiver Vergleich</p>
+      <h2 class="font-serif text-3xl text-white">Vorher <em class="text-brand-red font-normal">/ Nachher</em></h2>
+      <p class="text-gray-500 text-sm mt-1">Ziehen Sie den Regler zum Vergleichen</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Slider 1 -->
+      <div class="ba-container aspect-[4/3] reveal" id="ba1">
+        <img src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?auto=format&fit=crop&w=900&q=80" alt="Vorher" class="w-full h-full object-cover" draggable="false"/>
+        <div class="ba-after" id="ba1-after">
+          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80" alt="Nachher" class="w-full h-full object-cover" draggable="false"/>
+        </div>
+        <div class="ba-divider" data-slider="ba1"><div class="ba-handle"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/></svg></div></div>
+        <div class="absolute top-3 left-3 bg-black/60 text-white text-xs tracking-widest uppercase px-2.5 py-1 rounded backdrop-blur-sm pointer-events-none">Vorher</div>
+        <div class="absolute top-3 right-3 bg-brand-red text-white text-xs tracking-widest uppercase px-2.5 py-1 rounded pointer-events-none">Nachher</div>
+      </div>
+
+      <!-- Slider 2 -->
+      <div class="ba-container aspect-[4/3] reveal" id="ba2">
+        <img src="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=900&q=80" alt="Vorher Innenraum" class="w-full h-full object-cover" draggable="false"/>
+        <div class="ba-after" id="ba2-after">
+          <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=900&q=80" alt="Nachher Innenraum" class="w-full h-full object-cover" draggable="false"/>
+        </div>
+        <div class="ba-divider" data-slider="ba2"><div class="ba-handle"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/></svg></div></div>
+        <div class="absolute top-3 left-3 bg-black/60 text-white text-xs tracking-widest uppercase px-2.5 py-1 rounded backdrop-blur-sm pointer-events-none">Vorher</div>
+        <div class="absolute top-3 right-3 bg-brand-red text-white text-xs tracking-widest uppercase px-2.5 py-1 rounded pointer-events-none">Nachher</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<section class="py-8 pb-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Filter buttons -->
+    <div class="reveal flex flex-wrap gap-3 mb-10">
+      <button class="filter-btn active border border-brand-border text-sm px-5 py-2 rounded-full text-white" data-filter="all">Alle</button>
+      <button class="filter-btn border border-brand-border text-sm px-5 py-2 rounded-full text-gray-400 hover:text-white transition-colors" data-filter="aussen">Außen</button>
+      <button class="filter-btn border border-brand-border text-sm px-5 py-2 rounded-full text-gray-400 hover:text-white transition-colors" data-filter="innen">Innen</button>
+      <button class="filter-btn border border-brand-border text-sm px-5 py-2 rounded-full text-gray-400 hover:text-white transition-colors" data-filter="ppf">PPF & Folie</button>
+      <button class="filter-btn border border-brand-border text-sm px-5 py-2 rounded-full text-gray-400 hover:text-white transition-colors" data-filter="keramik">Keramik</button>
+    </div>
+
+    <!-- Masonry-style grid -->
+    <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
+
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Porsche 718 — LED-Studio">
+        <img src="https://images.unsplash.com/photo-1600705722908-bfdce32b4d7e?auto=format&fit=crop&w=600&q=80" alt="Porsche 718 Aufbereitung" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche 718 — Außenpflege</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="keramik" data-title="Keramikversiegelung — Detailaufnahme">
+        <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=600&q=80" alt="Keramikversiegelung" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Keramikversiegelung</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="PPF-Applikation">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="PPF Folie" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">PPF — Lackschutzfolie</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Lackpolitur — Swirl-Entfernung">
+        <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80" alt="Lackpolitur" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Lackpolitur</p></div>
+      </div>
+
+      <div class="gallery-item reveal col-span-2 aspect-video" data-category="aussen" data-title="Mercedes-AMG G63 — Komplettpflege">
+        <img src="https://images.unsplash.com/photo-1619767886558-efdc259b6e09?auto=format&fit=crop&w=900&q=80" alt="Fahrzeugaufbereitung" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Mercedes-AMG — Komplettpflege</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="innen" data-title="Innenraumreinigung">
+        <img src="https://images.unsplash.com/photo-1541447271487-09612b3f49f7?auto=format&fit=crop&w=600&q=80" alt="Innenreinigung" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Innenraumreinigung</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Detailing — Nahaufnahme">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=600&q=80" alt="Auto Detailing" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Detailing — Nahaufnahme</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="keramik" data-title="Keramikversiegelung — Glanzeffekt">
+        <img src="https://images.unsplash.com/photo-1590504805892-f5d8ec3caa55?auto=format&fit=crop&w=600&q=80" alt="Glanz nach Versiegelung" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Keramik — Glanzeffekt</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="ppf" data-title="PPF Motorsport">
+        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=600&q=80" alt="PPF Sports Car" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">PPF — Sportfahrzeug</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="innen" data-title="Lederpflege — Sitze">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="Lederpflege" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Lederpflege & Sitze</p></div>
+      </div>
+
+      <div class="gallery-item reveal col-span-2 aspect-video" data-category="aussen" data-title="Porsche 911 — Außenaufbereitung komplett">
+        <img src="https://images.unsplash.com/photo-1611821064430-0d40291d0f0b?auto=format&fit=crop&w=900&q=80" alt="Porsche Aufbereitung" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Porsche 911 — Außenaufbereitung</p></div>
+      </div>
+
+      <div class="gallery-item reveal aspect-square" data-category="aussen" data-title="Sportwagen — Nassglanz">
+        <img src="https://images.unsplash.com/photo-1612825173281-9a193378527e?auto=format&fit=crop&w=600&q=80" alt="Sportwagen Glanz" loading="lazy"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">Sportwagen — Nassglanz</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-brand-card border-t border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Ihr Fahrzeug ist das nächste</p>
+    <h2 class="font-serif text-4xl text-white mb-6">Termin vereinbaren</h2>
+    <a href="index.html#kontakt" class="inline-block bg-brand-red hover:bg-red-700 text-white px-10 py-4 rounded text-sm font-medium tracking-wide transition-colors">
+      Jetzt anfragen
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-brand-card border-t border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-xs">ES</span></div>
+      <p class="text-brand-muted text-xs">© 2026 ES Autopflege. Alle Rechte vorbehalten.</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="impressum.html"   class="text-brand-muted hover:text-white text-xs transition-colors">Impressum</a>
+      <a href="datenschutz.html" class="text-brand-muted hover:text-white text-xs transition-colors">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lb-close" class="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-brand-red/60 rounded-full flex items-center justify-center text-white transition-colors z-10" aria-label="Schließen">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <button id="lb-prev" class="lb-btn" style="left:1rem" aria-label="Vorheriges Bild">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <div class="flex flex-col items-center gap-3">
+    <img id="lb-img" src="" alt="" />
+    <p id="lb-caption" class="text-gray-400 text-sm tracking-wide"></p>
+  </div>
+  <button id="lb-next" class="lb-btn" style="right:1rem" aria-label="Nächstes Bild">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
+
+<script>
+// ── Mobile menu ──
+document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('open'));
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open')));
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }), { threshold:.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Gallery filter ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.style.display = (f === 'all' || item.dataset.category === f) ? '' : 'none';
+    });
+  });
+});
+
+// ── BA Sliders ──
+function initSlider(containerId, afterId) {
+  const container = document.getElementById(containerId);
+  const after = document.getElementById(afterId);
+  const divider = container.querySelector('.ba-divider');
+  let dragging = false;
+  function setPct(pct) {
+    pct = Math.max(5, Math.min(95, pct));
+    after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    divider.style.left = pct + '%';
+  }
+  function getP(e) {
+    const r = container.getBoundingClientRect();
+    return ((e.touches?e.touches[0].clientX:e.clientX) - r.left) / r.width * 100;
+  }
+  divider.addEventListener('mousedown', () => dragging=true);
+  divider.addEventListener('touchstart', () => dragging=true, {passive:true});
+  window.addEventListener('mouseup', () => dragging=false);
+  window.addEventListener('touchend', () => dragging=false);
+  window.addEventListener('mousemove', e => { if(dragging) setPct(getP(e)); });
+  window.addEventListener('touchmove', e => { if(dragging) setPct(getP(e)); }, {passive:true});
+}
+initSlider('ba1','ba1-after');
+initSlider('ba2','ba2-after');
+
+// ── Lightbox ──
+const items = Array.from(document.querySelectorAll('.gallery-item'));
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCap = document.getElementById('lb-caption');
+let current = 0;
+
+function openLb(idx) {
+  const visible = items.filter(i => i.style.display !== 'none');
+  current = idx;
+  const item = visible[idx];
+  lbImg.src = item.querySelector('img').src;
+  lbCap.textContent = item.dataset.title || '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() { lb.classList.remove('active'); document.body.style.overflow = ''; }
+function moveLb(dir) {
+  const visible = items.filter(i => i.style.display !== 'none');
+  current = (current + dir + visible.length) % visible.length;
+  lbImg.src = visible[current].querySelector('img').src;
+  lbCap.textContent = visible[current].dataset.title || '';
+}
+
+items.forEach((item, i) => item.addEventListener('click', () => {
+  const visible = items.filter(it => it.style.display !== 'none');
+  openLb(visible.indexOf(item));
+}));
+
+document.getElementById('lb-close').addEventListener('click', closeLb);
+document.getElementById('lb-prev').addEventListener('click', () => moveLb(-1));
+document.getElementById('lb-next').addEventListener('click', () => moveLb(1));
+lb.addEventListener('click', e => { if(e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if(lb.classList.contains('active')) {
+    if(e.key === 'Escape') closeLb();
+    if(e.key === 'ArrowLeft') moveLb(-1);
+    if(e.key === 'ArrowRight') moveLb(1);
+  }
+});
+</script>
+</body>
+</html>

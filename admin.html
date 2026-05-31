@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | ES Autopflege</title>
+  <!-- Kein Index durch Suchmaschinen -->
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red:'#dc2626', dark:'#0a0a0a', card:'#111111', border:'#1f1f1f', muted:'#6b7280' } },
+          fontFamily: { sans:['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body{background:#0a0a0a;color:#e5e7eb}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#0a0a0a} ::-webkit-scrollbar-thumb{background:#dc2626;border-radius:2px}
+    #login-screen, #admin-screen { min-height:100vh }
+    /* Drag & drop zone */
+    .drop-zone{border:2px dashed #1f1f1f;transition:border-color .2s,background .2s}
+    .drop-zone.drag-over{border-color:#dc2626;background:rgba(220,38,38,.05)}
+    /* Media grid */
+    .media-card{position:relative;overflow:hidden;border-radius:.5rem;aspect-ratio:1;background:#1f1f1f}
+    .media-card img,.media-card video{width:100%;height:100%;object-fit:cover}
+    .media-card .actions{position:absolute;inset:0;background:rgba(0,0,0,.6);opacity:0;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:.75rem}
+    .media-card:hover .actions{opacity:1}
+    /* Progress bar */
+    .progress-bar{transition:width .3s ease}
+    /* Tab */
+    .tab-btn.active{border-bottom:2px solid #dc2626;color:#fff}
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ═══════════════ LOGIN SCREEN ═══════════════ -->
+<div id="login-screen" class="flex items-center justify-center px-4">
+  <div class="w-full max-w-sm">
+    <div class="text-center mb-10">
+      <div class="w-14 h-14 bg-brand-red rounded-xl flex items-center justify-center mx-auto mb-4">
+        <span class="text-white font-bold text-xl tracking-widest">ES</span>
+      </div>
+      <h1 class="text-white text-2xl font-semibold">Admin-Bereich</h1>
+      <p class="text-brand-muted text-sm mt-1">ES Autopflege · Pfalzgrafenweiler</p>
+    </div>
+
+    <div class="bg-brand-card border border-brand-border rounded-2xl p-8">
+      <div id="login-error" class="hidden mb-4 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3 text-red-400 text-sm">
+        Falsches Passwort. Bitte erneut versuchen.
+      </div>
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2">Passwort</label>
+          <input type="password" id="password-input" required
+            class="w-full bg-brand-dark border border-brand-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"
+            placeholder="••••••••••••" autocomplete="current-password"/>
+        </div>
+        <button type="submit" class="w-full bg-brand-red hover:bg-red-700 text-white py-3 rounded-lg text-sm font-medium tracking-wide transition-colors">
+          Einloggen
+        </button>
+      </form>
+      <p class="text-brand-muted text-xs mt-5 text-center leading-relaxed">
+        Standard-Passwort: <code class="text-gray-300 bg-brand-dark px-1.5 py-0.5 rounded">esadmin2024</code><br/>
+        <span class="text-xs">Bitte nach dem ersten Login im Code ändern.</span>
+      </p>
+    </div>
+
+    <p class="text-center mt-6">
+      <a href="index.html" class="text-brand-muted hover:text-white text-xs transition-colors">← Zurück zur Website</a>
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ ADMIN SCREEN ═══════════════ -->
+<div id="admin-screen" class="hidden">
+
+  <!-- Top bar -->
+  <header class="bg-brand-card border-b border-brand-border sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-xs">ES</span></div>
+          <span class="text-white font-medium text-sm">Admin Dashboard</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="index.html" target="_blank" class="text-brand-muted hover:text-white text-xs transition-colors flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            Website ansehen
+          </a>
+          <button id="logout-btn" class="text-brand-muted hover:text-brand-red text-xs transition-colors flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            Ausloggen
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Stats row -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+      <div class="bg-brand-card border border-brand-border rounded-xl p-5">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Bilder</p>
+        <p class="text-white text-3xl font-semibold" id="stat-images">0</p>
+      </div>
+      <div class="bg-brand-card border border-brand-border rounded-xl p-5">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Videos</p>
+        <p class="text-white text-3xl font-semibold" id="stat-videos">0</p>
+      </div>
+      <div class="bg-brand-card border border-brand-border rounded-xl p-5">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Speicher genutzt</p>
+        <p class="text-white text-3xl font-semibold" id="stat-size">0 MB</p>
+      </div>
+      <div class="bg-brand-card border border-brand-border rounded-xl p-5">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Status</p>
+        <div class="flex items-center gap-2 mt-1"><div class="w-2 h-2 rounded-full bg-green-400"></div><p class="text-green-400 text-sm">Online</p></div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="border-b border-brand-border mb-8 flex gap-6">
+      <button class="tab-btn active pb-3 text-sm font-medium transition-colors" data-tab="upload">Upload</button>
+      <button class="tab-btn pb-3 text-sm font-medium text-brand-muted hover:text-white transition-colors" data-tab="gallery">Medienbibliothek</button>
+      <button class="tab-btn pb-3 text-sm font-medium text-brand-muted hover:text-white transition-colors" data-tab="settings">Einstellungen</button>
+    </div>
+
+    <!-- TAB: UPLOAD -->
+    <div id="tab-upload" class="tab-content">
+      <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- Drop zone -->
+        <div>
+          <h2 class="text-white font-semibold mb-4">Dateien hochladen</h2>
+          <div id="drop-zone" class="drop-zone rounded-xl p-12 text-center cursor-pointer">
+            <div class="w-16 h-16 bg-brand-red/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+            </div>
+            <p class="text-white font-medium mb-1">Dateien hierher ziehen</p>
+            <p class="text-brand-muted text-sm mb-4">oder klicken zum Auswählen</p>
+            <p class="text-brand-muted text-xs">JPG, PNG, WEBP, MP4, WEBM · Max. 50 MB pro Datei</p>
+            <input type="file" id="file-input" multiple accept="image/*,video/*" class="hidden"/>
+          </div>
+
+          <!-- Upload progress list -->
+          <div id="upload-list" class="mt-4 space-y-3"></div>
+        </div>
+
+        <!-- Upload info / instructions -->
+        <div>
+          <h2 class="text-white font-semibold mb-4">Hinweis zum Speicher</h2>
+          <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-5">
+
+            <div class="flex gap-4">
+              <div class="w-9 h-9 bg-brand-red/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium mb-1">Lokale Vorschau</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Hochgeladene Dateien werden hier zur Vorschau angezeigt. Da die Seite statisch auf Vercel läuft, werden Dateien aktuell nur im Browser zwischengespeichert.</p>
+              </div>
+            </div>
+
+            <div class="border-t border-brand-border pt-5 flex gap-4">
+              <div class="w-9 h-9 bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium mb-1">Für dauerhaften Speicher</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Um Bilder dauerhaft zu speichern empfehlen wir <strong class="text-white">Vercel Blob Storage</strong> (kostenloser Einstieg). Anleitung unten.</p>
+              </div>
+            </div>
+
+            <div class="border-t border-brand-border pt-5">
+              <p class="text-white text-sm font-medium mb-3">Vercel Blob — Schnellstart:</p>
+              <ol class="text-gray-400 text-sm space-y-2 leading-relaxed">
+                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">1.</span> Vercel Dashboard → Storage → Create Blob Store</li>
+                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">2.</span> Environment Variable <code class="text-gray-300 bg-brand-dark px-1 rounded">BLOB_READ_WRITE_TOKEN</code> kopieren</li>
+                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">3.</span> In Vercel Project Settings → Environment Variables eintragen</li>
+                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">4.</span> API-Route <code class="text-gray-300 bg-brand-dark px-1 rounded">/api/upload.js</code> für Server-Side-Upload erstellen</li>
+              </ol>
+              <a href="https://vercel.com/docs/storage/vercel-blob" target="_blank" rel="noopener"
+                 class="inline-flex items-center gap-2 text-brand-red hover:text-red-400 text-sm mt-4 transition-colors">
+                Zur Vercel Blob Dokumentation
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: GALLERY -->
+    <div id="tab-gallery" class="tab-content hidden">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-white font-semibold">Medienbibliothek</h2>
+        <div class="flex items-center gap-3">
+          <select id="media-filter" class="bg-brand-card border border-brand-border rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-brand-red appearance-none">
+            <option value="all">Alle Medien</option>
+            <option value="image">Nur Bilder</option>
+            <option value="video">Nur Videos</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="media-empty" class="text-center py-20">
+        <div class="w-16 h-16 bg-brand-border rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <p class="text-white font-medium mb-1">Noch keine Medien</p>
+        <p class="text-brand-muted text-sm">Lade Bilder oder Videos im Upload-Tab hoch.</p>
+      </div>
+
+      <div id="media-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 hidden"></div>
+    </div>
+
+    <!-- TAB: SETTINGS -->
+    <div id="tab-settings" class="tab-content hidden">
+      <div class="max-w-2xl space-y-6">
+        <h2 class="text-white font-semibold">Einstellungen</h2>
+
+        <!-- Password change -->
+        <div class="bg-brand-card border border-brand-border rounded-xl p-6">
+          <h3 class="text-white font-medium mb-4">Passwort ändern</h3>
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+            Das Passwort ist im Quellcode der <code class="text-gray-300 bg-brand-dark px-1 rounded text-xs">admin.html</code> gespeichert.
+            Suche nach <code class="text-gray-300 bg-brand-dark px-1 rounded text-xs">ADMIN_PASSWORD</code> und ändere den Wert.
+          </p>
+          <div class="bg-brand-dark border border-brand-border rounded-lg p-4 font-mono text-sm">
+            <span class="text-brand-muted">// Zeile ca. 280 in admin.html:</span><br/>
+            <span class="text-brand-red">const</span> <span class="text-white">ADMIN_PASSWORD</span> <span class="text-brand-muted">=</span> <span class="text-green-400">'esadmin2024'</span><span class="text-brand-muted">;</span>
+          </div>
+          <p class="text-yellow-500 text-xs mt-3 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            Bitte ändere das Passwort vor dem ersten Einsatz!
+          </p>
+        </div>
+
+        <!-- Vercel Env Info -->
+        <div class="bg-brand-card border border-brand-border rounded-xl p-6">
+          <h3 class="text-white font-medium mb-4">Formspree IDs eintragen</h3>
+          <p class="text-gray-400 text-sm mb-4 leading-relaxed">Wenn du Formspree eingerichtet hast, ersetze in den HTML-Dateien:</p>
+          <div class="space-y-2 font-mono text-xs">
+            <div class="bg-brand-dark border border-brand-border rounded-lg p-3">
+              <span class="text-brand-muted">index.html → </span><span class="text-yellow-400">YOUR_FORM_ID</span> <span class="text-brand-muted">→ z.B. </span><span class="text-green-400">xpzgkwqr</span>
+            </div>
+            <div class="bg-brand-dark border border-brand-border rounded-lg p-3">
+              <span class="text-brand-muted">b2b.html → </span><span class="text-yellow-400">YOUR_B2B_FORM_ID</span> <span class="text-brand-muted">→ z.B. </span><span class="text-green-400">xbjklmno</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clear data -->
+        <div class="bg-brand-card border border-red-900/40 rounded-xl p-6">
+          <h3 class="text-white font-medium mb-2">Medien löschen</h3>
+          <p class="text-gray-400 text-sm mb-4">Alle lokal gespeicherten Medien aus dem Browser entfernen.</p>
+          <button id="clear-all-btn" class="bg-red-900/40 hover:bg-red-900/70 border border-red-900/60 text-red-400 hover:text-red-300 px-5 py-2.5 rounded-lg text-sm transition-colors">
+            Alle Medien löschen
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// CONFIG — Passwort hier ändern!
+// ═══════════════════════════════════════════
+const ADMIN_PASSWORD = 'esadmin2024';
+
+// ═══════════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════════
+const loginScreen = document.getElementById('login-screen');
+const adminScreen = document.getElementById('admin-screen');
+
+function checkAuth() {
+  if(sessionStorage.getItem('es_admin') === 'true') {
+    loginScreen.classList.add('hidden');
+    adminScreen.classList.remove('hidden');
+    loadMedia();
+  }
+}
+
+document.getElementById('login-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const pw = document.getElementById('password-input').value;
+  if(pw === ADMIN_PASSWORD) {
+    sessionStorage.setItem('es_admin', 'true');
+    loginScreen.classList.add('hidden');
+    adminScreen.classList.remove('hidden');
+    document.getElementById('login-error').classList.add('hidden');
+    loadMedia();
+  } else {
+    document.getElementById('login-error').classList.remove('hidden');
+    document.getElementById('password-input').value = '';
+  }
+});
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  sessionStorage.removeItem('es_admin');
+  adminScreen.classList.add('hidden');
+  loginScreen.classList.remove('hidden');
+});
+
+// ═══════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active','text-white');
+      b.classList.add('text-brand-muted');
+    });
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+    btn.classList.add('active','text-white');
+    btn.classList.remove('text-brand-muted');
+    document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+  });
+});
+
+// ═══════════════════════════════════════════
+// MEDIA STORAGE (localStorage)
+// ═══════════════════════════════════════════
+let mediaItems = [];
+
+function loadMedia() {
+  try {
+    const stored = localStorage.getItem('es_media');
+    mediaItems = stored ? JSON.parse(stored) : [];
+  } catch { mediaItems = []; }
+  renderMedia();
+  updateStats();
+}
+
+function saveMedia() {
+  try { localStorage.setItem('es_media', JSON.stringify(mediaItems)); }
+  catch(e) { alert('Speicher voll. Bitte einige Medien löschen.'); }
+}
+
+function updateStats() {
+  const images = mediaItems.filter(m => m.type === 'image').length;
+  const videos = mediaItems.filter(m => m.type === 'video').length;
+  const totalBytes = mediaItems.reduce((acc, m) => acc + (m.size||0), 0);
+  document.getElementById('stat-images').textContent = images;
+  document.getElementById('stat-videos').textContent = videos;
+  document.getElementById('stat-size').textContent = (totalBytes / (1024*1024)).toFixed(1) + ' MB';
+}
+
+function renderMedia() {
+  const grid = document.getElementById('media-grid');
+  const empty = document.getElementById('media-empty');
+  const filter = document.getElementById('media-filter').value;
+  const filtered = filter === 'all' ? mediaItems : mediaItems.filter(m => m.type === filter);
+
+  if(filtered.length === 0) {
+    grid.classList.add('hidden');
+    empty.classList.remove('hidden');
+    return;
+  }
+  grid.classList.remove('hidden');
+  empty.classList.add('hidden');
+  grid.innerHTML = filtered.map((item, idx) => `
+    <div class="media-card group">
+      ${item.type === 'image'
+        ? `<img src="${item.dataUrl}" alt="${item.name}" loading="lazy" />`
+        : `<video src="${item.dataUrl}" muted></video>`
+      }
+      <div class="actions">
+        <a href="${item.dataUrl}" download="${item.name}"
+           class="w-9 h-9 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center text-white transition-colors" title="Herunterladen">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        </a>
+        <button onclick="deleteMedia(${mediaItems.indexOf(item)})"
+           class="w-9 h-9 bg-red-600/80 hover:bg-brand-red rounded-lg flex items-center justify-center text-white transition-colors" title="Löschen">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+        </button>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-2 py-2">
+        <p class="text-white text-xs truncate">${item.name}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+window.deleteMedia = function(idx) {
+  if(confirm('Dieses Medium wirklich löschen?')) {
+    mediaItems.splice(idx, 1);
+    saveMedia();
+    renderMedia();
+    updateStats();
+  }
+};
+
+document.getElementById('media-filter').addEventListener('change', renderMedia);
+
+// ═══════════════════════════════════════════
+// UPLOAD
+// ═══════════════════════════════════════════
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const uploadList = document.getElementById('upload-list');
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  handleFiles(e.dataTransfer.files);
+});
+fileInput.addEventListener('change', e => handleFiles(e.target.files));
+
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    if(file.size > 50 * 1024 * 1024) {
+      alert(`"${file.name}" ist größer als 50 MB und wird übersprungen.`);
+      return;
+    }
+    const isImage = file.type.startsWith('image/');
+    const isVideo = file.type.startsWith('video/');
+    if(!isImage && !isVideo) { alert(`"${file.name}" ist kein unterstütztes Format.`); return; }
+
+    const id = 'upload-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+    const el = document.createElement('div');
+    el.id = id;
+    el.className = 'bg-brand-card border border-brand-border rounded-lg p-4';
+    el.innerHTML = `
+      <div class="flex items-center justify-between mb-2">
+        <p class="text-white text-sm truncate max-w-xs">${file.name}</p>
+        <p class="text-brand-muted text-xs ml-2">${(file.size/(1024*1024)).toFixed(1)} MB</p>
+      </div>
+      <div class="h-1.5 bg-brand-border rounded-full overflow-hidden">
+        <div id="${id}-bar" class="progress-bar h-full bg-brand-red rounded-full" style="width:0%"></div>
+      </div>
+      <p id="${id}-status" class="text-brand-muted text-xs mt-1.5">Wird verarbeitet …</p>
+    `;
+    uploadList.prepend(el);
+
+    const reader = new FileReader();
+    let prog = 0;
+    const interval = setInterval(() => {
+      prog = Math.min(prog + 15, 90);
+      const bar = document.getElementById(id + '-bar');
+      if(bar) bar.style.width = prog + '%';
+    }, 80);
+
+    reader.onload = function(ev) {
+      clearInterval(interval);
+      const bar = document.getElementById(id + '-bar');
+      const status = document.getElementById(id + '-status');
+      if(bar) bar.style.width = '100%';
+      if(status) { status.textContent = 'Fertig ✓'; status.classList.replace('text-brand-muted','text-green-400'); }
+
+      mediaItems.unshift({ name:file.name, type:isImage?'image':'video', dataUrl:ev.target.result, size:file.size, date:new Date().toISOString() });
+      saveMedia();
+      updateStats();
+
+      setTimeout(() => { el.remove(); }, 2500);
+    };
+    reader.readAsDataURL(file);
+  });
+  fileInput.value = '';
+}
+
+// ═══════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════
+document.getElementById('clear-all-btn').addEventListener('click', () => {
+  if(confirm('Wirklich ALLE Medien löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) {
+    mediaItems = [];
+    saveMedia();
+    renderMedia();
+    updateStats();
+  }
+});
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+checkAuth();
+</script>
+</body>
+</html>

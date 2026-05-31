@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autohaus-Kooperationen | ES Autopflege Pfalzgrafenweiler</title>
+  <meta name="description" content="Professionelle Fahrzeugaufbereitung für Autohäuser und Händler. Regelmäßige Aufbereitungen, Neuwagenversiegelung und Gebrauchtwagen-Aufwertung." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red:'#dc2626', dark:'#0a0a0a', card:'#111111', border:'#1f1f1f', muted:'#6b7280' } },
+          fontFamily: { sans:['Inter','system-ui','sans-serif'], serif:['"Cormorant Garamond"','Georgia','serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body{background:#0a0a0a;color:#e5e7eb}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#0a0a0a} ::-webkit-scrollbar-thumb{background:#dc2626;border-radius:2px}
+    .nav-link{position:relative} .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#dc2626;transition:width .3s ease} .nav-link:hover::after{width:100%}
+    #mobile-menu{transition:max-height .4s ease,opacity .4s ease;max-height:0;opacity:0;overflow:hidden} #mobile-menu.open{max-height:500px;opacity:1}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .benefit-card{transition:border-color .3s ease,background .3s ease}
+    .benefit-card:hover{border-color:#dc2626;background:#1a1a1a}
+    .red-line{height:1px;background:linear-gradient(to right,transparent,#dc2626,transparent)}
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-sm tracking-widest">ES</span></div>
+        <div><span class="text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span><p class="text-brand-muted text-xs tracking-widest uppercase hidden sm:block">Pfalzgrafenweiler</p></div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="index.html#leistungen" class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Leistungen</a>
+        <a href="index.html#preise"     class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Preise</a>
+        <a href="galerie.html"          class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Galerie</a>
+        <a href="index.html#kontakt"    class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Kontakt</a>
+        <a href="b2b.html"              class="text-white text-sm tracking-wide border-b border-brand-red pb-0.5">Autohäuser</a>
+      </nav>
+      <a href="#b2b-form" class="hidden lg:block bg-brand-red hover:bg-red-700 text-white text-sm font-medium px-5 py-2.5 rounded transition-colors">Kooperation anfragen</a>
+      <button id="menu-toggle" class="lg:hidden text-gray-300 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden bg-brand-card border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
+      <a href="index.html#leistungen" class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Leistungen</a>
+      <a href="galerie.html"          class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Galerie</a>
+      <a href="index.html#kontakt"    class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Kontakt</a>
+      <a href="#b2b-form"             class="text-gray-300 hover:text-white py-2 text-sm mobile-link">Kooperation anfragen</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative min-h-[70vh] flex items-end pb-20 overflow-hidden pt-20">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=2070&q=80" alt="Autohaus Kooperation" class="w-full h-full object-cover opacity-30"/>
+    <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(10,10,10,0.4) 0%,rgba(10,10,10,0.7) 60%,#0a0a0a 100%)"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="max-w-2xl">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">B2B · Autohäuser & Händler</p>
+      <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-white leading-none mb-6">
+        Ihr Partner für<br /><em class="text-brand-red font-normal">makellose Flotten.</em>
+      </h1>
+      <p class="text-gray-300 text-base max-w-lg mb-10 leading-relaxed">
+        Von der Neuwagenversiegelung bis zur Gebrauchtwagenaufwertung — wir bieten Autohäusern und Händlern in der Region zuverlässige Aufbereitung auf Abruf, zu kalkulierbaren Konditionen.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#b2b-form" class="bg-brand-red hover:bg-red-700 text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">Kooperation anfragen</a>
+        <a href="#leistungen-b2b" class="border border-white/30 hover:border-white text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">Unsere B2B-Leistungen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="bg-brand-card border-y border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div><p class="text-4xl font-serif text-white">10+</p><p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Jahre Erfahrung</p></div>
+      <div><p class="text-4xl font-serif text-white">100+</p><p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Aufbereitungen / Jahr</p></div>
+      <div><p class="text-4xl font-serif text-white">48h</p><p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Durchlaufzeit Standard</p></div>
+      <div><p class="text-4xl font-serif text-white">4,9★</p><p class="text-brand-muted text-xs tracking-widest uppercase mt-1">Google Bewertung</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- WARUM B2B -->
+<section class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal mb-16">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Warum ES Autopflege</p>
+      <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight">
+        Was uns als B2B-Partner<br /><em class="text-brand-red font-normal">auszeichnet.</em>
+      </h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="benefit-card reveal border border-brand-border rounded-xl p-7 bg-brand-card">
+        <div class="w-11 h-11 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Zuverlässige Abholung & Lieferung</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Wir holen Fahrzeuge direkt bei Ihnen ab und liefern aufbereitet zurück — ohne Unterbrechung Ihres Betriebsablaufs.</p>
+      </div>
+      <div class="benefit-card reveal border border-brand-border rounded-xl p-7 bg-brand-card">
+        <div class="w-11 h-11 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Transparente Konditionen</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Feste Preispakete für Händler, Mengenrabatte ab 5 Fahrzeugen monatlich. Keine versteckten Kosten.</p>
+      </div>
+      <div class="benefit-card reveal border border-brand-border rounded-xl p-7 bg-brand-card">
+        <div class="w-11 h-11 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Kurze Durchlaufzeiten</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Standard-Aufbereitungen in 24–48 Stunden. Premium-Pakete nach Absprache. Ihr Bestand bleibt mobil.</p>
+      </div>
+      <div class="benefit-card reveal border border-brand-border rounded-xl p-7 bg-brand-card">
+        <div class="w-11 h-11 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Dokumentation & Protokoll</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Jedes Fahrzeug wird fotografisch dokumentiert — vor und nach der Aufbereitung. Ideal für Ihre Übergabeprotokolle.</p>
+      </div>
+      <div class="benefit-card reveal border border-brand-border rounded-xl p-7 bg-brand-card">
+        <div class="w-11 h-11 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Fester Ansprechpartner</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Keine anonymen Servicenummern. Sie haben direkt Kontakt zu Erdem Sarioglu — persönlich, zuverlässig, auf Augenhöhe.</p>
+      </div>
+      <div class="benefit-card reveal border border-brand-border rounded-xl p-7 bg-brand-card">
+        <div class="w-11 h-11 bg-brand-red/10 rounded-lg flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3 class="text-white font-semibold mb-2">Werterhalt steigert Marge</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Ein professionell aufbereitetes Gebrauchtfahrzeug erzielt nachweislich 3–8 % mehr beim Verkauf. Investition, die sich rechnet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-line max-w-7xl mx-auto"></div>
+
+<!-- B2B LEISTUNGEN -->
+<section id="leistungen-b2b" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="reveal mb-16">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Leistungspakete</p>
+      <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight">
+        Was wir für Ihr Haus<br /><em class="text-brand-red font-normal">anbieten.</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Paket 1 -->
+      <div class="reveal border border-brand-border rounded-xl overflow-hidden bg-brand-card">
+        <div class="border-b border-brand-border px-6 py-5 flex items-center justify-between">
+          <div>
+            <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Paket A</p>
+            <h3 class="text-white font-semibold text-lg">Gebrauchtwagenaufbereitung</h3>
+          </div>
+          <span class="text-brand-red font-serif text-2xl">ab 149 €</span>
+        </div>
+        <div class="px-6 py-5 space-y-3">
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Außenwäsche & Felgenreinigung</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Innenraumsaugen & Auswischen</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Scheiben innen & außen</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Einfacher Lackschutz</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Fotodokumentation</div>
+        </div>
+      </div>
+
+      <!-- Paket 2 -->
+      <div class="reveal border border-brand-red rounded-xl overflow-hidden bg-brand-card">
+        <div class="border-b border-brand-border px-6 py-5 flex items-center justify-between">
+          <div>
+            <p class="text-brand-red text-xs tracking-widest uppercase mb-1">Paket B — Empfehlung</p>
+            <h3 class="text-white font-semibold text-lg">Präsentationsaufbereitung</h3>
+          </div>
+          <span class="text-brand-red font-serif text-2xl">ab 249 €</span>
+        </div>
+        <div class="px-6 py-5 space-y-3">
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alles aus Paket A</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Lackpolitur einstufig</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tiefenreinigung Innenraum</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Geruchsneutralisierung</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Professionelle Hochglanz-Fotos inklusive</div>
+        </div>
+      </div>
+
+      <!-- Paket 3 -->
+      <div class="reveal border border-brand-border rounded-xl overflow-hidden bg-brand-card">
+        <div class="border-b border-brand-border px-6 py-5 flex items-center justify-between">
+          <div>
+            <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Paket C</p>
+            <h3 class="text-white font-semibold text-lg">Neuwagenversiegelung</h3>
+          </div>
+          <span class="text-brand-red font-serif text-2xl">ab 399 €</span>
+        </div>
+        <div class="px-6 py-5 space-y-3">
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Keramikversiegelung auf Neulack</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Glasversiegelung</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Felgenversiegelung</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Zertifikat für Endkunden</div>
+        </div>
+      </div>
+
+      <!-- Paket 4 -->
+      <div class="reveal border border-brand-border rounded-xl overflow-hidden bg-brand-card">
+        <div class="border-b border-brand-border px-6 py-5 flex items-center justify-between">
+          <div>
+            <p class="text-brand-muted text-xs tracking-widest uppercase mb-1">Paket D</p>
+            <h3 class="text-white font-semibold text-lg">Rahmenvertrag / Flatrate</h3>
+          </div>
+          <span class="text-brand-red font-serif text-xl">auf Anfrage</span>
+        </div>
+        <div class="px-6 py-5 space-y-3">
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Festes monatliches Kontingent</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Priorisierte Bearbeitung</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Abholung & Lieferung inklusive</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Monatliche Abrechnung</div>
+          <div class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Mengenrabatt ab 5 Fahrzeuge / Monat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-line max-w-7xl mx-auto"></div>
+
+<!-- B2B FORM -->
+<section id="b2b-form" class="py-24 lg:py-32 bg-brand-card">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="reveal mb-12 text-center">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-4">Kooperation anfragen</p>
+      <h2 class="font-serif text-4xl lg:text-5xl text-white leading-tight mb-4">
+        Schreiben Sie uns —<br /><em class="text-brand-red font-normal">wir melden uns persönlich.</em>
+      </h2>
+      <p class="text-gray-400 text-sm max-w-lg mx-auto leading-relaxed">Kein automatisches System. Ihre Anfrage landet direkt bei Erdem Sarioglu. Antwort innerhalb von 24 Stunden.</p>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="b2b-success" class="hidden border border-green-500/30 bg-green-500/10 rounded-xl p-10 text-center">
+      <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <h3 class="text-white text-xl font-semibold mb-2">Kooperationsanfrage eingegangen!</h3>
+      <p class="text-gray-400 text-sm leading-relaxed mb-3">Vielen Dank für Ihr Interesse. Erdem Sarioglu meldet sich persönlich innerhalb von 24 Stunden.</p>
+      <p class="text-brand-muted text-xs">ES Autopflege · +49 1577 9711281 · info@es-autopflege.de</p>
+    </div>
+
+    <!-- FORM -->
+    <!--
+      HINWEIS: Ersetze YOUR_B2B_FORM_ID mit einer separaten Formspree-ID für B2B-Anfragen.
+      Erstelle auf formspree.io ein zweites Formular (z.B. "B2B Anfragen").
+    -->
+    <form id="b2b-contact-form"
+      action="https://formspree.io/f/YOUR_B2B_FORM_ID"
+      method="POST"
+      class="reveal bg-brand-dark border border-brand-border rounded-2xl p-8 lg:p-12"
+    >
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-company">Unternehmen / Autohaus *</label>
+          <input type="text" id="b2b-company" name="company" required
+            class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+            placeholder="Muster Automobile GmbH"/>
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-name">Ansprechpartner *</label>
+          <input type="text" id="b2b-name" name="name" required
+            class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+            placeholder="Max Mustermann"/>
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-email">E-Mail *</label>
+          <input type="email" id="b2b-email" name="email" required
+            class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+            placeholder="kontakt@autohaus.de"/>
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-phone">Telefon *</label>
+          <input type="tel" id="b2b-phone" name="phone" required
+            class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+            placeholder="+49 ..."/>
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-volume">Fahrzeuge pro Monat (ca.)</label>
+          <select id="b2b-volume" name="volume"
+            class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors appearance-none">
+            <option value="" class="bg-brand-card">Bitte wählen …</option>
+            <option value="1-5" class="bg-brand-card">1–5 Fahrzeuge</option>
+            <option value="5-15" class="bg-brand-card">5–15 Fahrzeuge</option>
+            <option value="15-30" class="bg-brand-card">15–30 Fahrzeuge</option>
+            <option value="30+" class="bg-brand-card">30+ Fahrzeuge</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-service">Gewünschtes Paket</label>
+          <select id="b2b-service" name="package"
+            class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors appearance-none">
+            <option value="" class="bg-brand-card">Bitte wählen …</option>
+            <option value="Paket A – Gebrauchtwagenaufbereitung" class="bg-brand-card">Paket A – Gebrauchtwagenaufbereitung</option>
+            <option value="Paket B – Präsentationsaufbereitung" class="bg-brand-card">Paket B – Präsentationsaufbereitung</option>
+            <option value="Paket C – Neuwagenversiegelung" class="bg-brand-card">Paket C – Neuwagenversiegelung</option>
+            <option value="Paket D – Rahmenvertrag" class="bg-brand-card">Paket D – Rahmenvertrag / Flatrate</option>
+            <option value="Individuell" class="bg-brand-card">Individuelles Angebot</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-6">
+        <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-message">Ihre Nachricht *</label>
+        <textarea id="b2b-message" name="message" required rows="5"
+          class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors resize-none"
+          placeholder="Beschreiben Sie kurz Ihr Haus, Ihren Fahrzeugbestand und was Sie sich von einer Zusammenarbeit erhoffen …"></textarea>
+      </div>
+      <input type="text" name="_gotcha" class="hidden" />
+      <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <p class="text-brand-muted text-xs leading-relaxed max-w-xs">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage genutzt und nicht weitergegeben.</p>
+        <button type="submit" id="b2b-submit"
+          class="bg-brand-red hover:bg-red-700 disabled:opacity-60 text-white px-10 py-4 rounded-lg text-sm font-medium tracking-wide transition-colors flex items-center gap-2 whitespace-nowrap">
+          <span id="b2b-btn-text">Kooperationsanfrage senden</span>
+          <svg id="b2b-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-brand-card border-t border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-xs">ES</span></div>
+      <p class="text-brand-muted text-xs">© 2026 ES Autopflege. Alle Rechte vorbehalten.</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="impressum.html"   class="text-brand-muted hover:text-white text-xs transition-colors">Impressum</a>
+      <a href="datenschutz.html" class="text-brand-muted hover:text-white text-xs transition-colors">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/4915779711281" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('open'));
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open')));
+
+const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }), { threshold:.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form submit
+const form = document.getElementById('b2b-contact-form');
+const success = document.getElementById('b2b-success');
+const btn = document.getElementById('b2b-submit');
+const btnText = document.getElementById('b2b-btn-text');
+const spinner = document.getElementById('b2b-spinner');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  btn.disabled = true;
+  btnText.textContent = 'Wird gesendet …';
+  spinner.classList.remove('hidden');
+  try {
+    const res = await fetch(form.action, { method:'POST', body: new FormData(form), headers:{'Accept':'application/json'} });
+    if(res.ok) { form.classList.add('hidden'); success.classList.remove('hidden'); }
+    else throw new Error();
+  } catch {
+    btnText.textContent = 'Fehler – bitte erneut versuchen';
+    spinner.classList.add('hidden');
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

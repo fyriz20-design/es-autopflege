@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGB | ES Autopflege Pfalzgrafenweiler</title>
+  <meta name="description" content="Allgemeine Geschäftsbedingungen der ES Autopflege e.K. in Pfalzgrafenweiler." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red:'#dc2626', dark:'#0a0a0a', card:'#111111', border:'#1f1f1f', muted:'#6b7280' } },
+          fontFamily: { sans:['Inter','system-ui','sans-serif'], serif:['"Cormorant Garamond"','Georgia','serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body{background:#0a0a0a;color:#e5e7eb}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#0a0a0a} ::-webkit-scrollbar-thumb{background:#dc2626;border-radius:2px}
+    .nav-link{position:relative} .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#dc2626;transition:width .3s ease} .nav-link:hover::after{width:100%}
+    #mobile-menu{transition:max-height .4s ease,opacity .4s ease;max-height:0;opacity:0;overflow:hidden} #mobile-menu.open{max-height:400px;opacity:1}
+    .agb-section h3{color:#fff;font-weight:600;margin-bottom:.6rem;font-size:.9375rem;margin-top:1.25rem}
+    .agb-section h3:first-child{margin-top:0}
+    .agb-section p,.agb-section ul,.agb-section ol{color:#9ca3af;font-size:.875rem;line-height:1.8;margin-bottom:.5rem}
+    .agb-section ul{padding-left:1.25rem;list-style:disc}
+    .agb-section ol{padding-left:1.25rem;list-style:decimal}
+    /* TOC */
+    .toc-link{transition:color .2s,padding-left .2s}
+    .toc-link:hover{color:#fff;padding-left:.25rem}
+    .toc-link.active{color:#dc2626}
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-sm tracking-widest">ES</span></div>
+        <div><span class="text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span><p class="text-brand-muted text-xs tracking-widest uppercase hidden sm:block">Pfalzgrafenweiler</p></div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="index.html#leistungen" class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Leistungen</a>
+        <a href="index.html#preise"     class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Preise</a>
+        <a href="galerie.html"          class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Galerie</a>
+        <a href="index.html#kontakt"    class="nav-link text-gray-300 hover:text-white text-sm tracking-wide transition-colors">Kontakt</a>
+      </nav>
+      <a href="index.html#kontakt" class="hidden lg:block bg-brand-red hover:bg-red-700 text-white text-sm font-medium px-5 py-2.5 rounded transition-colors">Termin buchen</a>
+      <button id="menu-toggle" class="lg:hidden text-gray-300 p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden bg-brand-card border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
+      <a href="index.html#leistungen" class="text-gray-300 py-2 text-sm mobile-link">Leistungen</a>
+      <a href="galerie.html"          class="text-gray-300 py-2 text-sm mobile-link">Galerie</a>
+      <a href="index.html#kontakt"    class="text-gray-300 py-2 text-sm mobile-link">Kontakt</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO MINI -->
+<section class="pt-32 pb-16 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover opacity-10"/>
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 to-brand-dark"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-2 text-brand-muted text-xs tracking-widest uppercase mb-6">
+      <a href="index.html" class="hover:text-white transition-colors">Start</a><span>/</span><span class="text-white">AGB</span>
+    </div>
+    <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-3">Rechtliches</p>
+    <h1 class="font-serif text-5xl lg:text-6xl text-white">Allgemeine<br /><em class="text-brand-red font-normal">Geschäftsbedingungen</em></h1>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:grid lg:grid-cols-[280px_1fr] lg:gap-16">
+
+      <!-- Sticky TOC -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-28">
+          <p class="text-white font-semibold text-sm mb-4">Inhaltsverzeichnis</p>
+          <nav class="space-y-2">
+            <a href="#agb-1"  class="toc-link block text-brand-muted text-sm py-0.5">§ 1 Geltungsbereich</a>
+            <a href="#agb-2"  class="toc-link block text-brand-muted text-sm py-0.5">§ 2 Vertragsabschluss</a>
+            <a href="#agb-3"  class="toc-link block text-brand-muted text-sm py-0.5">§ 3 Preise & Zahlung</a>
+            <a href="#agb-4"  class="toc-link block text-brand-muted text-sm py-0.5">§ 4 Leistungserbringung</a>
+            <a href="#agb-5"  class="toc-link block text-brand-muted text-sm py-0.5">§ 5 Fahrzeugübergabe</a>
+            <a href="#agb-6"  class="toc-link block text-brand-muted text-sm py-0.5">§ 6 Gewährleistung</a>
+            <a href="#agb-7"  class="toc-link block text-brand-muted text-sm py-0.5">§ 7 Haftung</a>
+            <a href="#agb-8"  class="toc-link block text-brand-muted text-sm py-0.5">§ 8 Datenschutz</a>
+            <a href="#agb-9"  class="toc-link block text-brand-muted text-sm py-0.5">§ 9 Schlussbestimmungen</a>
+          </nav>
+          <div class="mt-8 p-4 border border-brand-border rounded-xl bg-brand-card">
+            <p class="text-white text-sm font-medium mb-2">Fragen zur AGB?</p>
+            <a href="mailto:info@es-autopflege.de" class="text-brand-red text-sm hover:text-red-400 transition-colors">info@es-autopflege.de</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- AGB Content -->
+      <div class="space-y-6">
+
+        <div id="agb-1" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 1 Geltungsbereich</h2>
+          <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der ES Autopflege e.K., Spielberger Str. 9, 72285 Pfalzgrafenweiler (nachfolgend „Auftragnehmer") und ihren Kunden (nachfolgend „Auftraggeber") über Leistungen der Fahrzeugpflege und -aufbereitung.</p>
+          <p>Abweichende oder ergänzende Bedingungen des Auftraggebers gelten nur, wenn der Auftragnehmer ihrer Geltung ausdrücklich schriftlich zugestimmt hat.</p>
+        </div>
+
+        <div id="agb-2" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 2 Vertragsabschluss</h2>
+          <h3>Angebot und Annahme</h3>
+          <p>Ein Vertrag kommt durch Annahme des Angebots des Auftragnehmers durch den Auftraggeber zustande. Die Annahme kann mündlich, schriftlich oder per E-Mail erfolgen. Das Angebot des Auftragnehmers ist für 14 Tage ab Ausstellungsdatum bindend, sofern kein anderes Datum angegeben ist.</p>
+          <h3>Terminbuchung</h3>
+          <p>Mit der Bestätigung eines Termins durch den Auftragnehmer gilt der Vertrag über die vereinbarten Leistungen als abgeschlossen. Änderungen sind nur nach vorheriger Absprache möglich.</p>
+          <h3>Schriftform</h3>
+          <p>Bei Aufträgen über 500,00 € netto wird eine schriftliche Auftragsbestätigung empfohlen. Der Auftragnehmer behält sich vor, größere Aufträge erst nach schriftlicher Bestätigung zu beginnen.</p>
+        </div>
+
+        <div id="agb-3" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 3 Preise & Zahlung</h2>
+          <h3>Preise</h3>
+          <p>Alle genannten Preise sind Nettopreise zzgl. der gesetzlichen Umsatzsteuer. Der im Angebot genannte Preis ist verbindlich, sofern sich die Leistungsparameter (Fahrzeuggröße, Verschmutzungsgrad, Materialaufwand) nicht wesentlich ändern.</p>
+          <h3>Mehraufwand</h3>
+          <p>Stellt sich während der Bearbeitung heraus, dass der tatsächliche Aufwand erheblich vom kalkulierten Aufwand abweicht, informiert der Auftragnehmer den Auftraggeber unverzüglich. Eine Weiterführung erfolgt nur nach Zustimmung des Auftraggebers.</p>
+          <h3>Zahlungsbedingungen</h3>
+          <ul>
+            <li>Zahlung ist bei Abholung des Fahrzeugs fällig</li>
+            <li>Akzeptierte Zahlungsmittel: Barzahlung, EC-Karte, Überweisung</li>
+            <li>Bei Überweisung: Zahlung vor Abholung des Fahrzeugs</li>
+            <li>Für Geschäftskunden: Zahlungsziel 14 Tage netto nach Rechnungsstellung</li>
+          </ul>
+          <h3>Verzug</h3>
+          <p>Bei Zahlungsverzug ist der Auftragnehmer berechtigt, Verzugszinsen in Höhe von 9 Prozentpunkten über dem Basiszinssatz zu berechnen. Das Recht auf Geltendmachung weiterer Schäden bleibt vorbehalten.</p>
+        </div>
+
+        <div id="agb-4" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 4 Leistungserbringung</h2>
+          <h3>Ausführung</h3>
+          <p>Der Auftragnehmer erbringt die vereinbarten Leistungen mit der Sorgfalt eines ordentlichen Fachbetriebes. Die verwendeten Materialien und Produkte entsprechen dem Stand der Technik.</p>
+          <h3>Terminverschiebungen</h3>
+          <p>Genannte Fertigstellungstermine sind unverbindlich, sofern sie nicht ausdrücklich als verbindlich vereinbart wurden. Bei unvorhergesehenen Verzögerungen wird der Auftraggeber umgehend informiert.</p>
+          <h3>Unterauftragsvergabe</h3>
+          <p>Der Auftragnehmer ist berechtigt, Teilleistungen an qualifizierte Dritte zu vergeben, sofern dies dem Auftraggeber vorher mitgeteilt wurde und der Auftraggeber keine berechtigten Einwände erhebt.</p>
+        </div>
+
+        <div id="agb-5" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 5 Fahrzeugübergabe & Verwahrung</h2>
+          <h3>Zustand bei Übergabe</h3>
+          <p>Der Auftraggeber übergibt das Fahrzeug in dem Zustand, in dem es sich befindet. Vorhandene Schäden, Kratzer oder Mängel werden bei Übergabe protokollarisch festgehalten. Wertgegenstände und persönliche Dokumente sind vor der Übergabe zu entfernen.</p>
+          <h3>Verwahrung</h3>
+          <p>Der Auftragnehmer verwahrt das Fahrzeug in seiner Werkstatt mit der Sorgfalt eines ordentlichen Kaufmanns. Das Fahrzeug ist durch eine Betriebshaftpflichtversicherung des Auftragnehmers geschützt.</p>
+          <h3>Abholung</h3>
+          <p>Nach Fertigstellung wird der Auftraggeber zur Abholung des Fahrzeugs benachrichtigt. Das Fahrzeug ist innerhalb von 3 Werktagen abzuholen. Danach können Standgebühren von 10,00 € pro Tag berechnet werden.</p>
+          <h3>Zurückbehaltungsrecht</h3>
+          <p>Der Auftragnehmer ist berechtigt, das Fahrzeug bis zur vollständigen Begleichung der Rechnung zurückzuhalten.</p>
+        </div>
+
+        <div id="agb-6" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 6 Gewährleistung & Reklamation</h2>
+          <h3>Mängelrüge</h3>
+          <p>Erkennbare Mängel sind dem Auftragnehmer unverzüglich, spätestens jedoch 5 Werktage nach Abholung des Fahrzeugs schriftlich zu melden. Versteckte Mängel sind binnen einer Frist von 12 Monaten nach Abholung zu melden.</p>
+          <h3>Nachbesserung</h3>
+          <p>Bei berechtigten Mängelrügen ist der Auftragnehmer zunächst zur Nachbesserung berechtigt. Schlägt die Nachbesserung nach zwei Versuchen fehl, kann der Auftraggeber eine angemessene Minderung des Rechnungsbetrages verlangen.</p>
+          <h3>Ausschluss</h3>
+          <p>Keine Gewährleistung besteht für Schäden, die durch unsachgemäße Behandlung des Fahrzeugs nach der Aufbereitung entstanden sind, sowie für natürliche Materialermüdung und vorbestehende Schäden.</p>
+        </div>
+
+        <div id="agb-7" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 7 Haftung</h2>
+          <h3>Grundsatz</h3>
+          <p>Der Auftragnehmer haftet für Schäden, die durch grobe Fahrlässigkeit oder Vorsatz des Auftragnehmers oder seiner Erfüllungsgehilfen verursacht wurden.</p>
+          <h3>Haftungsbeschränkung</h3>
+          <p>Bei leichter Fahrlässigkeit haftet der Auftragnehmer nur bei Verletzung wesentlicher Vertragspflichten. In diesem Fall ist die Haftung auf den vorhersehbaren, typischen Schaden beschränkt, maximal jedoch auf den Auftragswert.</p>
+          <h3>Höhere Gewalt</h3>
+          <p>Der Auftragnehmer haftet nicht für Schäden durch höhere Gewalt, Naturkatastrophen, Krieg, Terrorismus, Streik oder andere unvorhersehbare Ereignisse.</p>
+        </div>
+
+        <div id="agb-8" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 8 Datenschutz</h2>
+          <p>Die Erhebung und Verarbeitung personenbezogener Daten des Auftraggebers erfolgt ausschließlich zur Erfüllung des Vertrages und in Übereinstimmung mit der Datenschutz-Grundverordnung (DSGVO). Details entnehmen Sie unserer <a href="datenschutz.html" class="text-brand-red hover:text-red-400 transition-colors">Datenschutzerklärung</a>.</p>
+          <p>Daten werden nicht an Dritte weitergegeben, sofern dies nicht zur Vertragserfüllung notwendig ist oder der Auftraggeber ausdrücklich zugestimmt hat.</p>
+        </div>
+
+        <div id="agb-9" class="border border-brand-border rounded-xl p-8 bg-brand-card agb-section scroll-mt-28">
+          <h2 class="text-white font-semibold text-lg mb-6 flex items-center gap-3"><span class="w-1 h-5 bg-brand-red rounded block"></span>§ 9 Schlussbestimmungen</h2>
+          <h3>Anwendbares Recht</h3>
+          <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts (CISG).</p>
+          <h3>Gerichtsstand</h3>
+          <p>Für Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist, soweit gesetzlich zulässig, Freudenstadt als Gerichtsstand vereinbart.</p>
+          <h3>Salvatorische Klausel</h3>
+          <p>Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, berührt dies die Wirksamkeit der übrigen Bestimmungen nicht. An die Stelle der unwirksamen Bestimmung tritt eine wirksame Regelung, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
+          <h3>Änderungen</h3>
+          <p>Der Auftragnehmer behält sich vor, diese AGB jederzeit zu ändern. Bei bestehenden Verträgen gilt jeweils die zum Zeitpunkt des Vertragsabschlusses gültige Fassung.</p>
+          <p class="text-brand-muted text-xs mt-4">Stand: Januar 2026 · ES Autopflege e.K. · Spielberger Str. 9 · 72285 Pfalzgrafenweiler</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-brand-card border-t border-brand-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-xs">ES</span></div>
+      <p class="text-brand-muted text-xs">© 2026 ES Autopflege. Alle Rechte vorbehalten.</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="impressum.html"   class="text-brand-muted hover:text-white text-xs transition-colors">Impressum</a>
+      <a href="agb.html"         class="text-white text-xs">AGB</a>
+      <a href="datenschutz.html" class="text-brand-muted hover:text-white text-xs transition-colors">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('open'));
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open')));
+
+  // Active TOC highlight on scroll
+  const sections = document.querySelectorAll('[id^="agb-"]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-link[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin:'-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seite nicht gefunden | ES Autopflege</title>
+  <meta name="robots" content="noindex" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red:'#dc2626', dark:'#0a0a0a', card:'#111111', border:'#1f1f1f', muted:'#6b7280' } },
+          fontFamily: { sans:['Inter','system-ui','sans-serif'], serif:['"Cormorant Garamond"','Georgia','serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body{background:#0a0a0a;color:#e5e7eb}
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-thumb{background:#dc2626;border-radius:2px}
+    @keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)}}
+    .float{animation:float 4s ease-in-out infinite}
+    @keyframes pulse-ring{0%{transform:scale(.95);opacity:.4} 100%{transform:scale(1.15);opacity:0}}
+    .pulse-ring{animation:pulse-ring 2.5s ease-out infinite}
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
+
+  <!-- Background glow -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div class="w-96 h-96 bg-brand-red/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Background image faint -->
+  <div class="absolute inset-0 opacity-5">
+    <img src="https://images.unsplash.com/photo-1600705722908-bfdce32b4d7e?auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover"/>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-lg">
+
+    <!-- 404 number with pulse ring -->
+    <div class="relative inline-block mb-10">
+      <div class="pulse-ring absolute inset-0 rounded-full border-2 border-brand-red/40"></div>
+      <div class="w-32 h-32 bg-brand-card border border-brand-border rounded-full flex items-center justify-center float mx-auto">
+        <span class="font-serif text-5xl text-white font-semibold">404</span>
+      </div>
+    </div>
+
+    <!-- Logo -->
+    <div class="flex items-center justify-center gap-3 mb-8">
+      <div class="w-9 h-9 bg-brand-red rounded flex items-center justify-center"><span class="text-white font-bold text-sm tracking-widest">ES</span></div>
+      <span class="text-white font-semibold text-sm tracking-wider uppercase">ES Autopflege</span>
+    </div>
+
+    <h1 class="font-serif text-4xl sm:text-5xl text-white mb-4 leading-tight">
+      Diese Seite<br /><em class="text-brand-red font-normal">gibt es nicht.</em>
+    </h1>
+    <p class="text-gray-400 text-base leading-relaxed mb-10">
+      Die gesuchte Seite wurde möglicherweise verschoben, umbenannt oder existiert nicht mehr. Kein Problem — wir bringen Sie zurück auf die Strecke.
+    </p>
+
+    <!-- Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+      <a href="index.html" class="bg-brand-red hover:bg-red-700 text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">
+        Zur Startseite
+      </a>
+      <a href="index.html#kontakt" class="border border-white/20 hover:border-white text-white px-8 py-3.5 rounded text-sm font-medium tracking-wide transition-colors">
+        Kontakt aufnehmen
+      </a>
+    </div>
+
+    <!-- Quick links -->
+    <div class="border-t border-brand-border pt-8">
+      <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Oder direkt zu:</p>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+        <a href="index.html#leistungen" class="text-gray-400 hover:text-white text-sm transition-colors">Leistungen</a>
+        <a href="index.html#preise"     class="text-gray-400 hover:text-white text-sm transition-colors">Preise</a>
+        <a href="galerie.html"          class="text-gray-400 hover:text-white text-sm transition-colors">Galerie</a>
+        <a href="b2b.html"              class="text-gray-400 hover:text-white text-sm transition-colors">Autohäuser</a>
+        <a href="impressum.html"        class="text-gray-400 hover:text-white text-sm transition-colors">Impressum</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer line -->
+  <p class="absolute bottom-6 text-brand-muted text-xs">© 2026 ES Autopflege · Spielberger Str. 9 · 72285 Pfalzgrafenweiler</p>
+
+</body>
+</html>
