@@ -280,6 +280,7 @@ const adminScreen = document.getElementById('admin-screen');
 
 function checkAuth() {
   if(sessionStorage.getItem('es_admin') === 'true') {
+    window._adminToken = sessionStorage.getItem('es_admin_token') || '';
     loginScreen.classList.add('hidden');
     adminScreen.classList.remove('hidden');
     loadMedia();
@@ -291,6 +292,8 @@ document.getElementById('login-form').addEventListener('submit', e => {
   const pw = document.getElementById('password-input').value;
   if(pw === ADMIN_PASSWORD) {
     sessionStorage.setItem('es_admin', 'true');
+    sessionStorage.setItem('es_admin_token', pw);
+    window._adminToken = pw;
     loginScreen.classList.add('hidden');
     adminScreen.classList.remove('hidden');
     document.getElementById('login-error').classList.add('hidden');
@@ -303,6 +306,8 @@ document.getElementById('login-form').addEventListener('submit', e => {
 
 document.getElementById('logout-btn').addEventListener('click', () => {
   sessionStorage.removeItem('es_admin');
+  sessionStorage.removeItem('es_admin_token');
+  window._adminToken = '';
   adminScreen.classList.add('hidden');
   loginScreen.classList.remove('hidden');
 });
@@ -324,22 +329,30 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 // ═══════════════════════════════════════════
-// MEDIA STORAGE (localStorage)
+// MEDIA STORAGE (Vercel Blob API)
 // ═══════════════════════════════════════════
 let mediaItems = [];
 
-function loadMedia() {
+async function loadMedia() {
   try {
-    const stored = localStorage.getItem('es_media');
-    mediaItems = stored ? JSON.parse(stored) : [];
-  } catch { mediaItems = []; }
+    const res = await fetch('/api/list', {
+      headers: { 'x-admin-token': window._adminToken || '' }
+    });
+    if (!res.ok) throw new Error('API nicht erreichbar');
+    const { blobs } = await res.json();
+    mediaItems = blobs.map(b => ({
+      name: b.pathname.replace('gallery/', ''),
+      url: b.url,
+      size: b.size,
+      type: /\.(mp4|webm|mov|avi)$/i.test(b.pathname) ? 'video' : 'image',
+      date: b.uploadedAt,
+    }));
+  } catch(e) {
+    console.warn('Blob API:', e.message);
+    mediaItems = [];
+  }
   renderMedia();
   updateStats();
-}
-
-function saveMedia() {
-  try { localStorage.setItem('es_media', JSON.stringify(mediaItems)); }
-  catch(e) { alert('Speicher voll. Bitte einige Medien löschen.'); }
 }
 
 function updateStats() {
@@ -364,18 +377,18 @@ function renderMedia() {
   }
   grid.classList.remove('hidden');
   empty.classList.add('hidden');
-  grid.innerHTML = filtered.map((item, idx) => `
+  grid.innerHTML = filtered.map(item => `
     <div class="media-card group">
       ${item.type === 'image'
-        ? `<img src="${item.dataUrl}" alt="${item.name}" loading="lazy" />`
-        : `<video src="${item.dataUrl}" muted></video>`
+        ? `<img src="${item.url}" alt="${item.name}" loading="lazy" />`
+        : `<video src="${item.url}" muted></video>`
       }
       <div class="actions">
-        <a href="${item.dataUrl}" download="${item.name}"
-           class="w-9 h-9 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center text-white transition-colors" title="Herunterladen">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-        </a>
-        <button onclick="deleteMedia(${mediaItems.indexOf(item)})"
+        <button onclick="copyUrl('${item.url}')"
+           class="w-9 h-9 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center text-white transition-colors" title="URL kopieren">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+        <button onclick="deleteMedia('${item.url}')"
            class="w-9 h-9 bg-red-600/80 hover:bg-brand-red rounded-lg flex items-center justify-center text-white transition-colors" title="Löschen">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
         </button>
@@ -387,12 +400,27 @@ function renderMedia() {
   `).join('');
 }
 
-window.deleteMedia = function(idx) {
-  if(confirm('Dieses Medium wirklich löschen?')) {
-    mediaItems.splice(idx, 1);
-    saveMedia();
-    renderMedia();
-    updateStats();
+window.copyUrl = function(url) {
+  navigator.clipboard.writeText(url).then(() => {
+    const t = document.createElement('div');
+    t.textContent = '✓ URL kopiert!';
+    t.className = 'fixed bottom-6 right-6 bg-brand-red text-white text-sm px-4 py-2 rounded-lg z-50 shadow-lg';
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2000);
+  });
+};
+
+window.deleteMedia = async function(url) {
+  if(!confirm('Dieses Medium wirklich löschen?')) return;
+  try {
+    const res = await fetch(`/api/delete?url=${encodeURIComponent(url)}`, {
+      method: 'DELETE',
+      headers: { 'x-admin-token': window._adminToken || '' }
+    });
+    if(!res.ok) throw new Error('Löschen fehlgeschlagen');
+    await loadMedia();
+  } catch(e) {
+    alert('Fehler: ' + e.message);
   }
 };
 
@@ -415,11 +443,11 @@ dropZone.addEventListener('drop', e => {
 });
 fileInput.addEventListener('change', e => handleFiles(e.target.files));
 
-function handleFiles(files) {
-  Array.from(files).forEach(file => {
+async function handleFiles(files) {
+  for(const file of Array.from(files)) {
     if(file.size > 50 * 1024 * 1024) {
       alert(`"${file.name}" ist größer als 50 MB und wird übersprungen.`);
-      return;
+      continue;
     }
     const isImage = file.type.startsWith('image/');
     const isVideo = file.type.startsWith('video/');
@@ -441,42 +469,58 @@ function handleFiles(files) {
     `;
     uploadList.prepend(el);
 
-    const reader = new FileReader();
+    const bar = document.getElementById(id + '-bar');
+    const status = document.getElementById(id + '-status');
+
+    // Fortschrittsbalken-Animation während Upload
     let prog = 0;
     const interval = setInterval(() => {
-      prog = Math.min(prog + 15, 90);
-      const bar = document.getElementById(id + '-bar');
+      prog = Math.min(prog + 8, 85);
       if(bar) bar.style.width = prog + '%';
-    }, 80);
+    }, 150);
 
-    reader.onload = function(ev) {
+    try {
+      const safe = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const res = await fetch(`/api/upload?filename=${encodeURIComponent(safe)}`, {
+        method: 'POST',
+        body: file,
+        headers: {
+          'Content-Type': file.type,
+          'x-admin-token': window._adminToken || '',
+        }
+      });
       clearInterval(interval);
-      const bar = document.getElementById(id + '-bar');
-      const status = document.getElementById(id + '-status');
+      if(!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Unbekannter Fehler' }));
+        throw new Error(err.error || 'Upload fehlgeschlagen');
+      }
       if(bar) bar.style.width = '100%';
-      if(status) { status.textContent = 'Fertig ✓'; status.classList.replace('text-brand-muted','text-green-400'); }
-
-      mediaItems.unshift({ name:file.name, type:isImage?'image':'video', dataUrl:ev.target.result, size:file.size, date:new Date().toISOString() });
-      saveMedia();
-      updateStats();
-
-      setTimeout(() => { el.remove(); }, 2500);
-    };
-    reader.readAsDataURL(file);
-  });
+      if(status) { status.textContent = '✓ Fertig'; status.classList.replace('text-brand-muted','text-green-400'); }
+      await loadMedia();
+      setTimeout(() => el.remove(), 2500);
+    } catch(err) {
+      clearInterval(interval);
+      if(bar) { bar.style.width = '100%'; bar.classList.replace('bg-brand-red','bg-red-900'); }
+      if(status) { status.textContent = '✗ ' + err.message; status.classList.replace('text-brand-muted','text-red-400'); }
+    }
+  }
   fileInput.value = '';
 }
 
 // ═══════════════════════════════════════════
 // SETTINGS
 // ═══════════════════════════════════════════
-document.getElementById('clear-all-btn').addEventListener('click', () => {
-  if(confirm('Wirklich ALLE Medien löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) {
-    mediaItems = [];
-    saveMedia();
-    renderMedia();
-    updateStats();
+document.getElementById('clear-all-btn').addEventListener('click', async () => {
+  if(!confirm('Wirklich ALLE Medien löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
+  for(const item of mediaItems) {
+    try {
+      await fetch(`/api/delete?url=${encodeURIComponent(item.url)}`, {
+        method: 'DELETE',
+        headers: { 'x-admin-token': window._adminToken || '' }
+      });
+    } catch(e) { /* ignorieren */ }
   }
+  await loadMedia();
 });
 
 // ═══════════════════════════════════════════
