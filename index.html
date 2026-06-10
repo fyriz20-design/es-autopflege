@@ -142,9 +142,9 @@
       <a href="index.html" class="flex items-center gap-3 group">
         <img
           id="nav-logo"
-          src="https://www.es-autopflege.de/_next/image?url=%2Fimages%2Flogo.webp&w=384&q=75"
+          src="images/logo.svg"
           alt="ES Autopflege Logo"
-          class="h-12 w-auto object-contain brightness-0 invert"
+          class="h-20 w-auto object-contain"
           onerror="this.style.display='none'; document.getElementById('nav-logo-fallback').style.display='flex';"
         />
         <div id="nav-logo-fallback" style="display:none;" class="items-center gap-2">
@@ -225,11 +225,11 @@
      HERO
 ════════════════════════════════════════════════════════════ -->
 <section id="hero" class="relative h-screen min-h-[600px] flex items-end pb-20 overflow-hidden">
-  <!-- Background image – Porsche 911 -->
+  <!-- Background image – Bugatti -->
   <div class="absolute inset-0">
     <img
       src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=2400&q=85"
-      alt="Porsche 911 – ES Autopflege Pfalzgrafenweiler"
+      alt="Sportwagen – ES Autopflege Pfalzgrafenweiler"
       class="w-full h-full object-cover object-center"
     />
     <div class="hero-overlay absolute inset-0"></div>
@@ -626,126 +626,163 @@
       </p>
     </div>
 
-    <!-- Pricing cards -->
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+    <!-- ── Gruppe 1: Fahrzeugpflege-Pakete ── -->
+    <div class="reveal mb-4">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-2">Fahrzeugpflege</p>
+      <h3 class="font-serif text-2xl text-white">Innen & Außen</h3>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
 
-      <!-- Basic -->
-      <div class="price-card reveal border border-brand-border rounded-xl p-8 bg-brand-card">
-        <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Basis</p>
-        <h3 class="text-white text-2xl font-semibold mb-1">Außenpflege</h3>
-        <p class="text-gray-500 text-sm mb-6">Außenreinigung & Pflege</p>
-        <div class="mb-8">
-          <span class="text-brand-red text-4xl font-serif font-semibold">ab 89 €</span>
+      <!-- Bronze -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-7 bg-brand-card flex flex-col">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">🥉 Bronze</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Basis Fahrzeugpflege</h3>
+        <div class="my-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 69 €</span>
           <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
         </div>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Handwäsche Außen
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Felgenreinigung
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Reifenpflege
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Scheiben innen & außen
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Türkanten & Gummipflege
-          </li>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Trocken Reinigung</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Scheibenreinigung innen</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Aussaugen Innenraum</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Kunststoffpflege innen</li>
         </ul>
-        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors">
-          Anfragen
-        </a>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
       </div>
 
-      <!-- Standard — FEATURED -->
-      <div class="price-card featured reveal border border-brand-red rounded-xl p-8 bg-brand-card relative">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-xs tracking-widest uppercase px-4 py-1 rounded-full">
-          Beliebt
-        </div>
-        <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Standard</p>
-        <h3 class="text-white text-2xl font-semibold mb-1">Innen + Außen</h3>
-        <p class="text-gray-500 text-sm mb-6">Komplettaufbereitung</p>
-        <div class="mb-8">
-          <span class="text-brand-red text-4xl font-serif font-semibold">ab 249 €</span>
+      <!-- Silber — FEATURED -->
+      <div class="price-card featured reveal border border-brand-red rounded-xl p-7 bg-brand-card flex flex-col relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-xs tracking-widest uppercase px-4 py-1 rounded-full whitespace-nowrap">Beliebt</div>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">🥈 Silber</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Intensiv Innenraum</h3>
+        <div class="my-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 149 €</span>
           <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
         </div>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Alles aus Basis-Paket
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Innenraumreinigung komplett
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Saugen & Ausdampfen
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Kunststoffpflege Innen
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Lackversiegelung
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Geruchsneutralisierung
-          </li>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alles aus Bronze-Paket</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Tiefenreinigung Polster</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Armaturenbrett aufbereiten</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Türverkleidungen reinigen</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Geruchsneutralisierung</li>
         </ul>
-        <a href="#kontakt" class="block text-center bg-brand-red hover:bg-red-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors">
-          Anfragen
-        </a>
+        <a href="#kontakt" class="block text-center bg-brand-red hover:bg-red-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
       </div>
 
-      <!-- Premium -->
-      <div class="price-card reveal border border-brand-border rounded-xl p-8 bg-brand-card">
-        <p class="text-brand-muted text-xs tracking-widest uppercase mb-4">Premium</p>
-        <h3 class="text-white text-2xl font-semibold mb-1">Keramik-Paket</h3>
-        <p class="text-gray-500 text-sm mb-6">Langzeitschutz & Versiegelung</p>
-        <div class="mb-8">
-          <span class="text-brand-red text-4xl font-serif font-semibold">ab 599 €</span>
+      <!-- Gold -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-7 bg-brand-card flex flex-col">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">🥇 Gold</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Premium Außenpflege</h3>
+        <div class="my-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 149 €</span>
           <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
         </div>
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Alles aus Standard-Paket
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Lackpolitur einstufig
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Keramikversiegelung Lack
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Keramik auf Glas & Felgen
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            2–5 Jahre Schutz
-          </li>
-          <li class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Zertifikat & Pflegeanleitung
-          </li>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Handwäsche & Felgenreinigung</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Flugrostentfernung</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Lackreinigung & Peeling</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Maschinelles Lackpolitur</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Hochwertige Lackversiegelung</li>
         </ul>
-        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors">
-          Anfragen
-        </a>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
+      </div>
+
+      <!-- Platinum -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-7 bg-brand-card flex flex-col" style="border-color: rgba(148,163,184,0.35);">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">💎 Platinum</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Intensiv Aufbereitung</h3>
+        <div class="my-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 449 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alles aus Gold-Paket</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Mehrstufige Lackkorrektur</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Keramikversiegelung (3–5 J.)</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Showroom-Finish</li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
+      </div>
+
+    </div>
+
+    <!-- ── Gruppe 2: PPF Pakete ── -->
+    <div class="red-line mb-12"></div>
+    <div class="reveal mb-4">
+      <p class="text-brand-red text-xs tracking-[0.3em] uppercase mb-2">Lackschutzfolie</p>
+      <h3 class="font-serif text-2xl text-white">PPF — Schutzpakete</h3>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- Front Paket -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-7 bg-brand-card flex flex-col">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">🛡️ Front</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Front Paket</h3>
+        <p class="text-gray-500 text-sm mb-4">Schutz der Frontpartie</p>
+        <div class="mb-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 1.899 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Stoßfänger vorne</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Motorhaube (Teil od. komplett)</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Kotflügel vorne</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Scheinwerfer & Spiegelkappen</li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
+      </div>
+
+      <!-- Front + Schweller -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-7 bg-brand-card flex flex-col">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">🛡️ Front + Schweller</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Erweiterter Schutz</h3>
+        <p class="text-gray-500 text-sm mb-4">Steinschlagschutz plus</p>
+        <div class="mb-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 2.399 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Alle Leistungen aus Front Paket</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Seitenschweller links & rechts</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Einstiegsbereiche</li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
+      </div>
+
+      <!-- Front Premium -->
+      <div class="price-card reveal border border-brand-border rounded-xl p-7 bg-brand-card flex flex-col">
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">💎 Front Premium</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Front + Keramik</h3>
+        <p class="text-gray-500 text-sm mb-4">Maximaler Frontschutz</p>
+        <div class="mb-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 2.799 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Komplettes Front Paket</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Keramikversiegelung Fahrzeug</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Erleichterte Fahrzeugwäsche</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>UV- & Chemikalienschutz</li>
+        </ul>
+        <a href="#kontakt" class="block text-center border border-brand-red text-brand-red hover:bg-brand-red hover:text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
+      </div>
+
+      <!-- Komplett PPF — FEATURED -->
+      <div class="price-card featured reveal border border-brand-red rounded-xl p-7 bg-brand-card flex flex-col relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-xs tracking-widest uppercase px-4 py-1 rounded-full whitespace-nowrap">Premium</div>
+        <p class="text-brand-muted text-xs tracking-widest uppercase mb-3">👑 Komplett</p>
+        <h3 class="text-white text-xl font-semibold mb-1">Komplett PPF + Keramik</h3>
+        <p class="text-gray-500 text-sm mb-4">Vollfolierung mit Keramikversiegelung</p>
+        <div class="mb-5">
+          <span class="text-brand-red text-3xl font-serif font-semibold">ab 3.499 €</span>
+          <span class="text-gray-500 text-sm ml-2">je nach Fahrzeug</span>
+        </div>
+        <ul class="space-y-2.5 mb-7 flex-1">
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Vollfolierung Glanz / Matt Transp.</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Selbstheilende Folie</li>
+          <li class="flex items-center gap-3 text-gray-300 text-sm"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Langfristiger Werterhalt</li>
+        </ul>
+        <a href="#kontakt" class="block text-center bg-brand-red hover:bg-red-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors mt-auto">Anfragen</a>
       </div>
 
     </div>
@@ -1165,15 +1202,18 @@
               class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors appearance-none"
             >
               <option value="" class="bg-brand-card">Bitte wählen …</option>
-              <option value="Außenreinigung & Politur" class="bg-brand-card">Außenreinigung & Politur</option>
-              <option value="Innenraumaufbereitung" class="bg-brand-card">Innenraumaufbereitung</option>
-              <option value="Keramikversiegelung" class="bg-brand-card">Keramikversiegelung</option>
-              <option value="PPF — Lackschutzfolie" class="bg-brand-card">PPF — Lackschutzfolie</option>
-              <option value="Lederpflege" class="bg-brand-card">Lederpflege</option>
-              <option value="Motorwäsche" class="bg-brand-card">Motorwäsche</option>
-              <option value="Smart Repair" class="bg-brand-card">Smart Repair</option>
-              <option value="Komplettaufbereitung" class="bg-brand-card">Komplettaufbereitung</option>
-              <option value="Sonstiges" class="bg-brand-card">Sonstiges</option>
+              <optgroup label="── Fahrzeugpflege-Pakete ──" class="bg-brand-card text-gray-500"></optgroup>
+              <option value="Bronze Paket – Basis Fahrzeugpflege (ab 69 €)" class="bg-brand-card">🥉 Bronze – Basis Fahrzeugpflege (ab 69 €)</option>
+              <option value="Silber Paket – Intensiv Innenraum (ab 149 €)" class="bg-brand-card">🥈 Silber – Intensiv Innenraum (ab 149 €)</option>
+              <option value="Gold Paket – Premium Außenpflege (ab 149 €)" class="bg-brand-card">🥇 Gold – Premium Außenpflege (ab 149 €)</option>
+              <option value="Platinum Paket – Intensiv Aufbereitung (ab 449 €)" class="bg-brand-card">💎 Platinum – Intensiv Aufbereitung (ab 449 €)</option>
+              <optgroup label="── PPF Schutzpakete ──" class="bg-brand-card text-gray-500"></optgroup>
+              <option value="PPF Front Paket (ab 1.899 €)" class="bg-brand-card">🛡️ PPF Front Paket (ab 1.899 €)</option>
+              <option value="PPF Front + Schweller Paket (ab 2.399 €)" class="bg-brand-card">🛡️ PPF Front + Schweller (ab 2.399 €)</option>
+              <option value="PPF Front Premium Paket (ab 2.799 €)" class="bg-brand-card">💎 PPF Front Premium (ab 2.799 €)</option>
+              <option value="PPF Komplett + Keramikversiegelung (ab 3.499 €)" class="bg-brand-card">👑 PPF Komplett + Keramik (ab 3.499 €)</option>
+              <optgroup label="── Sonstiges ──" class="bg-brand-card text-gray-500"></optgroup>
+              <option value="Sonstiges / Individuelles Angebot" class="bg-brand-card">Sonstiges / Individuelles Angebot</option>
             </select>
           </div>
           <div>

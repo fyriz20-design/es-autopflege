@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" fill="none">
+  <!-- Shield outline -->
+  <path d="M200 18 L368 80 L368 240 C368 340 200 442 200 442 C200 442 32 340 32 240 L32 80 Z"
+    fill="none" stroke="white" stroke-width="8" stroke-linejoin="round"/>
+  <!-- Shield inner line -->
+  <path d="M200 38 L350 93 L350 238 C350 327 200 422 200 422 C200 422 50 327 50 238 L50 93 Z"
+    fill="none" stroke="white" stroke-width="2.5" stroke-linejoin="round" opacity="0.5"/>
+
+  <!-- "ES" large letters -->
+  <text x="76" y="210"
+    font-family="Arial Black, Arial, sans-serif"
+    font-size="138"
+    font-weight="900"
+    fill="white"
+    letter-spacing="-4">ES</text>
+
+  <!-- Car silhouette (Porsche-style sports car side view) -->
+  <g transform="translate(160, 148) scale(0.72)" opacity="0.9">
+    <!-- Body -->
+    <path d="M20 60 C20 60 40 30 80 22 C110 16 145 14 175 16 C205 18 230 22 250 28
+             C265 32 275 38 280 44 C288 44 300 46 308 52 C315 58 318 66 316 72
+             L28 72 C24 72 20 68 20 64 Z"
+      fill="white"/>
+    <!-- Windshield area (darker) -->
+    <path d="M100 23 C115 18 140 14 160 15 C175 15 190 16 200 18 L195 42 C175 40 145 40 120 42 Z"
+      fill="rgba(0,0,0,0.35)"/>
+    <!-- Rear window -->
+    <path d="M80 22 C90 20 100 18 110 17 L115 42 C100 43 88 44 80 46 Z"
+      fill="rgba(0,0,0,0.35)"/>
+    <!-- Wheels -->
+    <circle cx="75" cy="72" r="22" fill="white"/>
+    <circle cx="75" cy="72" r="12" fill="#1a1a1a"/>
+    <circle cx="75" cy="72" r="5" fill="white"/>
+    <circle cx="255" cy="72" r="22" fill="white"/>
+    <circle cx="255" cy="72" r="12" fill="#1a1a1a"/>
+    <circle cx="255" cy="72" r="5" fill="white"/>
+    <!-- Ground line -->
+    <line x1="15" y1="94" x2="325" y2="94" stroke="white" stroke-width="2" opacity="0.4"/>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="72" y1="248" x2="328" y2="248" stroke="white" stroke-width="2" opacity="0.6"/>
+
+  <!-- AUTOPFLEGE text -->
+  <text x="200" y="296"
+    font-family="Arial, sans-serif"
+    font-size="38"
+    font-weight="700"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="5">AUTOPFLEGE</text>
+
+  <!-- Divider line 2 -->
+  <line x1="90" y1="312" x2="310" y2="312" stroke="white" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- & FOLIERUNG text -->
+  <text x="200" y="345"
+    font-family="Arial, sans-serif"
+    font-size="22"
+    font-weight="500"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="4"
+    opacity="0.85">&amp; FOLIERUNG</text>
+
+  <!-- SEIT 2012 text -->
+  <text x="200" y="376"
+    font-family="Arial, sans-serif"
+    font-size="17"
+    font-weight="400"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="5"
+    opacity="0.7">SEIT 2012</text>
+</svg>
