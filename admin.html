@@ -150,42 +150,37 @@
 
         <!-- Upload info / instructions -->
         <div>
-          <h2 class="text-white font-semibold mb-4">Hinweis zum Speicher</h2>
+          <h2 class="text-white font-semibold mb-4">Speicher-Status</h2>
           <div class="bg-brand-card border border-brand-border rounded-xl p-6 space-y-5">
 
             <div class="flex gap-4">
-              <div class="w-9 h-9 bg-brand-red/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div class="w-9 h-9 bg-green-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"/></svg>
               </div>
               <div>
-                <p class="text-white text-sm font-medium mb-1">Lokale Vorschau</p>
-                <p class="text-gray-400 text-sm leading-relaxed">Hochgeladene Dateien werden hier zur Vorschau angezeigt. Da die Seite statisch auf Vercel läuft, werden Dateien aktuell nur im Browser zwischengespeichert.</p>
+                <p class="text-white text-sm font-medium mb-1">Vercel Blob aktiv</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Alle hochgeladenen Bilder und Videos werden dauerhaft in der Cloud gespeichert und sind sofort über die URL erreichbar.</p>
               </div>
             </div>
 
             <div class="border-t border-brand-border pt-5 flex gap-4">
-              <div class="w-9 h-9 bg-yellow-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <div class="w-9 h-9 bg-brand-red/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </div>
               <div>
-                <p class="text-white text-sm font-medium mb-1">Für dauerhaften Speicher</p>
-                <p class="text-gray-400 text-sm leading-relaxed">Um Bilder dauerhaft zu speichern empfehlen wir <strong class="text-white">Vercel Blob Storage</strong> (kostenloser Einstieg). Anleitung unten.</p>
+                <p class="text-white text-sm font-medium mb-1">URL kopieren für die Galerie</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Nach dem Upload in der <strong class="text-white">Medienbibliothek</strong> auf das Kopier-Symbol klicken, um die URL für <code class="text-gray-300 bg-brand-dark px-1 rounded text-xs">galerie.html</code> zu verwenden.</p>
               </div>
             </div>
 
-            <div class="border-t border-brand-border pt-5">
-              <p class="text-white text-sm font-medium mb-3">Vercel Blob — Schnellstart:</p>
-              <ol class="text-gray-400 text-sm space-y-2 leading-relaxed">
-                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">1.</span> Vercel Dashboard → Storage → Create Blob Store</li>
-                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">2.</span> Environment Variable <code class="text-gray-300 bg-brand-dark px-1 rounded">BLOB_READ_WRITE_TOKEN</code> kopieren</li>
-                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">3.</span> In Vercel Project Settings → Environment Variables eintragen</li>
-                <li class="flex gap-2"><span class="text-brand-red font-bold flex-shrink-0">4.</span> API-Route <code class="text-gray-300 bg-brand-dark px-1 rounded">/api/upload.js</code> für Server-Side-Upload erstellen</li>
-              </ol>
-              <a href="https://vercel.com/docs/storage/vercel-blob" target="_blank" rel="noopener"
-                 class="inline-flex items-center gap-2 text-brand-red hover:text-red-400 text-sm mt-4 transition-colors">
-                Zur Vercel Blob Dokumentation
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
+            <div class="border-t border-brand-border pt-5 flex gap-4">
+              <div class="w-9 h-9 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/></svg>
+              </div>
+              <div>
+                <p class="text-white text-sm font-medium mb-1">Unterstützte Formate</p>
+                <p class="text-gray-400 text-sm leading-relaxed">JPG, PNG, WEBP (Bilder) · MP4, WEBM (Videos) · Max. 50 MB pro Datei</p>
+              </div>
             </div>
           </div>
         </div>
@@ -325,6 +320,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.add('active','text-white');
     btn.classList.remove('text-brand-muted');
     document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    if(btn.dataset.tab === 'gallery') loadMedia();
   });
 });
 
@@ -497,7 +493,11 @@ async function handleFiles(files) {
       if(bar) bar.style.width = '100%';
       if(status) { status.textContent = '✓ Fertig'; status.classList.replace('text-brand-muted','text-green-400'); }
       await loadMedia();
-      setTimeout(() => el.remove(), 2500);
+      setTimeout(() => {
+        el.remove();
+        // Automatisch zur Medienbibliothek wechseln
+        document.querySelector('[data-tab="gallery"]').click();
+      }, 1500);
     } catch(err) {
       clearInterval(interval);
       if(bar) { bar.style.width = '100%'; bar.classList.replace('bg-brand-red','bg-red-900'); }
