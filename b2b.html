@@ -267,15 +267,15 @@
     </div>
 
     <!-- FORM -->
-    <!--
-      HINWEIS: Ersetze YOUR_B2B_FORM_ID mit einer separaten Formspree-ID für B2B-Anfragen.
-      Erstelle auf formspree.io ein zweites Formular (z.B. "B2B Anfragen").
-    -->
     <form id="b2b-contact-form"
-      action="https://formspree.io/f/YOUR_B2B_FORM_ID"
+      action="https://api.web3forms.com/submit"
       method="POST"
       class="reveal bg-brand-dark border border-brand-border rounded-2xl p-8 lg:p-12"
     >
+      <!-- Web3Forms Konfiguration -->
+      <input type="hidden" name="access_key" value="383ade13-3121-4deb-8a06-6a5f4f27d502" />
+      <input type="hidden" name="subject" value="Neue B2B-Anfrage über es-autopflege.de" />
+      <input type="hidden" name="from_name" value="ES Autopflege Website (B2B)" />
       <div class="grid sm:grid-cols-2 gap-6">
         <div>
           <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="b2b-company">Unternehmen / Autohaus *</label>
@@ -331,7 +331,7 @@
           class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors resize-none"
           placeholder="Beschreiben Sie kurz Ihr Haus, Ihren Fahrzeugbestand und was Sie sich von einer Zusammenarbeit erhoffen …"></textarea>
       </div>
-      <input type="text" name="_gotcha" class="hidden" />
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
       <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p class="text-brand-muted text-xs leading-relaxed max-w-xs">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage genutzt und nicht weitergegeben.</p>
         <button type="submit" id="b2b-submit"

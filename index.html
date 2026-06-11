@@ -1310,10 +1310,14 @@
 
         <form
           id="contact-form"
-          action="https://formspree.io/f/383ade13-3121-4deb-8a06-6a5f4f27d502"
+          action="https://api.web3forms.com/submit"
           method="POST"
           class="space-y-5"
         >
+          <!-- Web3Forms Konfiguration -->
+          <input type="hidden" name="access_key" value="383ade13-3121-4deb-8a06-6a5f4f27d502" />
+          <input type="hidden" name="subject" value="Neue Kundenanfrage über es-autopflege.de" />
+          <input type="hidden" name="from_name" value="ES Autopflege Website" />
           <div class="grid sm:grid-cols-2 gap-5">
             <div>
               <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="name">Name *</label>
@@ -1376,8 +1380,8 @@
               placeholder="Beschreiben Sie kurz Ihr Fahrzeug und den gewünschten Service …"
             ></textarea>
           </div>
-          <!-- Honeypot spam protection -->
-          <input type="text" name="_gotcha" class="hidden" />
+          <!-- Honeypot spam protection (Web3Forms) -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
           <button
             type="submit"
             id="submit-btn"
