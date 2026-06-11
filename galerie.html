@@ -302,7 +302,7 @@ initSlider('ba1','ba1-after');
 initSlider('ba2','ba2-after');
 
 // ── Lightbox ──
-const items = Array.from(document.querySelectorAll('.gallery-item'));
+let items = Array.from(document.querySelectorAll('.gallery-item'));
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
 const lbCap = document.getElementById('lb-caption');
@@ -325,10 +325,45 @@ function moveLb(dir) {
   lbCap.textContent = visible[current].dataset.title || '';
 }
 
-items.forEach((item, i) => item.addEventListener('click', () => {
-  const visible = items.filter(it => it.style.display !== 'none');
-  openLb(visible.indexOf(item));
-}));
+function bindItem(item) {
+  item.addEventListener('click', () => {
+    const visible = items.filter(it => it.style.display !== 'none');
+    openLb(visible.indexOf(item));
+  });
+}
+items.forEach(bindItem);
+
+// ── Cloud-Galerie: hochgeladene Bilder aus Vercel Blob laden ──
+(async function loadCloudGallery() {
+  try {
+    const res = await fetch('/api/list');
+    if (!res.ok) return;
+    const { blobs } = await res.json();
+    const grid = document.getElementById('gallery-grid');
+    const imgs = (blobs || []).filter(b => !/\.(mp4|webm|mov|avi)$/i.test(b.pathname));
+    // älteste zuerst prependen → neuestes Bild landet ganz oben
+    imgs.sort((a, b) => new Date(a.uploadedAt) - new Date(b.uploadedAt));
+    imgs.forEach(b => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item reveal visible aspect-square';
+      div.dataset.category = 'aussen';
+      div.dataset.title = 'ES Autopflege — Kundenfahrzeug';
+      div.innerHTML = `<img src="${b.url}" loading="lazy" alt="ES Autopflege Kundenfahrzeug"/>
+        <div class="overlay"><p class="text-white text-xs tracking-wide">ES Autopflege — Kundenfahrzeug</p></div>`;
+      grid.prepend(div);
+      bindItem(div);
+    });
+    items = Array.from(document.querySelectorAll('.gallery-item'));
+    // aktiven Filter auf neue Bilder anwenden
+    const active = document.querySelector('.filter-btn.active');
+    if (active && active.dataset.filter !== 'all') {
+      const f = active.dataset.filter;
+      items.forEach(item => { item.style.display = (item.dataset.category === f) ? '' : 'none'; });
+    }
+  } catch (e) {
+    console.warn('Galerie-API nicht erreichbar:', e.message);
+  }
+})();
 
 document.getElementById('lb-close').addEventListener('click', closeLb);
 document.getElementById('lb-prev').addEventListener('click', () => moveLb(-1));

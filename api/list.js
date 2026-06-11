@@ -16,11 +16,8 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: 'Nur GET erlaubt' });
   }
 
-  const token = req.headers['x-admin-token'];
-  if (process.env.ADMIN_SECRET && token !== process.env.ADMIN_SECRET) {
-    return res.status(401).json({ error: 'Nicht autorisiert' });
-  }
-
+  // Öffentlich lesbar: Die Galerie-Seite braucht die Liste ohne Token.
+  // (Die Blob-URLs sind ohnehin public; Upload/Delete bleiben geschützt.)
   try {
     const { blobs } = await list({
       prefix: 'gallery/',
