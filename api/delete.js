@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   }
 
   const token = req.headers['x-admin-token'];
-  if (process.env.ADMIN_SECRET && token !== process.env.ADMIN_SECRET) {
+  if (!process.env.ADMIN_SECRET || token !== process.env.ADMIN_SECRET) {
     return res.status(401).json({ error: 'Nicht autorisiert' });
   }
 

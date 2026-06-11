@@ -220,17 +220,11 @@
         <div class="bg-brand-card border border-brand-border rounded-xl p-6">
           <h3 class="text-white font-medium mb-4">Passwort ändern</h3>
           <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-            Das Passwort ist im Quellcode der <code class="text-gray-300 bg-brand-dark px-1 rounded text-xs">admin.html</code> gespeichert.
-            Suche nach <code class="text-gray-300 bg-brand-dark px-1 rounded text-xs">ADMIN_PASSWORD</code> und ändere den Wert.
+            Das Passwort wird sicher in Vercel gespeichert (Umgebungsvariable <code class="text-gray-300 bg-brand-dark px-1 rounded text-xs">ADMIN_SECRET</code>) und serverseitig geprüft — es steht nicht mehr im Quellcode.
           </p>
-          <div class="bg-brand-dark border border-brand-border rounded-lg p-4 font-mono text-sm">
-            <span class="text-brand-muted">// Zeile ca. 280 in admin.html:</span><br/>
-            <span class="text-brand-red">const</span> <span class="text-white">ADMIN_PASSWORD</span> <span class="text-brand-muted">=</span> <span class="text-green-400">'esadmin2024'</span><span class="text-brand-muted">;</span>
+          <div class="bg-brand-dark border border-brand-border rounded-lg p-4 text-sm text-gray-400 leading-relaxed">
+            Ändern: vercel.com → Projekt → Settings → Environment Variables → <span class="text-white">ADMIN_SECRET</span> bearbeiten → danach neu deployen.
           </div>
-          <p class="text-yellow-500 text-xs mt-3 flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-            Bitte ändere das Passwort vor dem ersten Einsatz!
-          </p>
         </div>
 
         <!-- Vercel Env Info -->
@@ -263,12 +257,7 @@
 
 <script>
 // ═══════════════════════════════════════════
-// CONFIG — Passwort hier ändern!
-// ═══════════════════════════════════════════
-const ADMIN_PASSWORD = 'esadmin2026';
-
-// ═══════════════════════════════════════════
-// AUTH
+// AUTH — Passwort wird serverseitig geprüft (ADMIN_SECRET in Vercel)
 // ═══════════════════════════════════════════
 const loginScreen = document.getElementById('login-screen');
 const adminScreen = document.getElementById('admin-screen');
@@ -282,10 +271,15 @@ function checkAuth() {
   }
 }
 
-document.getElementById('login-form').addEventListener('submit', e => {
+document.getElementById('login-form').addEventListener('submit', async e => {
   e.preventDefault();
   const pw = document.getElementById('password-input').value;
-  if(pw === ADMIN_PASSWORD) {
+  try {
+    const res = await fetch('/api/auth', {
+      method: 'POST',
+      headers: { 'x-admin-token': pw }
+    });
+    if(!res.ok) throw new Error('Falsches Passwort');
     sessionStorage.setItem('es_admin', 'true');
     sessionStorage.setItem('es_admin_token', pw);
     window._adminToken = pw;
@@ -293,7 +287,7 @@ document.getElementById('login-form').addEventListener('submit', e => {
     adminScreen.classList.remove('hidden');
     document.getElementById('login-error').classList.add('hidden');
     loadMedia();
-  } else {
+  } catch(err) {
     document.getElementById('login-error').classList.remove('hidden');
     document.getElementById('password-input').value = '';
   }

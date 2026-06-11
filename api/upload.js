@@ -19,6 +19,12 @@ module.exports = async (req, res) => {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Nur POST erlaubt' });
 
+  // Schutz: Upload nur mit gültigem Admin-Token
+  const token = req.headers['x-admin-token'];
+  if (!process.env.ADMIN_SECRET || token !== process.env.ADMIN_SECRET) {
+    return res.status(401).json({ error: 'Nicht autorisiert' });
+  }
+
   const filename = req.query.filename;
   if (!filename) return res.status(400).json({ error: 'filename fehlt' });
 
