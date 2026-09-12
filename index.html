@@ -573,6 +573,38 @@
   </div>
 </section>
 
+<script>
+/* Fällt die Videoquelle aus, wird das Standbild gezeigt statt eines leeren Rahmens. */
+(function () {
+  var v = document.getElementById('showcase-video');
+  if (!v) return;
+  var done = false;
+  function degrade() {
+    if (done) return;
+    done = true;
+    var frame = v.parentElement;
+    var img = document.createElement('img');
+    img.src = v.getAttribute('poster');
+    img.alt = 'Mercedes V-Klasse mit VIP-Innenausbau nach der Aufbereitung';
+    img.className = 'w-full h-full object-cover';
+    v.replaceWith(img);
+    var btn = frame.querySelector('#video-sound-btn');
+    if (btn) btn.remove();
+    var badge = frame.querySelector('.bg-brand-red\\/90');
+    if (badge) badge.textContent = 'Aus der Werkstatt';
+  }
+  v.addEventListener('error', degrade, true);
+  v.querySelectorAll('source').forEach(function (s) {
+    s.addEventListener('error', function () {
+      if (v.networkState === 3 || !v.currentSrc) degrade();
+    });
+  });
+  setTimeout(function () {
+    if (v.readyState === 0) degrade();
+  }, 6000);
+})();
+</script>
+
 <div class="red-line max-w-7xl mx-auto"></div>
 
 <!-- ═══════════════════════════════════════════════════════════
@@ -1174,16 +1206,16 @@
         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity"><p class="text-white text-xs tracking-wide">Renault Clio — Außenaufbereitung</p></div>
       </div>
       <div class="reveal aspect-square overflow-hidden rounded-lg group relative">
-        <img src="images/20250531_145625.jpg" alt="BMW M3 E46 Vollaufbereitung" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity"><p class="text-white text-xs tracking-wide">BMW M3 E46 — Vollaufbereitung</p></div>
+        <img src="images/20250531_145625.jpg" alt="BMW E46 Coupé nach der Vollaufbereitung im Lichtstudio" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity"><p class="text-white text-xs tracking-wide">BMW E46 Coupé — Vollaufbereitung</p></div>
       </div>
       <div class="reveal aspect-square overflow-hidden rounded-lg group relative">
         <img src="images/1000599740.jpg" alt="Detailpflege Hochglanz" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
         <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity"><p class="text-white text-xs tracking-wide">Detailpflege — Hochglanz</p></div>
       </div>
       <div class="reveal aspect-square overflow-hidden rounded-lg group relative">
-        <img src="images/1000625107.jpg" alt="Porsche Hebebühne Detailreinigung" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity"><p class="text-white text-xs tracking-wide">Porsche — Unterboden Detail</p></div>
+        <img src="images/1000625107.jpg" alt="Mercedes C-Klasse AMG auf der Hebebühne, Felge und Radhaus in Arbeit" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 opacity-0 group-hover:opacity-100 transition-opacity"><p class="text-white text-xs tracking-wide">Mercedes C-Klasse — Felgen &amp; Radhaus</p></div>
       </div>
       <div class="reveal aspect-square overflow-hidden rounded-lg group relative">
         <img src="images/1000616069.jpg" alt="Porsche Taycan schwarz" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
