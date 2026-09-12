@@ -1,6 +1,10 @@
 # Interne Werkzeuge — sollen nicht auf der Live-Seite erreichbar sein
 kennzeichen-unkenntlich.html
+kennzeichen-verpixeln.ps1
 video-kopieren.ps1
+
+# Gesicherte Originale mit lesbaren Kennzeichen — nicht veroeffentlichen
+images/_original/
 
 # Betriebssystem
 Thumbs.db
