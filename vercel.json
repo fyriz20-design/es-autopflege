@@ -13,10 +13,24 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/home",
-      "destination": "/",
-      "permanent": true
-    }
+    { "source": "/home", "destination": "/", "permanent": true },
+
+    { "source": "/uber-uns", "destination": "/#ueber-uns", "permanent": true },
+    { "source": "/ueber-uns", "destination": "/#ueber-uns", "permanent": true },
+    { "source": "/kontakt", "destination": "/#kontakt", "permanent": true },
+    { "source": "/preise", "destination": "/#preise", "permanent": true },
+
+    { "source": "/leistungen", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/keramikversiegelung", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/ppf", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/aussenreinigung", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/lederpflege", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/innenraumaufbereitung", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/smart-repair", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/motorwasche", "destination": "/#leistungen", "permanent": true },
+    { "source": "/leistungen/:rest*", "destination": "/#leistungen", "permanent": true },
+
+    { "source": "/gewerbekunden", "destination": "/b2b", "permanent": true },
+    { "source": "/b2b-kooperation", "destination": "/b2b", "permanent": true }
   ]
 }
