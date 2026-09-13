@@ -28,6 +28,10 @@
     .reveal.visible{opacity:1;transform:translateY(0)}
 
     /* Filter buttons */
+    /* Logo auf hellem Grund — siehe index.html */
+    .logo-plate{display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;padding:6px 12px;box-shadow:0 2px 14px rgba(0,0,0,.35);transition:box-shadow .3s ease,transform .3s ease}
+    a:hover > .logo-plate{box-shadow:0 4px 22px rgba(220,38,38,.35);transform:translateY(-1px)}
+
     .filter-btn{transition:all .2s ease}
     .filter-btn.active{background:#dc2626;color:#fff;border-color:#dc2626}
 
@@ -74,13 +78,15 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href="index.html" class="flex items-center gap-3">
-        <img
-          id="g-logo"
-          src="images/logo.svg"
-          alt="ES Autopflege Logo"
-          class="h-20 w-auto object-contain"
-          onerror="this.style.display='none'; document.getElementById('g-logo-fb').style.display='flex';"
-        />
+        <span class="logo-plate">
+          <img
+            id="g-logo"
+            src="images/logo.jpg"
+            alt="ES Autopflege &amp; Folierung — seit 2012"
+            class="h-11 lg:h-14 w-auto object-contain"
+            onerror="this.closest('.logo-plate').style.display='none'; document.getElementById('g-logo-fb').style.display='flex';"
+          />
+        </span>
         <div id="g-logo-fb" style="display:none;" class="items-center gap-2">
           <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="4" fill="#dc2626"/><text x="17" y="23" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="white">ES</text></svg>
           <div class="leading-tight">

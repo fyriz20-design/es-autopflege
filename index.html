@@ -108,6 +108,18 @@
     .red-line { height: 1px; background: linear-gradient(to right, transparent, #dc2626, transparent); }
 
     /* ─── Price card hover ─── */
+    /* ─── Logo auf hellem Grund ───
+       Das Logo liegt nur in einer dunklen Fassung mit weißem Hintergrund vor.
+       Die weiße Fläche darunter lässt es bewusst gesetzt wirken, statt dass
+       ein weißer Kasten im dunklen Header auffällt. */
+    .logo-plate{
+      display:inline-flex; align-items:center; justify-content:center;
+      background:#fff; border-radius:10px; padding:6px 12px;
+      box-shadow:0 2px 14px rgba(0,0,0,.35);
+      transition:box-shadow .3s ease, transform .3s ease;
+    }
+    a:hover > .logo-plate{ box-shadow:0 4px 22px rgba(220,38,38,.35); transform:translateY(-1px); }
+
     .price-card { transition: transform .3s ease, box-shadow .3s ease; }
     .price-card:hover { transform: translateY(-6px); box-shadow: 0 0 40px rgba(220,38,38,.18); }
     .price-card.featured { box-shadow: 0 0 40px rgba(220,38,38,.25); }
@@ -208,13 +220,15 @@
 
       <!-- Logo -->
       <a href="index.html" class="flex items-center gap-3 group">
-        <img
-          id="nav-logo"
-          src="images/logo.svg"
-          alt="ES Autopflege Logo"
-          class="h-20 w-auto object-contain"
-          onerror="this.style.display='none'; document.getElementById('nav-logo-fallback').style.display='flex';"
-        />
+        <span class="logo-plate">
+          <img
+            id="nav-logo"
+            src="images/logo.jpg"
+            alt="ES Autopflege &amp; Folierung — seit 2012"
+            class="h-11 lg:h-14 w-auto object-contain"
+            onerror="this.closest('.logo-plate').style.display='none'; document.getElementById('nav-logo-fallback').style.display='flex';"
+          />
+        </span>
         <div id="nav-logo-fallback" style="display:none;" class="items-center gap-2">
           <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="36" height="36" rx="4" fill="#dc2626"/>
@@ -1569,7 +1583,9 @@
       <!-- Brand -->
       <div class="lg:col-span-1">
         <div class="flex items-center gap-3 mb-5">
-          <img src="images/logo.svg" alt="ES Autopflege Logo" class="h-20 w-auto object-contain" />
+          <span class="logo-plate">
+            <img src="images/logo.jpg" alt="ES Autopflege &amp; Folierung — seit 2012" class="h-16 w-auto object-contain" />
+          </span>
         </div>
         <p class="text-gray-400 text-sm leading-relaxed mb-6">
           Professionelle Fahrzeugpflege und Aufbereitung in Pfalzgrafenweiler. Ihr Partner für glänzende Ergebnisse.
