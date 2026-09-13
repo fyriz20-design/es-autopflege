@@ -7,6 +7,9 @@ video-kopieren.ps1
 # Gesicherte Originale mit lesbaren Kennzeichen — nicht veroeffentlichen
 images/_original/
 
+# Vorlagen fuer den Versand — gehoeren nicht auf die Website
+vorlagen/
+
 # Betriebssystem
 Thumbs.db
 desktop.ini
