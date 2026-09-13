@@ -124,6 +124,7 @@
     <div class="border-b border-brand-border mb-8 flex gap-6">
       <button class="tab-btn active pb-3 text-sm font-medium transition-colors" data-tab="upload">Upload</button>
       <button class="tab-btn pb-3 text-sm font-medium text-brand-muted hover:text-white transition-colors" data-tab="gallery">Medienbibliothek</button>
+      <button class="tab-btn pb-3 text-sm font-medium text-brand-muted hover:text-white transition-colors" data-tab="brief">Anschreiben</button>
       <button class="tab-btn pb-3 text-sm font-medium text-brand-muted hover:text-white transition-colors" data-tab="settings">Einstellungen</button>
     </div>
 
@@ -209,6 +210,122 @@
       </div>
 
       <div id="media-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 hidden"></div>
+    </div>
+
+    <!-- TAB: ANSCHREIBEN -->
+    <div id="tab-brief" class="tab-content hidden">
+      <div class="grid lg:grid-cols-2 gap-6">
+
+        <!-- Eingaben -->
+        <div class="space-y-5">
+          <div>
+            <h2 class="text-white font-semibold">Anschreiben an Autohäuser</h2>
+            <p class="text-gray-400 text-sm mt-1">Felder ausfüllen, rechts erscheint die Vorschau. Die Eingaben bleiben in diesem Browser gespeichert.</p>
+          </div>
+
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 space-y-4">
+            <h3 class="text-white text-sm font-medium">Empfänger</h3>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Ansprechpartner</span>
+                <input type="text" data-feld="ansprechpartner" placeholder="Herr Müller"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Autohaus</span>
+                <input type="text" data-feld="autohaus" placeholder="Autohaus Mustermann"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Ort</span>
+                <input type="text" data-feld="ort" placeholder="Freudenstadt"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Durchlaufzeit</span>
+                <input type="text" data-feld="durchlaufzeit" placeholder="24 bis 48 Stunden"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+            </div>
+          </div>
+
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 space-y-4">
+            <h3 class="text-white text-sm font-medium">Preise &amp; Konditionen</h3>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Basis</span>
+                <input type="text" data-feld="preisBasis" placeholder="ab 89 €"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Komplett</span>
+                <input type="text" data-feld="preisKomplett" placeholder="ab 249 €"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Premium</span>
+                <input type="text" data-feld="preisPremium" placeholder="ab 599 €"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Ab Stückzahl / Monat</span>
+                <input type="text" data-feld="stueckzahl" placeholder="5"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+              <label class="block">
+                <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">Händlerrabatt</span>
+                <input type="text" data-feld="rabatt" placeholder="15 %"
+                  class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              </label>
+            </div>
+          </div>
+
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 space-y-3">
+            <h3 class="text-white text-sm font-medium">Betreffzeile</h3>
+            <select id="brief-betreff" class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors">
+              <option class="bg-brand-card">Aufbereitung für Ihren Fahrzeugbestand — feste Konditionen, kurze Durchlaufzeiten</option>
+              <option class="bg-brand-card">Weniger Standzeit, besserer Ersteindruck — Aufbereitung aus Pfalzgrafenweiler</option>
+              <option class="bg-brand-card">Ein Testfahrzeug, kostenfrei aufbereitet</option>
+              <option class="bg-brand-card">Kapazität für Ihre Aufbereitung — kurzfristig verfügbar</option>
+            </select>
+            <button id="brief-betreff-copy" class="w-full border border-brand-border hover:border-gray-500 text-gray-300 hover:text-white px-4 py-2.5 rounded-lg text-sm transition-colors">
+              Betreff kopieren
+            </button>
+          </div>
+
+          <div id="brief-warnung" class="hidden bg-yellow-500/10 border border-yellow-600/40 rounded-xl p-4 text-sm text-yellow-300 leading-relaxed"></div>
+
+          <div class="grid sm:grid-cols-2 gap-3">
+            <button id="brief-copy" class="bg-brand-red hover:bg-red-700 text-white px-5 py-3 rounded-lg text-sm font-medium transition-colors">
+              HTML kopieren
+            </button>
+            <button id="brief-download" class="border border-brand-border hover:border-gray-500 text-gray-300 hover:text-white px-5 py-3 rounded-lg text-sm transition-colors">
+              Als Datei speichern
+            </button>
+          </div>
+
+          <p class="text-brand-muted text-xs leading-relaxed">
+            „HTML kopieren“ legt den fertigen Code in die Zwischenablage — direkt einfügbar in
+            Outlook, Thunderbird oder ein Newsletter-Werkzeug. Noch nicht ausgefüllte Felder
+            bleiben als auffälliger Platzhalter stehen.
+          </p>
+        </div>
+
+        <!-- Vorschau -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-white text-sm font-medium">Vorschau</h3>
+            <span id="brief-status" class="text-xs text-brand-muted"></span>
+          </div>
+          <div class="border border-brand-border rounded-xl overflow-hidden bg-white">
+            <iframe id="brief-vorschau" title="Vorschau des Anschreibens"
+              style="width:100%;height:760px;border:0;display:block;background:#f4f4f5;"></iframe>
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <!-- TAB: SETTINGS -->
@@ -315,8 +432,265 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.remove('text-brand-muted');
     document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
     if(btn.dataset.tab === 'gallery') loadMedia();
+    if(btn.dataset.tab === 'brief') briefAktualisieren();
   });
 });
+
+// ═══════════════════════════════════════════
+// ANSCHREIBEN AN AUTOHÄUSER
+// ═══════════════════════════════════════════
+(function () {
+  var SPEICHER = 'es_brief_felder';
+
+  var felder = [
+    { name: 'ansprechpartner', platzhalter: '[ANSPRECHPARTNER]' },
+    { name: 'autohaus',        platzhalter: '[AUTOHAUS NAME]' },
+    { name: 'ort',             platzhalter: '[ORT]' },
+    { name: 'durchlaufzeit',   platzhalter: '[DURCHLAUFZEIT]' },
+    { name: 'preisBasis',      platzhalter: '[PREIS BASIS]' },
+    { name: 'preisKomplett',   platzhalter: '[PREIS KOMPLETT]' },
+    { name: 'preisPremium',    platzhalter: '[PREIS PREMIUM]' },
+    { name: 'stueckzahl',      platzhalter: '[STÜCKZAHL]' },
+    { name: 'rabatt',          platzhalter: '[RABATT]' }
+  ];
+
+  var eingaben  = {};
+  var vorschau  = document.getElementById('brief-vorschau');
+  var statusEl  = document.getElementById('brief-status');
+  var warnungEl = document.getElementById('brief-warnung');
+
+  if (!vorschau) return;
+
+  felder.forEach(function (f) {
+    eingaben[f.name] = document.querySelector('[data-feld="' + f.name + '"]');
+  });
+
+  function escape(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // Ausgefüllt = normaler Text. Leer = gelber Platzhalter, der ins Auge springt.
+  function wert(f, gross) {
+    var el = eingaben[f.name];
+    var v  = el && el.value ? el.value.trim() : '';
+    if (v) return escape(v);
+    return '<span style="background-color:#FFEB3B;color:#000000;font-weight:bold;' +
+           (gross ? 'font-size:15px;padding:4px 8px;border:2px dashed #b45309;'
+                  : 'padding:2px 6px;border:1px dashed #b45309;') + '">' +
+           f.platzhalter + '</span>';
+  }
+
+  function w(name, gross) {
+    var f = felder.filter(function (x) { return x.name === name; })[0];
+    return wert(f, gross);
+  }
+
+  function briefHtml() {
+    return [
+'<div style="margin:0;padding:0;background-color:#f4f4f5;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f4f4f5;margin:0;padding:0;">',
+'<tr><td align="center" style="padding:24px 12px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" style="width:100%;max-width:640px;background-color:#ffffff;border-radius:8px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">',
+
+'<tr><td style="background-color:#0c0f1a;padding:28px 32px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>',
+'<td style="font-family:Georgia,\'Times New Roman\',serif;font-size:22px;font-weight:bold;color:#ffffff;letter-spacing:0.5px;">ES&nbsp;Autopflege</td>',
+'<td align="right" style="font-size:12px;color:#9ca3af;letter-spacing:1.5px;text-transform:uppercase;">Seit 2012</td>',
+'</tr><tr><td colspan="2" style="padding-top:6px;font-size:13px;color:#9ca3af;">Professionelle Fahrzeugaufbereitung &middot; Pfalzgrafenweiler</td></tr></table>',
+'</td></tr>',
+'<tr><td style="height:3px;background-color:#dc2626;font-size:0;line-height:0;">&nbsp;</td></tr>',
+
+'<tr><td style="padding:32px 32px 0 32px;font-size:15px;line-height:1.65;color:#1f2937;">',
+'<p style="margin:0 0 20px 0;">Sehr geehrte(r) ' + w('ansprechpartner') + ',</p>',
+'<p style="margin:0 0 18px 0;">ein Fahrzeug, das auf Ihrem Hof steht, kostet Geld. Eines, das aussieht wie frisch ausgeliefert, steht deutlich k&uuml;rzer. Genau an dieser Stelle setzen wir an.</p>',
+'<p style="margin:0 0 18px 0;">Wir &uuml;bernehmen die Aufbereitung Ihrer Neu- und Gebrauchtwagen &mdash; in gleichbleibender Qualit&auml;t, zu fest vereinbarten Konditionen und ohne dass Sie daf&uuml;r eigene Mitarbeiter abstellen m&uuml;ssen. Seit 2012 betreuen wir Fahrzeuge in der Region, vom Kompaktwagen bis zum Supersportler, in einer Halle mit Hebeb&uuml;hne und LED-Lichtwand.</p>',
+'<p style="margin:0 0 24px 0;">F&uuml;r ' + w('autohaus') + ' in ' + w('ort') + ' bedeutet das konkret:</p>',
+'</td></tr>',
+
+'<tr><td style="padding:0 32px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f9fafb;border-left:3px solid #dc2626;"><tr>',
+'<td style="padding:18px 20px;font-size:14px;line-height:1.7;color:#374151;">',
+'<strong style="color:#111827;">K&uuml;rzere Standzeiten</strong><br>Ein verkaufsfertiges Fahrzeug geht schneller vom Hof. Wir liefern in ' + w('durchlaufzeit') + ' zur&uuml;ck, auf Wunsch mit Hol- und Bringservice.<br><br>',
+'<strong style="color:#111827;">H&ouml;herer Wiederverkaufswert</strong><br>Aufgewertete Inzahlungnahmen erzielen sp&uuml;rbar bessere Preise. Lackkorrektur und Innenraumaufbereitung rechnen sich meist schon beim ersten Fahrzeug.<br><br>',
+'<strong style="color:#111827;">Ersteindruck, der tr&auml;gt</strong><br>Der Kunde entscheidet in den ersten Sekunden. Ein makelloser Lack und ein sauberer Innenraum arbeiten f&uuml;r Ihren Verk&auml;ufer, bevor das erste Wort f&auml;llt.',
+'</td></tr></table></td></tr>',
+
+'<tr><td style="padding:32px 32px 0 32px;">',
+'<p style="margin:0 0 4px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#dc2626;font-weight:bold;">Unsere Pakete</p>',
+'<p style="margin:0 0 18px 0;font-family:Georgia,\'Times New Roman\',serif;font-size:21px;color:#111827;">Drei Stufen, klar abgegrenzt</p>',
+'</td></tr>',
+
+'<tr><td style="padding:0 32px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;font-size:14px;">',
+'<tr>',
+'<td style="background-color:#0c0f1a;color:#ffffff;padding:12px 14px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:bold;">Paket</td>',
+'<td style="background-color:#0c0f1a;color:#ffffff;padding:12px 14px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:bold;">Leistungen</td>',
+'<td align="right" style="background-color:#0c0f1a;color:#ffffff;padding:12px 14px;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:bold;white-space:nowrap;">Je Fahrzeug</td>',
+'</tr>',
+'<tr>',
+'<td valign="top" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;color:#111827;font-weight:bold;white-space:nowrap;">1 &middot; Basis</td>',
+'<td valign="top" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;color:#4b5563;line-height:1.6;">Handw&auml;sche au&szlig;en, Felgen und Reifenpflege,<br>Innenraum aussaugen, Scheiben innen und au&szlig;en,<br>Kunststoff- und Armaturenpflege</td>',
+'<td valign="top" align="right" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;white-space:nowrap;">' + w('preisBasis', true) + '</td>',
+'</tr>',
+'<tr>',
+'<td valign="top" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;color:#111827;font-weight:bold;white-space:nowrap;">2 &middot; Komplett</td>',
+'<td valign="top" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;color:#4b5563;line-height:1.6;">Alles aus Basis, zus&auml;tzlich:<br>Maschinelle Lackpolitur, Flugrostentfernung,<br>Polsterreinigung oder Lederpflege, Motorraum,<br>Geruchsneutralisierung auf Wunsch</td>',
+'<td valign="top" align="right" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;white-space:nowrap;">' + w('preisKomplett', true) + '</td>',
+'</tr>',
+'<tr>',
+'<td valign="top" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;color:#111827;font-weight:bold;white-space:nowrap;">3 &middot; Premium<br><span style="font-weight:normal;font-size:12px;color:#6b7280;">Keramikversiegelung</span></td>',
+'<td valign="top" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;color:#4b5563;line-height:1.6;">Alles aus Komplett, zus&auml;tzlich:<br>Mehrstufige Lackkorrektur,<br>Keramikversiegelung mit mehreren Jahren Standzeit,<br>Showroom-Finish &mdash; f&uuml;r Neuwagen und Premium-Gebrauchte</td>',
+'<td valign="top" align="right" style="border-bottom:1px solid #e5e7eb;padding:16px 14px;white-space:nowrap;">' + w('preisPremium', true) + '</td>',
+'</tr>',
+'</table>',
+'<p style="margin:12px 0 0 0;font-size:12px;color:#6b7280;line-height:1.6;">Alle Preise zzgl. MwSt. Endpreis abh&auml;ngig von Fahrzeuggr&ouml;&szlig;e und Zustand. Sonderleistungen wie Lackschutzfolie, Smart Repair oder Scheibent&ouml;nung auf Anfrage.</p>',
+'</td></tr>',
+
+'<tr><td style="padding:28px 32px 0 32px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#fff7ed;border:1px solid #fed7aa;border-radius:6px;"><tr><td style="padding:20px;">',
+'<p style="margin:0 0 12px 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c2410c;font-weight:bold;">H&auml;ndlerkonditionen</p>',
+'<p style="margin:0 0 14px 0;font-size:14px;line-height:1.65;color:#374151;">Bei regelm&auml;&szlig;iger Abnahme ab ' + w('stueckzahl') + ' Fahrzeugen im Monat gew&auml;hren wir einen Nachlass von ' + w('rabatt', true) + ' auf alle Pakete.</p>',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="font-size:13px;color:#4b5563;">',
+'<tr><td style="padding:4px 0;">Feste Ansprechperson und verbindliche Termine</td></tr>',
+'<tr><td style="padding:4px 0;">Monatliche Sammelrechnung statt Einzelabrechnung</td></tr>',
+'<tr><td style="padding:4px 0;">Hol- und Bringservice im Umkreis nach Absprache</td></tr>',
+'</table></td></tr></table></td></tr>',
+
+'<tr><td style="padding:32px 32px 0 32px;font-size:15px;line-height:1.65;color:#1f2937;">',
+'<p style="margin:0 0 18px 0;">Am einfachsten &uuml;berzeugen Sie sich selbst: <strong>Geben Sie uns ein Fahrzeug aus Ihrem Bestand.</strong> Wir bereiten es auf, Sie sehen das Ergebnis &mdash; und entscheiden danach in Ruhe, ob eine Zusammenarbeit f&uuml;r Sie Sinn ergibt.</p>',
+'<p style="margin:0 0 24px 0;">Ein kurzes Telefonat von zehn Minuten gen&uuml;gt, um Umfang und Konditionen zu kl&auml;ren. Rufen Sie gern an oder antworten Sie einfach auf diese E-Mail.</p>',
+'</td></tr>',
+
+'<tr><td align="center" style="padding:0 32px 8px 32px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#dc2626;border-radius:4px;">',
+'<a href="tel:+4915779711281" style="display:inline-block;padding:14px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;">Jetzt anrufen &middot; 01577 9711281</a>',
+'</td></tr></table></td></tr>',
+'<tr><td align="center" style="padding:12px 32px 0 32px;font-size:13px;color:#6b7280;">oder schreiben an <a href="mailto:info@es-autopflege.de" style="color:#dc2626;text-decoration:none;font-weight:bold;">info@es-autopflege.de</a></td></tr>',
+
+'<tr><td style="padding:28px 32px 0 32px;font-size:15px;line-height:1.65;color:#1f2937;">',
+'<p style="margin:0 0 4px 0;">Mit freundlichen Gr&uuml;&szlig;en</p>',
+'<p style="margin:0 0 2px 0;font-weight:bold;color:#111827;">Erdem Sarioglu</p>',
+'<p style="margin:0;font-size:13px;color:#6b7280;">ES Autopflege e.K.</p>',
+'</td></tr>',
+
+'<tr><td style="padding:28px 32px 32px 32px;">',
+'<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid #e5e7eb;"><tr>',
+'<td style="padding-top:18px;font-size:12px;line-height:1.7;color:#9ca3af;">',
+'<strong style="color:#4b5563;">ES Autopflege e.K.</strong><br>Spielberger Str. 9 &middot; 72285 Pfalzgrafenweiler<br>',
+'Telefon 01577 9711281 &middot; <a href="mailto:info@es-autopflege.de" style="color:#9ca3af;text-decoration:none;">info@es-autopflege.de</a><br>',
+'<a href="https://es-autopflege.de" style="color:#dc2626;text-decoration:none;">es-autopflege.de</a><br><br>',
+'Sie m&ouml;chten keine weiteren Nachrichten von uns erhalten? Eine formlose Antwort mit dem Wort &bdquo;Abbestellen&ldquo; gen&uuml;gt, wir l&ouml;schen Ihre Adresse umgehend.',
+'</td></tr></table></td></tr>',
+
+'</table></td></tr></table></div>'
+    ].join('');
+  }
+
+  function offeneFelder() {
+    return felder.filter(function (f) {
+      var el = eingaben[f.name];
+      return !el || !el.value.trim();
+    });
+  }
+
+  function briefAktualisieren() {
+    var html = briefHtml();
+    var dok = vorschau.contentDocument || vorschau.contentWindow.document;
+    dok.open();
+    dok.write('<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"></head><body style="margin:0">' + html + '</body></html>');
+    dok.close();
+
+    var offen = offeneFelder();
+    if (offen.length) {
+      warnungEl.classList.remove('hidden');
+      warnungEl.textContent = 'Noch offen: ' + offen.map(function (f) { return f.platzhalter; }).join(', ') +
+        ' — diese Stellen erscheinen beim Empfänger gelb markiert.';
+      statusEl.textContent = offen.length + ' Feld' + (offen.length === 1 ? '' : 'er') + ' offen';
+      statusEl.style.color = '#facc15';
+    } else {
+      warnungEl.classList.add('hidden');
+      statusEl.textContent = 'Vollständig ausgefüllt';
+      statusEl.style.color = '#4ade80';
+    }
+    return html;
+  }
+  window.briefAktualisieren = briefAktualisieren;
+
+  function speichern() {
+    var daten = {};
+    felder.forEach(function (f) {
+      if (eingaben[f.name]) daten[f.name] = eingaben[f.name].value;
+    });
+    try { localStorage.setItem(SPEICHER, JSON.stringify(daten)); } catch (e) {}
+  }
+
+  function laden() {
+    try {
+      var daten = JSON.parse(localStorage.getItem(SPEICHER) || '{}');
+      felder.forEach(function (f) {
+        if (eingaben[f.name] && daten[f.name]) eingaben[f.name].value = daten[f.name];
+      });
+    } catch (e) {}
+  }
+
+  felder.forEach(function (f) {
+    if (!eingaben[f.name]) return;
+    eingaben[f.name].addEventListener('input', function () {
+      speichern();
+      briefAktualisieren();
+    });
+  });
+
+  function rueckmeldung(btn, text) {
+    var alt = btn.textContent;
+    btn.textContent = text;
+    setTimeout(function () { btn.textContent = alt; }, 1800);
+  }
+
+  async function inZwischenablage(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (e) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e2) {}
+      document.body.removeChild(ta);
+      return ok;
+    }
+  }
+
+  document.getElementById('brief-copy').addEventListener('click', async function () {
+    var ok = await inZwischenablage(briefAktualisieren());
+    rueckmeldung(this, ok ? 'HTML kopiert' : 'Kopieren fehlgeschlagen');
+  });
+
+  document.getElementById('brief-betreff-copy').addEventListener('click', async function () {
+    var ok = await inZwischenablage(document.getElementById('brief-betreff').value);
+    rueckmeldung(this, ok ? 'Betreff kopiert' : 'Kopieren fehlgeschlagen');
+  });
+
+  document.getElementById('brief-download').addEventListener('click', function () {
+    var html = '<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n<title>Anschreiben</title>\n</head>\n<body style="margin:0">\n' +
+               briefAktualisieren() + '\n</body>\n</html>';
+    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    var el = eingaben.autohaus;
+    var name = (el && el.value.trim() ? el.value.trim().replace(/[^a-zA-Z0-9äöüÄÖÜß -]/g, '').replace(/\s+/g, '-') : 'Anschreiben');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Anschreiben-' + name + '.html';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    rueckmeldung(this, 'Gespeichert');
+  });
+
+  laden();
+})();
 
 // ═══════════════════════════════════════════
 // MEDIA STORAGE (Vercel Blob API)
