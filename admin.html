@@ -247,6 +247,12 @@
                   class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
               </label>
             </div>
+            <label class="block">
+              <span class="block text-brand-muted text-xs tracking-widest uppercase mb-1.5">E-Mail-Adresse des Empfängers</span>
+              <input type="email" id="brief-empfaenger" placeholder="einkauf@autohaus-mustermann.de" autocomplete="off"
+                class="w-full bg-brand-dark border border-brand-border rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-brand-red transition-colors"/>
+              <span id="brief-empfaenger-fehler" class="hidden block text-red-400 text-xs mt-1.5"></span>
+            </label>
           </div>
 
           <div class="bg-brand-card border border-brand-border rounded-xl p-5 space-y-4">
@@ -297,8 +303,12 @@
 
           <div id="brief-warnung" class="hidden bg-yellow-500/10 border border-yellow-600/40 rounded-xl p-4 text-sm text-yellow-300 leading-relaxed"></div>
 
+          <button id="brief-entwurf" class="w-full bg-brand-red hover:bg-red-700 text-white px-5 py-3.5 rounded-lg text-sm font-medium transition-colors">
+            Entwurf im Mailprogramm öffnen
+          </button>
+
           <div class="grid sm:grid-cols-2 gap-3">
-            <button id="brief-copy" class="bg-brand-red hover:bg-red-700 text-white px-5 py-3 rounded-lg text-sm font-medium transition-colors">
+            <button id="brief-copy" class="border border-brand-border hover:border-gray-500 text-gray-300 hover:text-white px-5 py-3 rounded-lg text-sm transition-colors">
               HTML kopieren
             </button>
             <button id="brief-download" class="border border-brand-border hover:border-gray-500 text-gray-300 hover:text-white px-5 py-3 rounded-lg text-sm transition-colors">
@@ -307,9 +317,15 @@
           </div>
 
           <p class="text-brand-muted text-xs leading-relaxed">
-            „HTML kopieren“ legt den fertigen Code in die Zwischenablage — direkt einfügbar in
-            Outlook, Thunderbird oder ein Newsletter-Werkzeug. Noch nicht ausgefüllte Felder
-            bleiben als auffälliger Platzhalter stehen.
+            Der Entwurf wird als <code class="text-gray-400">.eml</code>-Datei heruntergeladen.
+            Doppelklick öffnet sie in Outlook oder Thunderbird — mit Empfänger, Betreff und
+            fertigem Layout. <span class="text-gray-400">Gesendet wird erst, wenn du selbst
+            auf Senden drückst.</span>
+          </p>
+
+          <p class="text-brand-muted text-xs leading-relaxed">
+            „HTML kopieren“ legt stattdessen den Code in die Zwischenablage, falls du lieber
+            direkt in ein Webmail-Fenster einfügst.
           </p>
         </div>
 
@@ -673,6 +689,89 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   document.getElementById('brief-betreff-copy').addEventListener('click', async function () {
     var ok = await inZwischenablage(document.getElementById('brief-betreff').value);
     rueckmeldung(this, ok ? 'Betreff kopiert' : 'Kopieren fehlgeschlagen');
+  });
+
+  // ── Entwurf als .eml erzeugen ──────────────────────────
+  function utf8Base64(text) {
+    var bytes = new TextEncoder().encode(text);
+    var roh = '';
+    bytes.forEach(function (b) { roh += String.fromCharCode(b); });
+    return btoa(roh);
+  }
+
+  // Betreff nach RFC 2047 kodieren, damit Umlaute nicht zerbrechen
+  function betreffKodiert(text) {
+    if (/^[\x20-\x7E]*$/.test(text)) return text;
+    return '=?UTF-8?B?' + utf8Base64(text) + '?=';
+  }
+
+  function base64Zeilen(b64) {
+    return (b64.match(/.{1,76}/g) || []).join('\r\n');
+  }
+
+  document.getElementById('brief-entwurf').addEventListener('click', function () {
+    var feldEmpf = document.getElementById('brief-empfaenger');
+    var fehlerEl = document.getElementById('brief-empfaenger-fehler');
+    var empf = feldEmpf.value.trim();
+
+    // Eingabe pruefen, bevor irgendetwas erzeugt wird
+    if (!empf) {
+      fehlerEl.textContent = 'Bitte zuerst die E-Mail-Adresse des Empfängers eintragen.';
+      fehlerEl.classList.remove('hidden');
+      feldEmpf.focus();
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(empf)) {
+      fehlerEl.textContent = 'Das sieht nicht nach einer gültigen Adresse aus.';
+      fehlerEl.classList.remove('hidden');
+      feldEmpf.focus();
+      return;
+    }
+    fehlerEl.classList.add('hidden');
+
+    var offen = offeneFelder();
+    if (offen.length) {
+      var weiter = confirm(
+        'Noch ' + offen.length + ' Feld' + (offen.length === 1 ? '' : 'er') + ' nicht ausgefüllt:\n\n' +
+        offen.map(function (f) { return '   ' + f.platzhalter; }).join('\n') +
+        '\n\nDiese Stellen erscheinen beim Empfänger gelb markiert.\nTrotzdem einen Entwurf erzeugen?'
+      );
+      if (!weiter) return;
+    }
+
+    var betreff = document.getElementById('brief-betreff').value;
+    var html = '<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"></head><body style="margin:0">' +
+               briefAktualisieren() + '</body></html>';
+
+    var eml = [
+      'From: ES Autopflege <info@es-autopflege.de>',
+      'To: ' + empf,
+      'Subject: ' + betreffKodiert(betreff),
+      'Date: ' + new Date().toUTCString().replace('GMT', '+0000'),
+      'X-Unsent: 1',
+      'MIME-Version: 1.0',
+      'Content-Type: text/html; charset=UTF-8',
+      'Content-Transfer-Encoding: base64',
+      '',
+      base64Zeilen(utf8Base64(html)),
+      ''
+    ].join('\r\n');
+
+    var blob = new Blob([eml], { type: 'message/rfc822' });
+    var el = eingaben.autohaus;
+    var name = (el && el.value.trim()
+      ? el.value.trim().replace(/[^a-zA-Z0-9äöüÄÖÜß -]/g, '').replace(/\s+/g, '-')
+      : 'Anschreiben');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Entwurf-' + name + '.eml';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    rueckmeldung(this, 'Entwurf erzeugt — Datei öffnen');
+  });
+
+  document.getElementById('brief-empfaenger').addEventListener('input', function () {
+    document.getElementById('brief-empfaenger-fehler').classList.add('hidden');
   });
 
   document.getElementById('brief-download').addEventListener('click', function () {
