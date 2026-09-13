@@ -717,6 +717,91 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     return (b64.match(/.{1,76}/g) || []).join('\r\n');
   }
 
+  // Reiner Feldwert ohne HTML — fuer die Textfassung
+  function pv(name) {
+    var f = felder.filter(function (x) { return x.name === name; })[0];
+    var el = eingaben[f.name];
+    var v = el && el.value ? el.value.trim() : '';
+    return v || f.platzhalter;
+  }
+
+  // Textfassung des Anschreibens. Mails ohne Textteil gelten bei
+  // Spamfiltern als verdaechtig — jedes ordentliche Programm schickt beides.
+  function briefText() {
+    return [
+'Sehr geehrte(r) ' + pv('ansprechpartner') + ',',
+'',
+'ein Fahrzeug, das auf Ihrem Hof steht, kostet Geld. Eines, das aussieht wie',
+'frisch ausgeliefert, steht deutlich kuerzer. Genau an dieser Stelle setzen',
+'wir an.',
+'',
+'Wir uebernehmen die Aufbereitung Ihrer Neu- und Gebrauchtwagen - in',
+'gleichbleibender Qualitaet, zu fest vereinbarten Konditionen und ohne dass',
+'Sie dafuer eigene Mitarbeiter abstellen muessen. Seit 2012 betreuen wir',
+'Fahrzeuge in der Region, vom Kompaktwagen bis zum Supersportler, in einer',
+'Halle mit Hebebuehne und LED-Lichtwand.',
+'',
+'Fuer ' + pv('autohaus') + ' in ' + pv('ort') + ' bedeutet das konkret:',
+'',
+'KUERZERE STANDZEITEN',
+'Ein verkaufsfertiges Fahrzeug geht schneller vom Hof. Wir liefern in',
+pv('durchlaufzeit') + ' zurueck, auf Wunsch mit Hol- und Bringservice.',
+'',
+'HOEHERER WIEDERVERKAUFSWERT',
+'Aufgewertete Inzahlungnahmen erzielen spuerbar bessere Preise.',
+'',
+'ERSTEINDRUCK, DER TRAEGT',
+'Der Kunde entscheidet in den ersten Sekunden.',
+'',
+'',
+'UNSERE PAKETE',
+'',
+'1 - Basis: ' + pv('preisBasis') + ' je Fahrzeug',
+'    Handwaesche aussen, Felgen und Reifenpflege, Innenraum aussaugen,',
+'    Scheiben innen und aussen, Kunststoff- und Armaturenpflege',
+'',
+'2 - Komplett: ' + pv('preisKomplett') + ' je Fahrzeug',
+'    Alles aus Basis, zusaetzlich maschinelle Lackpolitur,',
+'    Flugrostentfernung, Polsterreinigung oder Lederpflege, Motorraum',
+'',
+'3 - Premium (Keramikversiegelung): ' + pv('preisPremium') + ' je Fahrzeug',
+'    Alles aus Komplett, zusaetzlich mehrstufige Lackkorrektur,',
+'    Keramikversiegelung mit mehreren Jahren Standzeit, Showroom-Finish',
+'',
+'Alle Preise zzgl. MwSt. Endpreis abhaengig von Fahrzeuggroesse und Zustand.',
+'',
+'',
+'HAENDLERKONDITIONEN',
+'Bei regelmaessiger Abnahme ab ' + pv('stueckzahl') + ' Fahrzeugen im Monat',
+'gewaehren wir einen Nachlass von ' + pv('rabatt') + ' auf alle Pakete.',
+'Feste Ansprechperson, verbindliche Termine, monatliche Sammelrechnung,',
+'Hol- und Bringservice im Umkreis nach Absprache.',
+'',
+'',
+'Am einfachsten ueberzeugen Sie sich selbst: Geben Sie uns ein Fahrzeug aus',
+'Ihrem Bestand. Wir bereiten es auf, Sie sehen das Ergebnis - und entscheiden',
+'danach in Ruhe, ob eine Zusammenarbeit fuer Sie Sinn ergibt.',
+'',
+'Ein kurzes Telefonat von zehn Minuten genuegt. Rufen Sie gern an oder',
+'antworten Sie einfach auf diese E-Mail.',
+'',
+'Telefon: 01577 9711281',
+'E-Mail:  info@es-autopflege.de',
+'',
+'Mit freundlichen Gruessen',
+'Erdem Sarioglu',
+'ES Autopflege e.K.',
+'',
+'--',
+'ES Autopflege e.K. | Spielberger Str. 9 | 72285 Pfalzgrafenweiler',
+'Telefon 01577 9711281 | info@es-autopflege.de | es-autopflege.de',
+'',
+'Sie moechten keine weiteren Nachrichten von uns erhalten? Eine formlose',
+'Antwort mit dem Wort "Abbestellen" genuegt, wir loeschen Ihre Adresse',
+'umgehend.'
+    ].join('\r\n');
+  }
+
   document.getElementById('brief-entwurf').addEventListener('click', function () {
     var feldEmpf = document.getElementById('brief-empfaenger');
     var fehlerEl = document.getElementById('brief-empfaenger-fehler');
@@ -754,16 +839,33 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     // Kein From-Header: Das Mailprogramm setzt den Absender selbst ein.
     // Fest eingetragen fuehrt er zu SPF-Konflikten, wenn Outlook ueber ein
     // anderes Konto versendet — die Mail wird dann oft stillschweigend verworfen.
+    //
+    // Zwei Teile (Text und HTML): Reine HTML-Mails ohne Textfassung sind ein
+    // klassisches Spam-Merkmal. Das Mailprogramm des Empfaengers zeigt
+    // automatisch die passende Variante an.
+    var grenze = '----=_ESAutopflege_' + Date.now();
+
     var eml = [
       'To: ' + empf,
       'Subject: ' + betreffKodiert(betreff),
       'Date: ' + new Date().toUTCString().replace('GMT', '+0000'),
       'X-Unsent: 1',
       'MIME-Version: 1.0',
+      'Content-Type: multipart/alternative; boundary="' + grenze + '"',
+      '',
+      '--' + grenze,
+      'Content-Type: text/plain; charset=UTF-8',
+      'Content-Transfer-Encoding: base64',
+      '',
+      base64Zeilen(utf8Base64(briefText())),
+      '',
+      '--' + grenze,
       'Content-Type: text/html; charset=UTF-8',
       'Content-Transfer-Encoding: base64',
       '',
       base64Zeilen(utf8Base64(html)),
+      '',
+      '--' + grenze + '--',
       ''
     ].join('\r\n');
 
