@@ -1726,46 +1726,62 @@
               class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors appearance-none"
             >
               <option value="" class="bg-brand-card">Bitte wählen …</option>
-              <optgroup label="── Fahrzeugpflege-Pakete ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Bronze Paket – Basis Innenraumpflege (ab 69 €)" class="bg-brand-card">Bronze – Basis Innenraumpflege (ab 69 €)</option>
-              <option value="Silber Paket – Polster & Leder Nassreinigung (ab 149 €)" class="bg-brand-card">Silber – Polster &amp; Leder Nassreinigung (ab 149 €)</option>
-              <option value="Gold Paket – Premium Außenpflege (ab 149 €)" class="bg-brand-card">Gold – Premium Außenpflege (ab 149 €)</option>
-              <option value="Platinum Paket – Intensiv Aufbereitung (ab 449 €)" class="bg-brand-card">Platinum – Intensiv Aufbereitung (ab 449 €)</option>
-              <optgroup label="── PPF Schutzpakete ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="PPF Front Paket (ab 1.899 €)" class="bg-brand-card">PPF Front Paket (ab 1.899 €)</option>
-              <option value="PPF Front + Schweller Paket (ab 2.399 €)" class="bg-brand-card">PPF Front + Schweller (ab 2.399 €)</option>
-              <option value="PPF Front Premium Paket (ab 2.799 €)" class="bg-brand-card">PPF Front Premium (ab 2.799 €)</option>
-              <option value="PPF Komplett + Keramikversiegelung (ab 3.499 €)" class="bg-brand-card">PPF Komplett + Keramik (ab 3.499 €)</option>
-              <optgroup label="── Scheibentönung ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Scheibentönung – Kleinwagen 3-Türer (ab 139 €)" class="bg-brand-card">Scheibentönung – Kleinwagen 3-Türer (ab 139 €)</option>
-              <option value="Scheibentönung – Kleinwagen 5-Türer (ab 179 €)" class="bg-brand-card">Scheibentönung – Kleinwagen 5-Türer (ab 179 €)</option>
-              <option value="Scheibentönung – Mittelklasse (ab 199 €)" class="bg-brand-card">Scheibentönung – Mittelklasse (ab 199 €)</option>
-              <option value="Scheibentönung – Obere Mittelklasse (ab 239 €)" class="bg-brand-card">Scheibentönung – Obere Mittelklasse (ab 239 €)</option>
-              <option value="Scheibentönung – Kombi (ab 269 €)" class="bg-brand-card">Scheibentönung – Kombi (ab 269 €)</option>
-              <option value="Scheibentönung – Oberklasse (ab 279 €)" class="bg-brand-card">Scheibentönung – Oberklasse (ab 279 €)</option>
-              <optgroup label="── Folierung ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Fahrzeugfolierung / Car Wrapping" class="bg-brand-card">Fahrzeugfolierung / Car Wrapping</option>
-              <option value="Scheibenfolierung" class="bg-brand-card">Scheibenfolierung</option>
-              <option value="Flachglasfolierung / Sonnenschutz für Gebäude" class="bg-brand-card">Flachglasfolierung / Sonnenschutz (Gebäude)</option>
-              <optgroup label="── Einzelleistungen ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Lackaufbereitung &amp; Politur" class="bg-brand-card">Lackaufbereitung &amp; Politur</option>
-              <option value="Dellenentfernung ohne Lackieren" class="bg-brand-card">Dellenentfernung ohne Lackieren</option>
-              <option value="Felgenaufbereitung &amp; Versiegelung" class="bg-brand-card">Felgenaufbereitung &amp; Versiegelung</option>
-              <option value="Scheinwerferaufbereitung (ab 49 €)" class="bg-brand-card">Scheinwerferaufbereitung (ab 49 €)</option>
-              <option value="Lederpflege &amp; Farbauffrischung (ab 129 €)" class="bg-brand-card">Lederpflege &amp; Farbauffrischung (ab 129 €)</option>
-              <option value="Smart Repair (ab 79 €)" class="bg-brand-card">Smart Repair (ab 79 €)</option>
-              <option value="Motorraumreinigung (ab 59 €)" class="bg-brand-card">Motorraumreinigung (ab 59 €)</option>
-              <optgroup label="── Fahrzeugarten ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Motorradaufbereitung" class="bg-brand-card">Motorradaufbereitung</option>
-              <option value="Nutzfahrzeug / Transporter" class="bg-brand-card">Nutzfahrzeug / Transporter</option>
-              <option value="Wohnmobil / Caravan" class="bg-brand-card">Wohnmobil / Caravan</option>
-              <option value="Oldtimer / Youngtimer" class="bg-brand-card">Oldtimer / Youngtimer</option>
-              <option value="Cabrio – Verdeckreinigung &amp; Imprägnierung" class="bg-brand-card">Cabrio – Verdeck reinigen &amp; imprägnieren</option>
-              <optgroup label="── Spezialleistungen ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Leasingrückgabe-Aufbereitung" class="bg-brand-card">Leasingrückgabe-Aufbereitung</option>
-              <option value="Kunststoffreparatur" class="bg-brand-card">Kunststoffreparatur</option>
-              <optgroup label="── Sonstiges ──" class="bg-brand-card text-gray-500"></optgroup>
-              <option value="Sonstiges / Individuelles Angebot" class="bg-brand-card">Sonstiges / Individuelles Angebot</option>
+
+              <!-- Die Optionen stehen bewusst INNERHALB der optgroups.
+                   Leere optgroups mit nachfolgenden Geschwister-Optionen sehen am
+                   Rechner zwar gruppiert aus, werden auf dem Handy aber als eine
+                   einzige lange Liste dargestellt. -->
+
+              <optgroup label="Pflege &amp; Aufbereitung" class="bg-brand-card">
+                <option value="Bronze Paket – Basis Innenraumpflege (ab 69 €)" class="bg-brand-card">Bronze – Basis Innenraumpflege (ab 69 €)</option>
+                <option value="Silber Paket – Polster &amp; Leder Nassreinigung (ab 149 €)" class="bg-brand-card">Silber – Polster &amp; Leder Nassreinigung (ab 149 €)</option>
+                <option value="Gold Paket – Premium Außenpflege (ab 149 €)" class="bg-brand-card">Gold – Premium Außenpflege (ab 149 €)</option>
+                <option value="Platinum Paket – Intensiv Aufbereitung (ab 449 €)" class="bg-brand-card">Platinum – Intensiv Aufbereitung (ab 449 €)</option>
+                <option value="Lackaufbereitung &amp; Politur" class="bg-brand-card">Lackaufbereitung &amp; Politur</option>
+                <option value="Lederpflege &amp; Farbauffrischung (ab 129 €)" class="bg-brand-card">Lederpflege &amp; Farbauffrischung (ab 129 €)</option>
+                <option value="Motorraumreinigung (ab 59 €)" class="bg-brand-card">Motorraumreinigung (ab 59 €)</option>
+                <option value="Cabrio – Verdeckreinigung &amp; Imprägnierung" class="bg-brand-card">Cabrio – Verdeck reinigen &amp; imprägnieren</option>
+              </optgroup>
+
+              <optgroup label="Folie &amp; Versiegelung" class="bg-brand-card">
+                <option value="PPF Front Paket (ab 1.899 €)" class="bg-brand-card">PPF Front Paket (ab 1.899 €)</option>
+                <option value="PPF Front + Schweller Paket (ab 2.399 €)" class="bg-brand-card">PPF Front + Schweller (ab 2.399 €)</option>
+                <option value="PPF Front Premium Paket (ab 2.799 €)" class="bg-brand-card">PPF Front Premium (ab 2.799 €)</option>
+                <option value="PPF Komplett + Keramikversiegelung (ab 3.499 €)" class="bg-brand-card">PPF Komplett + Keramik (ab 3.499 €)</option>
+                <option value="Keramikversiegelung" class="bg-brand-card">Keramikversiegelung</option>
+                <option value="Fahrzeugfolierung / Car Wrapping" class="bg-brand-card">Fahrzeugfolierung / Car Wrapping</option>
+                <option value="Scheibenfolierung" class="bg-brand-card">Scheibenfolierung</option>
+                <option value="Flachglasfolierung / Sonnenschutz für Gebäude" class="bg-brand-card">Flachglasfolierung / Sonnenschutz (Gebäude)</option>
+              </optgroup>
+
+              <optgroup label="Scheibentönung" class="bg-brand-card">
+                <option value="Scheibentönung – Kleinwagen 3-Türer (ab 139 €)" class="bg-brand-card">Kleinwagen 3-Türer (ab 139 €)</option>
+                <option value="Scheibentönung – Kleinwagen 5-Türer (ab 179 €)" class="bg-brand-card">Kleinwagen 5-Türer (ab 179 €)</option>
+                <option value="Scheibentönung – Mittelklasse (ab 199 €)" class="bg-brand-card">Mittelklasse (ab 199 €)</option>
+                <option value="Scheibentönung – Obere Mittelklasse (ab 239 €)" class="bg-brand-card">Obere Mittelklasse (ab 239 €)</option>
+                <option value="Scheibentönung – Kombi (ab 269 €)" class="bg-brand-card">Kombi (ab 269 €)</option>
+                <option value="Scheibentönung – Oberklasse (ab 279 €)" class="bg-brand-card">Oberklasse (ab 279 €)</option>
+              </optgroup>
+
+              <optgroup label="Reparatur &amp; Instandsetzung" class="bg-brand-card">
+                <option value="Smart Repair (ab 79 €)" class="bg-brand-card">Smart Repair (ab 79 €)</option>
+                <option value="Dellenentfernung ohne Lackieren" class="bg-brand-card">Dellenentfernung ohne Lackieren</option>
+                <option value="Kunststoffreparatur" class="bg-brand-card">Kunststoffreparatur</option>
+                <option value="Felgenaufbereitung &amp; Versiegelung" class="bg-brand-card">Felgenaufbereitung &amp; Versiegelung</option>
+                <option value="Scheinwerferaufbereitung (ab 49 €)" class="bg-brand-card">Scheinwerferaufbereitung (ab 49 €)</option>
+                <option value="Leasingrückgabe-Aufbereitung" class="bg-brand-card">Leasingrückgabe-Aufbereitung</option>
+              </optgroup>
+
+              <optgroup label="Besondere Fahrzeuge" class="bg-brand-card">
+                <option value="Motorradaufbereitung" class="bg-brand-card">Motorrad</option>
+                <option value="Nutzfahrzeug / Transporter" class="bg-brand-card">Nutzfahrzeug / Transporter</option>
+                <option value="Wohnmobil / Caravan" class="bg-brand-card">Wohnmobil / Caravan</option>
+                <option value="Oldtimer / Youngtimer" class="bg-brand-card">Oldtimer / Youngtimer</option>
+              </optgroup>
+
+              <optgroup label="Sonstiges" class="bg-brand-card">
+                <option value="Sonstiges / Individuelles Angebot" class="bg-brand-card">Sonstiges / Individuelles Angebot</option>
+              </optgroup>
             </select>
           </div>
           <div>
