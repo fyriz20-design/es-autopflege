@@ -1753,6 +1753,15 @@
             />
           </div>
           <div>
+            <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="fahrzeug">Fahrzeug *</label>
+            <input
+              type="text" id="fahrzeug" name="fahrzeug" required
+              class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors"
+              placeholder="z. B. BMW 3er Touring, Baujahr 2019"
+            />
+            <p class="text-brand-muted text-xs mt-1.5 leading-relaxed">Marke, Modell und Baujahr helfen uns, den Aufwand und den Preis gleich richtig einzuschätzen.</p>
+          </div>
+          <div>
             <label class="block text-gray-400 text-xs tracking-widest uppercase mb-2" for="service">Gewünschte Leistung</label>
             <select
               id="service" name="service"
@@ -1822,7 +1831,7 @@
             <textarea
               id="message" name="message" required rows="4"
               class="w-full bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors resize-none"
-              placeholder="Beschreiben Sie kurz Ihr Fahrzeug und den gewünschten Service …"
+              placeholder="Zustand, Wunschtermin, Besonderheiten — alles, was wir vorab wissen sollten …"
             ></textarea>
           </div>
           <!-- Honeypot spam protection (Web3Forms) -->
